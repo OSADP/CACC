@@ -1,4 +1,3 @@
-Example:
 Key contributors to the development of the CACC VISSIM Algorithm 1.0
 
 Development of the 1.0 algorithm and the documentation include:
