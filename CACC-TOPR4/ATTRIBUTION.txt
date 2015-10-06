@@ -1,0 +1,10 @@
+Example:
+Key contributors to the development of the CACC VISSIM Algorithm 1.0
+
+Development of the 1.0 algorithm and the documentation include:
+
+NJIT Department of Civil Engineering: Joyoung Lee
+
+The developers also wish to acknowledge several contributors to this study:
+
+Federal Highway Administration: Taylor Lochrane, Daniel Dailey
