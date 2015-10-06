@@ -1,0 +1,48 @@
+Whenever a new software version is released, a Release Note is generated to provide the necessary information about bug fixes, new features, workarounds, known issues etc.
+
+RELEASE-NOTES.txt should include some of the following sections:
+
+- Release note identifier (name, date, version #)
+CACC VISSIM Algorithm, Oct. 6 2015, Version 1.0
+
+
+- What's New
+First release
+
+
+- System Requirements (third-party platforms / modules / etc with version numbers / dates)
+The CACC VISSIM Algorithm 1.0 can run on most standard Window based computers with 
+Pentium core processers, with at least two gigabits of RAM and at least 100 MB of drive space.
+Performance of the software will be based on the computing power and available RAM in 
+the system.  Larger datasets can require much larger space requirements depending on the 
+amount of data being read into the software.
+Third party platforms: 	PTV VISSIM 6.22 32 or 64 bit
+			Microsoft Visual Studio 2013
+
+
+- Features and changes (new features, defects corrected, caveats etc)
+First release
+
+
+- Outstanding issues (unresolved defects, workarounds, installation issues etc)
+
+
+- Installation guide (how to obtain and install)
+Compile the 101 and 104 driver models to DLL files, either 32 or 64 bit, based on the installed VISSIM version.
+Design the simulation scenarios and modify the scenario.csv file accordingly
+Run the COM controller
+More detailed info, please refer to the instruction.txt file.
+
+
+- Known Issues
+VISSIM's lane changing module cannot be easily modified without causing some bad visual effects. So you may see the
+left- or right-turning lights always on of the CACC vehicles, but that does not mean they initiated a lane-changing.
+
+
+- Troubleshooting
+pengsu9@gmail.com
+
+- FAQ
+
+
+- Other Resources and Links

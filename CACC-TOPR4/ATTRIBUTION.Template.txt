@@ -1,0 +1,15 @@
+Example:
+Key contributors to the development of the Trajectory Conversion Algorithm (TCA) software 2.3,
+development of the TCA 2.3 test data set, and development of the documentation include:
+Taylor Deurbrouck, Rick Glassco, Carl Kain, Jim Larkin, James O'Hara, Meenakshy Vasudevan and Karl Wunderlich of Noblis.
+
+The developers also wish to acknowledge several contributors to this study:
+
+BSM Data Emulator Task Lead: Jim McCarthy (Federal Highway Administration (FHWA)
+MN Division), for his support and comments.
+
+BSM Data Emulator Key Content Review Team: 
+Vivien Hoang (FHWA-CA Division), Gene McHale (FHWA), Dale Thompson (RITA), John Halkias (FHWA), 
+James Pol (RITA), James Colyar (FHWA), James Sturrock (FHWA-Resource Center)
+
+Thanks to the ITS Joint Program Office for their support of the effort.

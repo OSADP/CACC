@@ -1,0 +1,4 @@
+VISSIM License 6.22 32 or 64 bit version
+Microsoft Visual Studio 2013
+
+This application has not been tested under other version. 

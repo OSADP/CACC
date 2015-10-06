@@ -1,0 +1,27 @@
+Steps to run the CACC VISSIM 1.0 Algorithm
+
+1) Compile the Type101DriverModel and Type104DriverModel into DLL files.
+   either 32 or 64 bit, depending on the PTV VISSIM version. 
+2) Open the I-66CalibratedNetwork.inpx, change the driver models of vehicle
+   type 101 and 104 to the compiled DLL files in step 1).
+3) Design your own simulation scenarios, and modify the scenarios_template.csv file.
+
+	Metadata of scenarios_template.csv:
+
+	GPVOL%: 		Inflation rate of General-Purpose demand
+	HOVVol%:		Inflation rate of HOV demand
+	CACCMP_GP: 		CACC market penetration of general-purpose vehicles
+	CACCMP_HOV: 		CACC market penetration of HOV vehicles
+	Toggle:			Just use 2. This is for debugging purposes.
+	#Max Platoon Size:	Maximum platoon size. CACCHWLong is used for the platoon head.
+	CACCHWShort:		Headway among vehicles within a platoon
+	CACCHWLong:		Headway between leading platoon tail and following platoon head.
+	LeadingCriticalGap:	Lane-changing critical gap between the ego and leading vehicle
+	LaggingCriticalGap:	Lane-changing critical gap between the ego and lagging vehicle
+	LeadingSpdDiff:		Lane-changing max speed differential between the ego and leading vehicle
+	LaggingSpdDiff:		Lane-changing max speed differential between the ego and lagging vehicle
+4) Use the CACC_COM_Controller (Visual Studio 2013) to start the simulations.
+	Select "Multi-Scenario Mode",
+	Specify the path of the needed files (inpx, layx, csv, etc)
+	Change simulation time, replications and random speed.
+	Click "Run"
