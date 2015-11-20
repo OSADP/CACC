@@ -1,0 +1,124 @@
+FormatVersion=5.0 // Do not edit this line!
+Title="Untitled"
+
+{ENUMS}
+enum AccelCommandMode(0="ACC_Disable", // Disable ACC system.  Will kick out of ACC.
+  1="WrenchEffort", // Wrench Effort Command
+  2="SpeedControl", // Robotic Speed Control
+  3="RESERVED")
+// Reserved for future use
+enum SpoofCommand(0="No Command Injection", 1="Decel/Set Command Injection", 
+  2="Accel/Resume Command Injection", 3="ACC Cancel Command Injection", 
+  4="Override Command Injection")
+
+{SENDRECEIVE}
+
+[AccelControl]
+ID=100h
+DLC=8
+CycleTime=20
+Timeout=200
+Var=CommandCntr unsigned 6,2 -m
+Var=OverrideEnable unsigned 5,1 -m
+Var=CommandMode AccelCommandMode 3,2 -m
+Var=SpeedControl unsigned 24,16 -m /u:km/h /f:0.03125
+Var=WrenchEffort unsigned 8,16 -m /u:% /f:0.025 /o:-100
+Var=MaxAccel unsigned 40,16 -m /u:(km/h)/s /f:0.03125
+Var=Checksum unsigned 56,8 -m
+
+[SpeedControlParams]
+ID=101h
+DLC=8
+Var=P_Numerator unsigned 0,16 -m
+Var=I_Numerator unsigned 16,16 -m
+Var=D_Numerator unsigned 32,16 -m
+Var=PID_Divisor unsigned 48,16 -m	// All PID numbers share a common divisor
+
+[ACC_Injection]
+ID=102h
+DLC=1
+Var=SwitchSpoofCommand unsigned 0,8 -m /e:SpoofCommand
+
+[FrontLightControl]
+ID=103h
+DLC=1
+Var=FrontOutputCmd1 unsigned 7,1 -m /ln:"Unassigned Output"
+Var=FrontOutputCmd2 unsigned 6,1 -m /ln:"Left Arrow"
+Var=FrontOutputCmd3 unsigned 5,1 -m /ln:"Right Arrow"
+Var=FrontOutputCmd4 unsigned 4,1 -m /ln:"Takedown"
+Var=FrontOutputCmd5 unsigned 3,1 -m /ln:"Flash"
+Var=FrontOutputCmd6 unsigned 2,1 -m /ln:"Unassigned Output"
+
+[RearLightControl]
+ID=104h
+DLC=1
+Var=RearOutputCmd1 unsigned 7,1 -m /ln:"Unassigned Output"
+Var=RearOutputCmd2 unsigned 6,1 -m /ln:"Left Arrow"
+Var=RearOutputCmd3 unsigned 5,1 -m /ln:"Right Arrow"
+Var=RearOutputCmd4 unsigned 4,1 -m /ln:"Takedown"
+Var=RearOutputCmd5 unsigned 3,1 -m /ln:"Flash"
+Var=RearOutputCmd6 unsigned 2,1 -m /ln:"Unassigned Output"
+
+[FrontLightStatus]
+ID=113h
+DLC=1
+Var=FrontOutput1 unsigned 7,1 -m /ln:"Unassigned Output"
+Var=FrontOutput2 unsigned 6,1 -m /ln:"Left Arrow"
+Var=FrontOutput3 unsigned 5,1 -m /ln:"Right Arrow"
+Var=FrontOutput4 unsigned 4,1 -m /ln:"Takedown"
+Var=FrontOutput5 unsigned 3,1 -m /ln:"Flash"
+Var=FrontOutput6 unsigned 2,1 -m /ln:"Unassigned Output"
+
+[RearLightStatus]
+ID=114h
+DLC=1
+Var=RearOutput1 unsigned 7,1 -m /ln:"Unassigned Output"
+Var=RearOutput2 unsigned 6,1 -m /ln:"Left Arrow"
+Var=RearOutput3 unsigned 5,1 -m /ln:"Right Arrow"
+Var=RearOutput4 unsigned 4,1 -m /ln:"Takedown"
+Var=RearOutput5 unsigned 3,1 -m /ln:"Flash"
+Var=RearOutput6 unsigned 2,1 -m /ln:"Unassigned Output"
+
+[AccelModuleFeedback]
+ID=1A0h
+DLC=4
+Var=AccelCmdInjectionFlag unsigned 7,1 -m	// Accelerator command injection.  Command injection on this module is enabled.
+Var=AccelCmdTimeoutFlag unsigned 6,1 -m	// Acceleration command timeout.  Did not receive a command control message within the timeout period 
+Var=AccelCmdModeEcho unsigned 4,2 -m /e:AccelCommandMode
+Var=AccelCanTimeoutFlag unsigned 3,1 -m	// Vehicle bus timeout flag
+Var=AccelDriverOverride unsigned 2,1 -m	// Driver override enabled.  The driver is pressing the accerator pedal and overrided set acceleration.
+Var=AccelInjectionMsg unsigned 1,1 -m	// ACC system is operating appropriately.
+Var=AccelPairTimeoutFlag unsigned 0,1 -m	// A feedback message from the brake control device has not been heard in the timeout interval (1 sec)
+Var=Torque unsigned 8,24 -m	// -500 = 
+
+[BrakeModuleFeedback]
+ID=1B0h
+DLC=3
+Var=BrakeCmdInjectionFlag unsigned 7,1 -m	// Accelerator command injection.  Command injection on this module is enabled.
+Var=BrakeCmdTimeoutFlag unsigned 6,1 -m	// Acceleration command timeout.  Did not receive a command control message within the timeout period 
+Var=BrakeCmdModeEcho unsigned 4,2 -m /e:AccelCommandMode
+Var=BrakeCanTimoutFlag unsigned 3,1 -m	// Vehicle bus timeout flag
+Var=BrakeDriverOverride unsigned 2,1 -m	// Driver override enabled.  The driver is pressing the accerator pedal and overrided set acceleration.
+Var=BrakeInjectionMsg unsigned 1,1 -m	// ACC system is operating appropriately.
+Var=BrakePairTimeoutFlag unsigned 0,1 -m	// A feedback message from the brake control device has not been heard in the timeout interval (1 sec)
+Var=BrakeForce unsigned 12,12 -m /f:0.01 /o:-20.48
+
+[SpeedControlEcho]
+ID=111h
+DLC=8
+Var=P_NumeratorEcho unsigned 0,16 -m
+Var=D_NumeratorEcho unsigned 32,16 -m
+Var=I_NumeratorEcho unsigned 16,16 -m
+Var=PID_DivisorEcho unsigned 48,16 -m	// All PID numbers share a common divisor
+
+[ACC_InjectionComplete]
+ID=112h
+DLC=1
+Var=SwitchSpoofFeedback SpoofCommand 0,8 -m
+
+[UTC_Time]
+ID=05Ah
+DLC=8
+Var=UTC_Lower unsigned 0,32
+Var=UTC_Upper unsigned 32,32
+

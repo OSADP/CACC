@@ -1,0 +1,5196 @@
+Library {
+  Name			  "carma_platform"
+  Version		  8.2
+  MdlSubVersion		  0
+  SavedCharacterEncoding  "windows-1252"
+  PostLoadFcn		  ", if any(exist('dsrtsu_mdlpostloadfcn', 'file') == [2, 3, 6]), try dsrtsu_mdlpostloadfcn('Execute', "
+  "bdroot); catch fprintf('Error in PostLoadFcn (dsrtsu_mdlpostloadfcn) for model \"%s\":\\n %s\\n', bdroot, lasterr); "
+  "end, end, \n"
+  LibraryType		  "BlockLibrary"
+  SaveDefaultBlockParams  on
+  LockLinksToLibrary	  on
+  ScopeRefreshTime	  0.035000
+  OverrideScopeRefreshTime on
+  DisableAllScopes	  off
+  FPTRunName		  "Run 1"
+  MaxMDLFileLineLength	  120
+  UserBdParams		  "DSRTSU_INTERNAL_RTI_VER;DSRTSU_INTERNAL_RTI_TYPE;DSRTSU_INTERNAL_DSETHERNETUDP;DSRTSU_INTERNAL_RTIF"
+  "PGA"
+  Object {
+    $PropName		    "BdWindowsInfo"
+    $ObjectID		    1
+    $ClassName		    "Simulink.BDWindowsInfo"
+    Object {
+      $PropName		      "WindowsInfo"
+      $ObjectID		      2
+      $ClassName	      "Simulink.WindowInfo"
+      IsActive		      [1]
+      Location		      [-8.0, 0.0, 1378.0, 754.0]
+      Object {
+	$PropName		"ModelBrowserInfo"
+	$ObjectID		3
+	$ClassName		"Simulink.ModelBrowserInfo"
+	Visible			[1]
+	DockPosition		"Left"
+	Width			[50]
+	Height			[50]
+	Filter			[15]
+      }
+      Object {
+	$PropName		"ExplorerBarInfo"
+	$ObjectID		4
+	$ClassName		"Simulink.ExplorerBarInfo"
+	Visible			[1]
+      }
+      Object {
+	$PropName		"EditorsInfo"
+	$ObjectID		5
+	$ClassName		"Simulink.EditorInfo"
+	IsActive		[1]
+	ViewObjType		"SimulinkTopLevel"
+	LoadSaveID		"0"
+	Extents			[1135.0, 588.0]
+	ZoomFactor		[1.25]
+	Offset			[0.0, 8.6000000000000227]
+      }
+    }
+  }
+  DSRTSU_INTERNAL_RTI_VER "440"
+  DSRTSU_INTERNAL_RTI_TYPE "rti1401"
+  DSRTSU_INTERNAL_DSETHERNETUDP	"10"
+  DSRTSU_INTERNAL_RTIFPGA "30"
+  Created		  "Tue Jul 28 16:55:49 2015"
+  Creator		  "leidos"
+  UpdateHistory		  "UpdateHistoryNever"
+  ModifiedByFormat	  "%<Auto>"
+  LastModifiedBy	  "Admin"
+  ModifiedDateFormat	  "%<Auto>"
+  LastModifiedDate	  "Wed Sep 09 11:09:30 2015"
+  RTWModifiedTimeStamp	  363697764
+  ModelVersionFormat	  "1.%<AutoIncrement:82>"
+  ConfigurationManager	  "none"
+  SampleTimeColors	  off
+  SampleTimeAnnotations	  off
+  LibraryLinkDisplay	  "disabled"
+  WideLines		  off
+  ShowLineDimensions	  off
+  ShowPortDataTypes	  off
+  ShowDesignRanges	  off
+  ShowLoopsOnError	  on
+  IgnoreBidirectionalLines off
+  ShowStorageClass	  off
+  ShowTestPointIcons	  on
+  ShowSignalResolutionIcons on
+  ShowViewerIcons	  on
+  SortedOrder		  off
+  ExecutionContextIcon	  off
+  ShowLinearizationAnnotations on
+  BlockNameDataTip	  off
+  BlockParametersDataTip  off
+  BlockDescriptionStringDataTip	off
+  ToolBar		  on
+  StatusBar		  on
+  BrowserShowLibraryLinks off
+  BrowserLookUnderMasks	  off
+  SimulationMode	  "normal"
+  PauseTimes		  "5"
+  NumberOfSteps		  1
+  SnapshotBufferSize	  10
+  SnapshotInterval	  10
+  NumberOfLastSnapshots	  0
+  LinearizationMsg	  "none"
+  Profile		  off
+  ParamWorkspaceSource	  "MATLABWorkspace"
+  RecordCoverage	  off
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  CovEnableCumulative	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  ExtModeBatchMode	  off
+  ExtModeEnableFloating	  on
+  ExtModeTrigType	  "manual"
+  ExtModeTrigMode	  "normal"
+  ExtModeTrigPort	  "1"
+  ExtModeTrigElement	  "any"
+  ExtModeTrigDuration	  1000
+  ExtModeTrigDurationFloating "auto"
+  ExtModeTrigHoldOff	  0
+  ExtModeTrigDelay	  0
+  ExtModeTrigDirection	  "rising"
+  ExtModeTrigLevel	  0
+  ExtModeArchiveMode	  "off"
+  ExtModeAutoIncOneShot	  off
+  ExtModeIncDirWhenArm	  off
+  ExtModeAddSuffixToVar	  off
+  ExtModeWriteAllDataToWs off
+  ExtModeArmWhenConnect	  on
+  ExtModeSkipDownloadWhenConnect off
+  ExtModeLogAll		  on
+  ExtModeAutoUpdateStatusClock on
+  ShowModelReferenceBlockVersion off
+  ShowModelReferenceBlockIO off
+  Array {
+    Type		    "Handle"
+    Dimension		    1
+    Simulink.ConfigSet {
+      $ObjectID		      6
+      Version		      "1.13.1"
+      Array {
+	Type			"Handle"
+	Dimension		8
+	Simulink.SolverCC {
+	  $ObjectID		  7
+	  Version		  "1.13.1"
+	  StartTime		  "0.0"
+	  StopTime		  "Inf"
+	  AbsTol		  "auto"
+	  FixedStep		  "0.001"
+	  InitialStep		  "auto"
+	  MaxNumMinSteps	  "-1"
+	  MaxOrder		  5
+	  ZcThreshold		  "auto"
+	  ConsecutiveZCsStepRelTol "10*128*eps"
+	  MaxConsecutiveZCs	  "1000"
+	  ExtrapolationOrder	  4
+	  NumberNewtonIterations  1
+	  MaxStep		  "auto"
+	  MinStep		  "auto"
+	  MaxConsecutiveMinStep	  "1"
+	  RelTol		  "1e-3"
+	  SolverMode		  "Auto"
+	  EnableConcurrentExecution off
+	  ConcurrentTasks	  off
+	  Solver		  "ode1"
+	  SolverName		  "ode1"
+	  SolverJacobianMethodControl "auto"
+	  ShapePreserveControl	  "DisableAll"
+	  ZeroCrossControl	  "UseLocalSettings"
+	  ZeroCrossAlgorithm	  "Nonadaptive"
+	  AlgebraicLoopSolver	  "TrustRegion"
+	  SolverResetMethod	  "Fast"
+	  PositivePriorityOrder	  off
+	  AutoInsertRateTranBlk	  off
+	  SampleTimeConstraint	  "Unconstrained"
+	  InsertRTBMode		  "Whenever possible"
+	}
+	Simulink.DataIOCC {
+	  $ObjectID		  8
+	  Version		  "1.13.1"
+	  Decimation		  "1"
+	  ExternalInput		  "[t, u]"
+	  FinalStateName	  "xFinal"
+	  InitialState		  "xInitial"
+	  LimitDataPoints	  on
+	  MaxDataPoints		  "1000"
+	  LoadExternalInput	  off
+	  LoadInitialState	  off
+	  SaveFinalState	  off
+	  SaveCompleteFinalSimState off
+	  SaveFormat		  "Array"
+	  SignalLoggingSaveFormat "Dataset"
+	  SaveOutput		  on
+	  SaveState		  off
+	  SignalLogging		  on
+	  DSMLogging		  on
+	  InspectSignalLogs	  off
+	  SaveTime		  on
+	  ReturnWorkspaceOutputs  off
+	  StateSaveName		  "xout"
+	  TimeSaveName		  "tout"
+	  OutputSaveName	  "yout"
+	  SignalLoggingName	  "logsout"
+	  DSMLoggingName	  "dsmout"
+	  OutputOption		  "RefineOutputTimes"
+	  OutputTimes		  "[]"
+	  ReturnWorkspaceOutputsName "out"
+	  Refine		  "1"
+	}
+	Simulink.OptimizationCC {
+	  $ObjectID		  9
+	  Version		  "1.13.1"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    8
+	    Cell		    "BooleansAsBitfields"
+	    Cell		    "PassReuseOutputArgsAs"
+	    Cell		    "PassReuseOutputArgsThreshold"
+	    Cell		    "ZeroExternalMemoryAtStartup"
+	    Cell		    "ZeroInternalMemoryAtStartup"
+	    Cell		    "OptimizeModelRefInitCode"
+	    Cell		    "NoFixptDivByZeroProtection"
+	    Cell		    "UseSpecifiedMinMax"
+	    PropName		    "DisabledProps"
+	  }
+	  BlockReduction	  off
+	  BooleanDataType	  on
+	  ConditionallyExecuteInputs on
+	  InlineParams		  off
+	  UseIntDivNetSlope	  off
+	  UseFloatMulNetSlope	  off
+	  DefaultUnderspecifiedDataType	"double"
+	  UseSpecifiedMinMax	  off
+	  InlineInvariantSignals  off
+	  OptimizeBlockIOStorage  off
+	  BufferReuse		  off
+	  EnhancedBackFolding	  off
+	  StrengthReduction	  off
+	  ExpressionFolding	  off
+	  BooleansAsBitfields	  off
+	  BitfieldContainerType	  "uint_T"
+	  EnableMemcpy		  on
+	  MemcpyThreshold	  64
+	  PassReuseOutputArgsAs	  "Structure reference"
+	  ExpressionDepthLimit	  128
+	  FoldNonRolledExpr	  on
+	  LocalBlockOutputs	  off
+	  RollThreshold		  5
+	  SystemCodeInlineAuto	  off
+	  StateBitsets		  off
+	  DataBitsets		  off
+	  ActiveStateOutputEnumStorageType "Native Integer"
+	  UseTempVars		  off
+	  ZeroExternalMemoryAtStartup on
+	  ZeroInternalMemoryAtStartup on
+	  InitFltsAndDblsToZero	  off
+	  NoFixptDivByZeroProtection off
+	  EfficientFloat2IntCast  off
+	  EfficientMapNaN2IntZero on
+	  OptimizeModelRefInitCode off
+	  LifeSpan		  "inf"
+	  MaxStackSize		  "Inherit from target"
+	  BufferReusableBoundary  on
+	  SimCompilerOptimization "Off"
+	  AccelVerboseBuild	  off
+	  ParallelExecutionInRapidAccelerator on
+	}
+	Simulink.DebuggingCC {
+	  $ObjectID		  10
+	  Version		  "1.13.1"
+	  RTPrefix		  "error"
+	  ConsistencyChecking	  "none"
+	  ArrayBoundsChecking	  "none"
+	  SignalInfNanChecking	  "none"
+	  SignalRangeChecking	  "none"
+	  ReadBeforeWriteMsg	  "UseLocalSettings"
+	  WriteAfterWriteMsg	  "UseLocalSettings"
+	  WriteAfterReadMsg	  "UseLocalSettings"
+	  AlgebraicLoopMsg	  "warning"
+	  ArtificialAlgebraicLoopMsg "warning"
+	  SaveWithDisabledLinksMsg "warning"
+	  SaveWithParameterizedLinksMsg	"warning"
+	  CheckSSInitialOutputMsg on
+	  UnderspecifiedInitializationDetection	"Classic"
+	  MergeDetectMultiDrivingBlocksExec "none"
+	  CheckExecutionContextPreStartOutputMsg off
+	  CheckExecutionContextRuntimeOutputMsg	off
+	  SignalResolutionControl "UseLocalSettings"
+	  BlockPriorityViolationMsg "warning"
+	  MinStepSizeMsg	  "warning"
+	  TimeAdjustmentMsg	  "none"
+	  MaxConsecutiveZCsMsg	  "error"
+	  MaskedZcDiagnostic	  "warning"
+	  IgnoredZcDiagnostic	  "warning"
+	  SolverPrmCheckMsg	  "warning"
+	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
+	  MultiTaskDSMMsg	  "error"
+	  MultiTaskCondExecSysMsg "error"
+	  MultiTaskRateTransMsg	  "error"
+	  SingleTaskRateTransMsg  "none"
+	  TasksWithSamePriorityMsg "warning"
+	  SigSpecEnsureSampleTimeMsg "warning"
+	  CheckMatrixSingularityMsg "none"
+	  IntegerOverflowMsg	  "warning"
+	  Int32ToFloatConvMsg	  "warning"
+	  ParameterDowncastMsg	  "error"
+	  ParameterOverflowMsg	  "error"
+	  ParameterUnderflowMsg	  "none"
+	  ParameterPrecisionLossMsg "warning"
+	  ParameterTunabilityLossMsg "warning"
+	  FixptConstUnderflowMsg  "none"
+	  FixptConstOverflowMsg	  "none"
+	  FixptConstPrecisionLossMsg "none"
+	  UnderSpecifiedDataTypeMsg "none"
+	  UnnecessaryDatatypeConvMsg "none"
+	  VectorMatrixConversionMsg "none"
+	  InvalidFcnCallConnMsg	  "error"
+	  FcnCallInpInsideContextMsg "EnableAllAsError"
+	  SignalLabelMismatchMsg  "none"
+	  UnconnectedInputMsg	  "warning"
+	  UnconnectedOutputMsg	  "warning"
+	  UnconnectedLineMsg	  "warning"
+	  SFcnCompatibilityMsg	  "none"
+	  FrameProcessingCompatibilityMsg "warning"
+	  UniqueDataStoreMsg	  "none"
+	  BusObjectLabelMismatch  "warning"
+	  RootOutportRequireBusObject "warning"
+	  AssertControl		  "UseLocalSettings"
+	  EnableOverflowDetection off
+	  ModelReferenceIOMsg	  "none"
+	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
+	  ModelReferenceVersionMismatchMessage "none"
+	  ModelReferenceIOMismatchMessage "none"
+	  ModelReferenceCSMismatchMessage "none"
+	  UnknownTsInhSupMsg	  "warning"
+	  ModelReferenceDataLoggingMessage "warning"
+	  ModelReferenceSymbolNameMessage "warning"
+	  ModelReferenceExtraNoncontSigs "error"
+	  StateNameClashWarn	  "none"
+	  SimStateInterfaceChecksumMismatchMsg "warning"
+	  SimStateOlderReleaseMsg "error"
+	  InitInArrayFormatMsg	  "warning"
+	  StrictBusMsg		  "ErrorLevel1"
+	  BusNameAdapt		  "WarnAndRepair"
+	  NonBusSignalsTreatedAsBus "none"
+	  LoggingUnavailableSignals "error"
+	  BlockIODiagnostic	  "none"
+	  SFUnusedDataAndEventsDiag "warning"
+	  SFUnexpectedBacktrackingDiag "warning"
+	  SFInvalidInputDataAccessInChartInitDiag "warning"
+	  SFNoUnconditionalDefaultTransitionDiag "warning"
+	  SFTransitionOutsideNaturalParentDiag "warning"
+	  SFUnconditionalTransitionShadowingDiag "warning"
+	  SFUndirectedBroadcastEventsDiag "warning"
+	  SFTransitionActionBeforeConditionDiag	"warning"
+	}
+	Simulink.HardwareCC {
+	  $ObjectID		  11
+	  Version		  "1.13.1"
+	  ProdBitPerChar	  8
+	  ProdBitPerShort	  16
+	  ProdBitPerInt		  32
+	  ProdBitPerLong	  32
+	  ProdBitPerLongLong	  64
+	  ProdBitPerFloat	  32
+	  ProdBitPerDouble	  64
+	  ProdBitPerPointer	  32
+	  ProdLargestAtomicInteger "Char"
+	  ProdLargestAtomicFloat  "None"
+	  ProdIntDivRoundTo	  "Zero"
+	  ProdEndianess		  "BigEndian"
+	  ProdWordSize		  32
+	  ProdShiftRightIntArith  on
+	  ProdLongLongMode	  off
+	  ProdHWDeviceType	  "Generic->Custom"
+	  TargetBitPerChar	  8
+	  TargetBitPerShort	  16
+	  TargetBitPerInt	  32
+	  TargetBitPerLong	  32
+	  TargetBitPerLongLong	  64
+	  TargetBitPerFloat	  32
+	  TargetBitPerDouble	  64
+	  TargetBitPerPointer	  32
+	  TargetLargestAtomicInteger "Char"
+	  TargetLargestAtomicFloat "None"
+	  TargetShiftRightIntArith on
+	  TargetLongLongMode	  off
+	  TargetIntDivRoundTo	  "Zero"
+	  TargetEndianess	  "BigEndian"
+	  TargetWordSize	  32
+	  TargetTypeEmulationWarnSuppressLevel 0
+	  TargetPreprocMaxBitsSint 32
+	  TargetPreprocMaxBitsUint 32
+	  TargetHWDeviceType	  "Generic->Custom"
+	  TargetUnknown		  off
+	  ProdEqTarget		  on
+	}
+	Simulink.ModelReferenceCC {
+	  $ObjectID		  12
+	  Version		  "1.13.1"
+	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
+	  CheckModelReferenceTargetMessage "error"
+	  EnableParallelModelReferenceBuilds off
+	  ParallelModelReferenceErrorOnInvalidPool on
+	  ParallelModelReferenceMATLABWorkerInit "None"
+	  ModelReferenceNumInstancesAllowed "Multi"
+	  PropagateVarSize	  "Infer from blocks in model"
+	  ModelReferencePassRootInputsByReference on
+	  ModelReferenceMinAlgLoopOccurrences off
+	  PropagateSignalLabelsOutOfModel off
+	  SupportModelReferenceSimTargetCustomCode off
+	}
+	Simulink.SFSimCC {
+	  $ObjectID		  13
+	  Version		  "1.13.1"
+	  SFSimEnableDebug	  on
+	  SFSimOverflowDetection  on
+	  SFSimEcho		  on
+	  SimBlas		  on
+	  SimCtrlC		  on
+	  SimExtrinsic		  on
+	  SimIntegrity		  on
+	  SimUseLocalCustomCode	  off
+	  SimParseCustomCode	  on
+	  SimBuildMode		  "sf_incremental_build"
+	  SimGenImportedTypeDefs  off
+	}
+	Simulink.RTWCC {
+	  $BackupClass		  "Simulink.RTWCC"
+	  $ObjectID		  14
+	  Version		  "1.13.1"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    16
+	    Cell		    "IncludeHyperlinkInReport"
+	    Cell		    "GenerateTraceInfo"
+	    Cell		    "GenerateTraceReport"
+	    Cell		    "GenerateTraceReportSl"
+	    Cell		    "GenerateTraceReportSf"
+	    Cell		    "GenerateTraceReportEml"
+	    Cell		    "PortableWordSizes"
+	    Cell		    "GenerateWebview"
+	    Cell		    "GenerateCodeMetricsReport"
+	    Cell		    "GenerateCodeReplacementReport"
+	    Cell		    "GenerateErtSFunction"
+	    Cell		    "CreateSILPILBlock"
+	    Cell		    "CodeExecutionProfiling"
+	    Cell		    "CodeProfilingSaveOptions"
+	    Cell		    "CodeProfilingInstrumentation"
+	    Cell		    "PackageGeneratedCodeAndArtifacts"
+	    PropName		    "DisabledProps"
+	  }
+	  SystemTargetFile	  "rti1401.tlc"
+	  TLCOptions		  ""
+	  GenCodeOnly		  off
+	  MakeCommand		  "make_rti"
+	  GenerateMakefile	  on
+	  PackageGeneratedCodeAndArtifacts off
+	  PackageName		  ""
+	  TemplateMakefile	  "rti1401.tmf"
+	  PostCodeGenCommand	  ""
+	  Description		  "dSPACE DS1401 Hardware Platform"
+	  GenerateReport	  off
+	  SaveLog		  off
+	  RTWVerbose		  on
+	  RetainRTWFile		  off
+	  ProfileTLC		  off
+	  TLCDebug		  off
+	  TLCCoverage		  off
+	  TLCAssert		  off
+	  ProcessScriptMode	  "Default"
+	  ConfigurationMode	  "Optimized"
+	  ProcessScript		  "rti1401_make_rtw_hook"
+	  ConfigurationScript	  ""
+	  ConfigAtBuild		  off
+	  RTWUseLocalCustomCode	  off
+	  RTWUseSimCustomCode	  off
+	  CustomSourceCode	  ""
+	  CustomHeaderCode	  ""
+	  CustomInclude		  ""
+	  CustomSource		  ""
+	  CustomLibrary		  ""
+	  CustomInitializer	  ""
+	  CustomTerminator	  ""
+	  Toolchain		  "Automatically locate an installed toolchain"
+	  BuildConfiguration	  "Faster Builds"
+	  IncludeHyperlinkInReport off
+	  LaunchReport		  off
+	  PortableWordSizes	  off
+	  GenerateErtSFunction	  off
+	  CreateSILPILBlock	  "None"
+	  CodeExecutionProfiling  off
+	  CodeExecutionProfileVariable "executionProfile"
+	  CodeProfilingSaveOptions "SummaryOnly"
+	  CodeProfilingInstrumentation off
+	  SILDebugging		  off
+	  TargetLang		  "C"
+	  IncludeBusHierarchyInRTWFileBlockHierarchyMap	off
+	  IncludeERTFirstTime	  off
+	  GenerateTraceInfo	  off
+	  GenerateTraceReport	  off
+	  GenerateTraceReportSl	  off
+	  GenerateTraceReportSf	  off
+	  GenerateTraceReportEml  off
+	  GenerateCodeInfo	  off
+	  GenerateWebview	  off
+	  GenerateCodeMetricsReport off
+	  GenerateCodeReplacementReport	off
+	  RTWCompilerOptimization "Off"
+	  RTWCustomCompilerOptimizations ""
+	  CheckMdlBeforeBuild	  "Off"
+	  CustomRebuildMode	  "OnUpdate"
+	  DataInitializer	  ""
+	  SharedConstantsCachingThreshold 1024
+	  Array {
+	    Type		    "Handle"
+	    Dimension		    2
+	    Simulink.CodeAppCC {
+	      $ObjectID		      15
+	      Version		      "1.13.1"
+	      Array {
+		Type			"Cell"
+		Dimension		23
+		Cell			"IgnoreCustomStorageClasses"
+		Cell			"IgnoreTestpoints"
+		Cell			"InsertBlockDesc"
+		Cell			"InsertPolySpaceComments"
+		Cell			"SFDataObjDesc"
+		Cell			"MATLABFcnDesc"
+		Cell			"SimulinkDataObjDesc"
+		Cell			"DefineNamingRule"
+		Cell			"SignalNamingRule"
+		Cell			"ParamNamingRule"
+		Cell			"InternalIdentifier"
+		Cell			"InlinedPrmAccess"
+		Cell			"CustomSymbolStr"
+		Cell			"CustomSymbolStrGlobalVar"
+		Cell			"CustomSymbolStrType"
+		Cell			"CustomSymbolStrField"
+		Cell			"CustomSymbolStrFcn"
+		Cell			"CustomSymbolStrFcnArg"
+		Cell			"CustomSymbolStrBlkIO"
+		Cell			"CustomSymbolStrTmpVar"
+		Cell			"CustomSymbolStrMacro"
+		Cell			"CustomSymbolStrUtil"
+		Cell			"ReqsInCode"
+		PropName		"DisabledProps"
+	      }
+	      ForceParamTrailComments off
+	      GenerateComments	      on
+	      IgnoreCustomStorageClasses on
+	      IgnoreTestpoints	      off
+	      IncHierarchyInIds	      off
+	      MaxIdLength	      31
+	      PreserveName	      off
+	      PreserveNameWithParent  off
+	      ShowEliminatedStatement off
+	      OperatorAnnotations     off
+	      IncAutoGenComments      off
+	      SimulinkDataObjDesc     off
+	      SFDataObjDesc	      off
+	      MATLABFcnDesc	      off
+	      IncDataTypeInIds	      off
+	      MangleLength	      1
+	      CustomSymbolStrGlobalVar "$R$N$M"
+	      CustomSymbolStrType     "$N$R$M_T"
+	      CustomSymbolStrField    "$N$M"
+	      CustomSymbolStrFcn      "$R$N$M$F"
+	      CustomSymbolStrFcnArg   "rt$I$N$M"
+	      CustomSymbolStrBlkIO    "rtb_$N$M"
+	      CustomSymbolStrTmpVar   "$N$M"
+	      CustomSymbolStrMacro    "$R$N$M"
+	      CustomSymbolStrUtil     "$N$C"
+	      DefineNamingRule	      "None"
+	      ParamNamingRule	      "None"
+	      SignalNamingRule	      "None"
+	      InsertBlockDesc	      off
+	      InsertPolySpaceComments off
+	      SimulinkBlockComments   on
+	      MATLABSourceComments    off
+	      EnableCustomComments    off
+	      InternalIdentifier      "Shortened"
+	      InlinedPrmAccess	      "Literals"
+	      ReqsInCode	      off
+	      UseSimReservedNames     off
+	    }
+	    Simulink.STFCustomTargetCC {
+	      $BackupClass	      "Simulink.TargetCC"
+	      $ObjectID		      16
+	      Version		      "1.13.1"
+	      Array {
+		Type			"Cell"
+		Dimension		22
+		Cell			"TimeScaleFactor"
+		Cell			"CCompilerOptimizationOpts"
+		Cell			"RTICfgSetVer"
+		Cell			"NetworkClient"
+		Cell			"GeneratePreprocessorConditionals"
+		Cell			"IncludeMdlTerminateFcn"
+		Cell			"CombineOutputUpdateFcns"
+		Cell			"SuppressErrorStatus"
+		Cell			"ERTCustomFileBanners"
+		Cell			"GenerateSampleERTMain"
+		Cell			"GenerateTestInterfaces"
+		Cell			"ModelStepFunctionPrototypeControlCompliant"
+		Cell			"CPPClassGenCompliant"
+		Cell			"GenerateAllocFcn"
+		Cell			"PurelyIntegerCode"
+		Cell			"SupportComplex"
+		Cell			"SupportAbsoluteTime"
+		Cell			"SupportContinuousTime"
+		Cell			"SupportNonInlinedSFcns"
+		Cell			"GRTInterface"
+		Cell			"ParMdlRefBuildCompliant"
+		Cell			"MultiInstanceERTCode"
+		PropName		"DisabledProps"
+	      }
+	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
+	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
+	      CodeReplacementLibrary  "ANSI_C"
+	      UtilityFuncGeneration   "Auto"
+	      ERTMultiwordTypeDef     "System defined"
+	      ERTMultiwordLength      256
+	      MultiwordLength	      2048
+	      GenerateFullHeader      on
+	      GenerateSampleERTMain   off
+	      GenerateTestInterfaces  off
+	      IsPILTarget	      off
+	      ModelReferenceCompliant on
+	      ParMdlRefBuildCompliant on
+	      CompOptLevelCompliant   off
+	      ConcurrentExecutionCompliant off
+	      IncludeMdlTerminateFcn  on
+	      GeneratePreprocessorConditionals "Disable all"
+	      CombineOutputUpdateFcns off
+	      CombineSignalStateStructs	off
+	      SuppressErrorStatus     off
+	      ERTFirstTimeCompliant   off
+	      IncludeFileDelimiter    "Auto"
+	      ERTCustomFileBanners    off
+	      SupportAbsoluteTime     on
+	      LogVarNameModifier      "rt_"
+	      MatFileLogging	      on
+	      MultiInstanceERTCode    off
+	      SupportNonFinite	      on
+	      SupportComplex	      on
+	      PurelyIntegerCode	      off
+	      SupportContinuousTime   on
+	      SupportNonInlinedSFcns  on
+	      SupportVariableSizeSignals off
+	      EnableShiftOperators    on
+	      ParenthesesLevel	      "Nominal"
+	      MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
+	      ModelStepFunctionPrototypeControlCompliant off
+	      CPPClassGenCompliant    off
+	      AutosarCompliant	      off
+	      GRTInterface	      on
+	      GenerateAllocFcn	      off
+	      SystemTargetFile	      "rti1401.tlc"
+	      DialogCategory	      0
+	      Array {
+		Type			"Handle"
+		Dimension		1
+		Simulink.GRTTargetCC {
+		  $BackupClass		  "Simulink.TargetCC"
+		  $ObjectID		  17
+		  Version		  "1.13.1"
+		  Array {
+		    Type		    "Cell"
+		    Dimension		    18
+		    Cell		    "GeneratePreprocessorConditionals"
+		    Cell		    "IncludeMdlTerminateFcn"
+		    Cell		    "CombineOutputUpdateFcns"
+		    Cell		    "SuppressErrorStatus"
+		    Cell		    "ERTCustomFileBanners"
+		    Cell		    "GenerateSampleERTMain"
+		    Cell		    "GenerateTestInterfaces"
+		    Cell		    "ModelStepFunctionPrototypeControlCompliant"
+		    Cell		    "CPPClassGenCompliant"
+		    Cell		    "GenerateAllocFcn"
+		    Cell		    "PurelyIntegerCode"
+		    Cell		    "SupportComplex"
+		    Cell		    "SupportAbsoluteTime"
+		    Cell		    "SupportContinuousTime"
+		    Cell		    "SupportNonInlinedSFcns"
+		    Cell		    "GRTInterface"
+		    Cell		    "ParMdlRefBuildCompliant"
+		    Cell		    "MultiInstanceERTCode"
+		    PropName		    "DisabledProps"
+		  }
+		  TargetFcnLib		  "ansi_tfl_table_tmw.mat"
+		  TargetLibSuffix	  ""
+		  TargetPreCompLibLocation ""
+		  CodeReplacementLibrary  "ANSI_C"
+		  UtilityFuncGeneration	  "Auto"
+		  ERTMultiwordTypeDef	  "System defined"
+		  ERTMultiwordLength	  256
+		  MultiwordLength	  2048
+		  GenerateFullHeader	  on
+		  GenerateSampleERTMain	  off
+		  GenerateTestInterfaces  off
+		  IsPILTarget		  off
+		  ModelReferenceCompliant on
+		  ParMdlRefBuildCompliant on
+		  CompOptLevelCompliant	  off
+		  ConcurrentExecutionCompliant off
+		  IncludeMdlTerminateFcn  on
+		  GeneratePreprocessorConditionals "Disable all"
+		  CombineOutputUpdateFcns off
+		  CombineSignalStateStructs off
+		  SuppressErrorStatus	  off
+		  ERTFirstTimeCompliant	  off
+		  IncludeFileDelimiter	  "Auto"
+		  ERTCustomFileBanners	  off
+		  SupportAbsoluteTime	  on
+		  LogVarNameModifier	  "rt_"
+		  MatFileLogging	  on
+		  MultiInstanceERTCode	  off
+		  SupportNonFinite	  on
+		  SupportComplex	  on
+		  PurelyIntegerCode	  off
+		  SupportContinuousTime	  on
+		  SupportNonInlinedSFcns  on
+		  SupportVariableSizeSignals off
+		  EnableShiftOperators	  on
+		  ParenthesesLevel	  "Nominal"
+		  MATLABClassNameForMDSCustomization "Simulink.SoftwareTarget.GRTCustomization"
+		  ModelStepFunctionPrototypeControlCompliant off
+		  CPPClassGenCompliant	  off
+		  AutosarCompliant	  off
+		  GRTInterface		  on
+		  GenerateAllocFcn	  off
+		  UseMalloc		  off
+		  ExtMode		  off
+		  ExtModeStaticAlloc	  off
+		  ExtModeTesting	  off
+		  ExtModeStaticAllocSize  1000000
+		  ExtModeTransport	  0
+		  ExtModeMexFile	  "noextcomm"
+		  ExtModeIntrfLevel	  "Level1"
+		  RTWCAPISignals	  off
+		  RTWCAPIParams		  off
+		  RTWCAPIStates		  off
+		  RTWCAPIRootIO		  off
+		  GenerateASAP2		  off
+		}
+		PropName		"Components"
+	      }
+	      CustomProperty {
+		DataType		"RTWOptions_EnumType_C__Program Files_dSPACE RCPHIL 2014-A_MATLAB_RTI_RTI1401_TLC_rti1401_1InitialSimState"
+		EnumStrPairs {
+		  Value			  0
+		  String		  "RUN"
+		  Value			  1
+		  String		  "PAUSE"
+		  Value			  2
+		  String		  "STOP"
+		}
+		Name			"InitialSimState"
+		Value			"RUN"
+	      }
+	      CustomProperty {
+		DataType		"RTWOptions_EnumType_C__Program Files_dSPACE RCPHIL 2014-A_MATLAB_RTI_RTI1401_TLC_rti1401_1ExecutionMode"
+		EnumStrPairs {
+		  Value			  0
+		  String		  "real-time"
+		  Value			  1
+		  String		  "time-scaled"
+		  Value			  2
+		  String		  "as fast as possible"
+		}
+		Name			"ExecutionMode"
+		Value			"real-time"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"ExecutionModeNonUI"
+		Value			"RTSIM"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"TimeScaleFactor"
+		Value			"1.0"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"TimeScaleFactorNonUI"
+		Value			"OPTION_DISABLED"
+	      }
+	      CustomProperty {
+		DataType		"RTWOptions_EnumType_C__Program Files_dSPACE RCPHIL 2014-A_MATLAB_RTI_RTI1401_TLC_rti1401_1AssertionMode"
+		EnumStrPairs {
+		  Value			  0
+		  String		  "OFF"
+		  Value			  1
+		  String		  "WARN"
+		  Value			  2
+		  String		  "STOP"
+		}
+		Name			"AssertionMode"
+		Value			"OFF"
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"EnableRealTimeTesting"
+		Value			on
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"EnableRealTimeTestingNonUI"
+		Value			"ON"
+	      }
+	      CustomProperty {
+		DataType		"RTWOptions_EnumType_C__Program Files_dSPACE RCPHIL 2014-A_MATLAB_RTI_RTI1401_TLC_rti1401_1CCompilerOptimi"
+		"zationOptsPopup_"
+		EnumStrPairs {
+		  Value			  0
+		  String		  "Default"
+		  Value			  1
+		  String		  "None"
+		  Value			  2
+		  String		  "User-defined"
+		}
+		Name			"CCompilerOptimizationOptsPopup_"
+		Value			"Default"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"CCompilerOptimizationOptsNonUI"
+		Value			"USE_DEFAULT"
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"EnableDataSetStorage"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"EnableDataSetStorageNonUI"
+		Value			"OFF"
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"AllowReservedHostServiceNums"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"int32"
+		Name			"RTICfgSetVer"
+		Value			460
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"LoadAfterBuild"
+		Value			on
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"LoadToFlash"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"LoadApplNonUI"
+		Value			"ON"
+	      }
+	      CustomProperty {
+		DataType		"RTWOptions_EnumType_C__Program Files_dSPACE RCPHIL 2014-A_MATLAB_RTI_RTI1401_TLC_rti1401_1PlatformSelecti"
+		"onPopup"
+		EnumStrPairs {
+		  Value			  0
+		  String		  "Platform Name"
+		  Value			  1
+		  String		  "Network Client"
+		}
+		Name			"PlatformSelectionPopup"
+		Value			"Platform Name"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"BoardName"
+		Value			"ds1401"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"BoardNameNonUI"
+		Value			"ds1401"
+	      }
+	      CustomProperty {
+		DataType		"string"
+		Name			"NetworkClientNonUI"
+		Value			"OPTION_DISABLED"
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"TRCOnlyGlobals"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"TRCGenerateLabels"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"TRCGenerateVirtualBlocks"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"TRCGenerateStates"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"TRCGenerateDerivatives"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"TRCApplySubsystemPermissions"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"TRCGenerateParamValues"
+		Value			off
+	      }
+	      CustomProperty {
+		DataType		"slbool"
+		Name			"TRCIsOmitVdOn"
+		Value			off
+	      }
+	    }
+	    PropName		    "Components"
+	  }
+	}
+	PropName		"Components"
+      }
+      Name		      "Configuration"
+      CurrentDlgPage	      "Solver"
+      ConfigPrmDlgPosition     [ 100, 80, 1180, 720 ] 
+    }
+    PropName		    "ConfigurationSets"
+  }
+  ExplicitPartitioning	  off
+  BlockDefaults {
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    NamePlacement	    "normal"
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    ShowName		    on
+    BlockRotation	    0
+    BlockMirror		    off
+  }
+  AnnotationDefaults {
+    HorizontalAlignment	    "center"
+    VerticalAlignment	    "middle"
+    ForegroundColor	    "black"
+    BackgroundColor	    "white"
+    DropShadow		    off
+    FontName		    "Helvetica"
+    FontSize		    10
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+    UseDisplayTextAsClickCallback off
+  }
+  LineDefaults {
+    FontName		    "Helvetica"
+    FontSize		    9
+    FontWeight		    "normal"
+    FontAngle		    "normal"
+  }
+  MaskDefaults {
+    SelfModifiable	    "off"
+    IconFrame		    "on"
+    IconOpaque		    "on"
+    RunInitForIconRedraw    "off"
+    IconRotate		    "none"
+    PortRotate		    "default"
+    IconUnits		    "autoscale"
+  }
+  MaskParameterDefaults {
+    Evaluate		    "on"
+    Tunable		    "on"
+    NeverSave		    "off"
+    Internal		    "off"
+    ReadOnly		    "off"
+    Enabled		    "on"
+    Visible		    "on"
+    ToolTip		    "on"
+  }
+  BlockParameterDefaults {
+    Block {
+      BlockType		      BusSelector
+      OutputSignals	      "signal1,signal2,signal3"
+      OutputAsBus	      off
+    }
+    Block {
+      BlockType		      Constant
+      Value		      "1"
+      VectorParams1D	      on
+      SamplingMode	      "Sample based"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit from 'Constant value'"
+      LockScale		      off
+      SampleTime	      "inf"
+      FramePeriod	      "inf"
+      PreserveConstantTs      off
+    }
+    Block {
+      BlockType		      DataStoreRead
+      DataStoreName	      "A"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      DataTypeConversion
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Inherit via back propagation"
+      LockScale		      off
+      ConvertRealWorld	      "Real World Value (RWV)"
+      RndMeth		      "Zero"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      DigitalClock
+      SampleTime	      "1"
+    }
+    Block {
+      BlockType		      Gain
+      Gain		      "1"
+      Multiplication	      "Element-wise(K.*u)"
+      ParamMin		      "[]"
+      ParamMax		      "[]"
+      ParamDataTypeStr	      "Inherit: Same as input"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Inport
+      Port		      "1"
+      OutputFunctionCall      off
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      LatchByDelayingOutsideSignal off
+      LatchInputForFeedbackSignals off
+      Interpolate	      on
+    }
+    Block {
+      BlockType		      Memory
+      X0		      "0"
+      InheritSampleTime	      off
+      LinearizeMemory	      off
+      LinearizeAsDelay	      off
+      StateMustResolveToSignalObject off
+      RTWStateStorageClass    "Auto"
+    }
+    Block {
+      BlockType		      Mux
+      Inputs		      "4"
+      DisplayOption	      "none"
+      UseBusObject	      off
+      BusObject		      "BusObject"
+      NonVirtualBus	      off
+    }
+    Block {
+      BlockType		      Outport
+      Port		      "1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      LockScale		      off
+      BusOutputAsStruct	      off
+      PortDimensions	      "-1"
+      VarSizeSig	      "Inherit"
+      SampleTime	      "-1"
+      SignalType	      "auto"
+      SamplingMode	      "auto"
+      SourceOfInitialOutputValue "Dialog"
+      OutputWhenDisabled      "held"
+      InitialOutput	      "[]"
+    }
+    Block {
+      BlockType		      RateTransition
+      Integrity		      on
+      Deterministic	      on
+      X0		      "0"
+      OutPortSampleTimeOpt    "Specify"
+      OutPortSampleTimeMultiple	"1"
+      OutPortSampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Selector
+      NumberOfDimensions      "1"
+      IndexMode		      "One-based"
+      InputPortWidth	      "-1"
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      SubSystem
+      ShowPortLabels	      "FromPortIcon"
+      Permissions	      "ReadWrite"
+      PermitHierarchicalResolution "All"
+      TreatAsAtomicUnit	      off
+      CheckFcnCallInpInsideContextMsg off
+      SystemSampleTime	      "-1"
+      RTWFcnNameOpts	      "Auto"
+      RTWFileNameOpts	      "Auto"
+      FunctionInterfaceSpec   "void_void"
+      RTWMemSecFuncInitTerm   "Inherit from model"
+      RTWMemSecFuncExecute    "Inherit from model"
+      RTWMemSecDataConstants  "Inherit from model"
+      RTWMemSecDataInternal   "Inherit from model"
+      RTWMemSecDataParameters "Inherit from model"
+      SimViewingDevice	      off
+      DataTypeOverride	      "UseLocalSettings"
+      DataTypeOverrideAppliesTo	"AllNumericTypes"
+      MinMaxOverflowLogging   "UseLocalSettings"
+      SFBlockType	      "NONE"
+      Variant		      off
+      GeneratePreprocessorConditionals off
+      ContentPreviewEnabled   off
+    }
+    Block {
+      BlockType		      Sum
+      IconShape		      "rectangular"
+      Inputs		      "++"
+      CollapseMode	      "All dimensions"
+      CollapseDim	      "1"
+      InputSameDT	      on
+      AccumDataTypeStr	      "Inherit: Inherit via internal rule"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: Same as first input"
+      LockScale		      off
+      RndMeth		      "Floor"
+      SaturateOnIntegerOverflow	on
+      SampleTime	      "-1"
+    }
+    Block {
+      BlockType		      Terminator
+    }
+    Block {
+      BlockType		      TriggerPort
+      TriggerType	      "rising"
+      StatesWhenEnabling      "inherit"
+      PropagateVarSize	      "During execution"
+      ShowOutputPort	      off
+      OutputDataType	      "auto"
+      SampleTimeType	      "triggered"
+      SampleTime	      "1"
+      ZeroCross		      on
+      PortDimensions	      "-1"
+      TriggerSignalSampleTime "-1"
+      OutMin		      "[]"
+      OutMax		      "[]"
+      OutDataTypeStr	      "Inherit: auto"
+      Interpolate	      on
+    }
+  }
+  System {
+    Name		    "carma_platform"
+    Location		    [-8, 0, 1370, 754]
+    Open		    on
+    ModelBrowserVisibility  on
+    ModelBrowserWidth	    200
+    ScreenColor		    "white"
+    PaperOrientation	    "landscape"
+    PaperPositionMode	    "auto"
+    PaperType		    "usletter"
+    PaperUnits		    "inches"
+    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+    TiledPageScale	    1
+    ShowPageBoundaries	    off
+    ZoomFactor		    "125"
+    ReportName		    "simulink-default.rpt"
+    SIDHighWatermark	    "651"
+    Block {
+      BlockType		      SubSystem
+      Name		      "Carma_Platform\n"
+      SID		      "7"
+      Ports		      []
+      Position		      [40, 34, 245, 106]
+      ZOrder		      2
+      LibraryVersion	      "1.57"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Carma_Platform\n"
+	Location		[49, 228, 1349, 1008]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"96"
+	Block {
+	  BlockType		  Constant
+	  Name			  "Constant1"
+	  SID			  "54"
+	  Position		  [355, 45, 375, 65]
+	  ZOrder		  48
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "DSRC Adapter"
+	  SID			  "650"
+	  Ports			  [2, 0, 1]
+	  Position		  [580, 280, 785, 355]
+	  ZOrder		  69
+	  LibraryVersion	  "1.6"
+	  SourceBlock		  "dsrc_handler/DSRC Adapter"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Memory
+	  Name			  "Memory"
+	  SID			  "55"
+	  Position		  [435, 105, 465, 135]
+	  ZOrder		  47
+	  BlockMirror		  on
+	  InheritSampleTime	  on
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Pinpoint Adapter"
+	  SID			  "74"
+	  Ports			  [1]
+	  Position		  [600, 170, 760, 240]
+	  ZOrder		  64
+	  LibraryVersion	  "1.54"
+	  SourceBlock		  "topr5_adapter/Pinpoint Adapter"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX Command Bus Adapter"
+	  SID			  "63"
+	  Ports			  [1]
+	  Position		  [600, 494, 760, 556]
+	  ZOrder		  54
+	  LibraryVersion	  "1.54"
+	  SourceBlock		  "topr5_adapter/SRX Command Bus Adapter"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX Command Bus RX Handler"
+	  SID			  "60"
+	  Ports			  [0, 1]
+	  Position		  [130, 495, 300, 555]
+	  ZOrder		  51
+	  LibraryVersion	  "1.162"
+	  SourceBlock		  "srx_platform/SRX Command Bus RX Handler"
+	  SourceType		  ""
+	  ShowPortLabels	  "FromPortIcon"
+	  SystemSampleTime	  "-1"
+	  FunctionWithSeparateData off
+	  GeneratePreprocessorConditionals off
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX DSRC RX Handler"
+	  SID			  "64"
+	  Ports			  [0, 3]
+	  Position		  [125, 286, 300, 344]
+	  ZOrder		  55
+	  LibraryVersion	  "1.162"
+	  SourceBlock		  "srx_platform/SRX DSRC RX Handler"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX High-Speed Adapter"
+	  SID			  "62"
+	  Ports			  [1]
+	  Position		  [600, 389, 760, 461]
+	  ZOrder		  53
+	  LibraryVersion	  "1.54"
+	  SourceBlock		  "topr5_adapter/SRX High-Speed Adapter"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX High-Speed Bus Rx Handler"
+	  SID			  "59"
+	  Ports			  [0, 1]
+	  Position		  [130, 396, 300, 454]
+	  ZOrder		  50
+	  LibraryVersion	  "1.162"
+	  SourceBlock		  "srx_platform/SRX High-Speed Bus Rx Handler"
+	  SourceType		  ""
+	  ShowPortLabels	  "FromPortIcon"
+	  SystemSampleTime	  "-1"
+	  FunctionWithSeparateData off
+	  GeneratePreprocessorConditionals off
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX Object Bus Adapter"
+	  SID			  "329"
+	  Ports			  [2]
+	  Position		  [600, 596, 765, 654]
+	  ZOrder		  67
+	  LibraryVersion	  "1.54"
+	  SourceBlock		  "topr5_adapter/SRX Object Bus Adapter"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX Object Bus RX Handler"
+	  SID			  "66"
+	  Ports			  [0, 2]
+	  Position		  [130, 595, 300, 655]
+	  ZOrder		  57
+	  LibraryVersion	  "1.162"
+	  SourceBlock		  "srx_platform/SRX Object Bus RX Handler"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX Pinpoint RX Handler"
+	  SID			  "48"
+	  Ports			  [0, 1]
+	  Position		  [125, 176, 300, 234]
+	  ZOrder		  44
+	  LibraryVersion	  "1.162"
+	  SourceBlock		  "srx_platform/SRX Pinpoint RX Handler"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX Platform Initializer"
+	  SID			  "14"
+	  Ports			  []
+	  Position		  [130, 78, 300, 138]
+	  ZOrder		  26
+	  LibraryVersion	  "1.162"
+	  SourceBlock		  "srx_platform/SRX Platform Initializer"
+	  SourceType		  "SRX Platform Initializer"
+	  ContentPreviewEnabled	  off
+	  enable_can1		  on
+	  enable_can2		  on
+	  enable_can3		  on
+	  enable_can4		  off
+	}
+	Block {
+	  BlockType		  Sum
+	  Name			  "Sum"
+	  SID			  "56"
+	  Ports			  [2, 1]
+	  Position		  [435, 47, 465, 78]
+	  ZOrder		  46
+	  Port {
+	    PortNumber		    1
+	    Name		    "Loop counter"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  Terminator
+	  Name			  "Terminator"
+	  SID			  "57"
+	  Position		  [570, 55, 590, 75]
+	  ZOrder		  49
+	}
+	Line {
+	  ZOrder		  1
+	  SrcBlock		  "SRX Pinpoint RX Handler"
+	  SrcPort		  1
+	  DstBlock		  "Pinpoint Adapter"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "Loop counter"
+	  ZOrder		  2
+	  SrcBlock		  "Sum"
+	  SrcPort		  1
+	  Points		  [10, 0]
+	  Branch {
+	    ZOrder		    3
+	    Labels		    [1, 1]
+	    DstBlock		    "Terminator"
+	    DstPort		    1
+	  }
+	  Branch {
+	    ZOrder		    4
+	    DstBlock		    "Memory"
+	    DstPort		    1
+	  }
+	}
+	Line {
+	  ZOrder		  5
+	  SrcBlock		  "Memory"
+	  SrcPort		  1
+	  Points		  [-10, 0]
+	  DstBlock		  "Sum"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  6
+	  SrcBlock		  "Constant1"
+	  SrcPort		  1
+	  DstBlock		  "Sum"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  7
+	  SrcBlock		  "SRX High-Speed Bus Rx Handler"
+	  SrcPort		  1
+	  DstBlock		  "SRX High-Speed Adapter"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  8
+	  SrcBlock		  "SRX Command Bus RX Handler"
+	  SrcPort		  1
+	  DstBlock		  "SRX Command Bus Adapter"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  13
+	  SrcBlock		  "SRX Object Bus RX Handler"
+	  SrcPort		  1
+	  DstBlock		  "SRX Object Bus Adapter"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  14
+	  SrcBlock		  "SRX Object Bus RX Handler"
+	  SrcPort		  2
+	  DstBlock		  "SRX Object Bus Adapter"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  19
+	  SrcBlock		  "SRX DSRC RX Handler"
+	  SrcPort		  1
+	  Points		  [260, 0]
+	  DstBlock		  "DSRC Adapter"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  20
+	  SrcBlock		  "SRX DSRC RX Handler"
+	  SrcPort		  2
+	  Points		  [176, 0; 0, 20]
+	  DstBlock		  "DSRC Adapter"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  21
+	  SrcBlock		  "SRX DSRC RX Handler"
+	  SrcPort		  3
+	  Points		  [86, 0; 0, -70]
+	  DstBlock		  "DSRC Adapter"
+	  DstPort		  enable
+	}
+	Annotation {
+	  SID			  "13"
+	  Name			  "\"ADAPTER LAYER\""
+	  Position		  [635, 34, 726, 49]
+	  AutoSize		  on
+	  WordWrap		  off
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  ZOrder		  -3
+	}
+	Annotation {
+	  SID			  "12"
+	  Name			  "\"PLATFORM LAYER\""
+	  Position		  [170, 32, 267, 47]
+	  AutoSize		  on
+	  WordWrap		  off
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  ZOrder		  -4
+	}
+	Annotation {
+	  SID			  "58"
+	  Name			  "Loop counter"
+	  Position		  [399, 17, 458, 32]
+	  AutoSize		  on
+	  WordWrap		  off
+	  HorizontalAlignment	  "left"
+	  VerticalAlignment	  "top"
+	  ZOrder		  -5
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Control Input"
+      SID		      "81"
+      Ports		      [1, 1]
+      Position		      [40, 142, 245, 218]
+      ZOrder		      46
+      ShowPortLabels	      "FromPortBlockName"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      System {
+	Name			"Control Input"
+	Location		[-8, 0, 1370, 754]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"80"
+	Block {
+	  BlockType		  Inport
+	  Name			  "Speed Control"
+	  SID			  "102"
+	  Position		  [25, 338, 55, 352]
+	  ZOrder		  66
+	  IconDisplay		  "Port number"
+	  OutDataTypeStr	  "Bus: AccelCommandBus"
+	}
+	Block {
+	  BlockType		  BusSelector
+	  Name			  "Bus\nSelector"
+	  SID			  "103"
+	  Ports			  [1, 5]
+	  Position		  [100, 298, 105, 392]
+	  ZOrder		  67
+	  ShowName		  off
+	  OutputSignals		  "max_accel_m_s2,speed_command_m_s,wrench_effort_command,override_enabled,command_mode"
+	  Port {
+	    PortNumber		    1
+	    Name		    "<max_accel_m_s2>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    2
+	    Name		    "<speed_command_m_s>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    3
+	    Name		    "<wrench_effort_command>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    4
+	    Name		    "<override_enabled>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	  Port {
+	    PortNumber		    5
+	    Name		    "<command_mode>"
+	    RTWStorageClass	    "Auto"
+	    DataLoggingNameMode	    "SignalName"
+	  }
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion"
+	  SID			  "126"
+	  Position		  [245, 368, 320, 402]
+	  ZOrder		  105
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  DataTypeConversion
+	  Name			  "Data Type Conversion1"
+	  SID			  "142"
+	  Position		  [165, 348, 240, 382]
+	  ZOrder		  106
+	  RndMeth		  "Floor"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain"
+	  SID			  "106"
+	  Position		  [220, 290, 250, 320]
+	  ZOrder		  70
+	  ShowName		  off
+	  Gain			  "3.6"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Gain
+	  Name			  "Gain1"
+	  SID			  "107"
+	  Position		  [285, 310, 325, 340]
+	  ZOrder		  71
+	  ShowName		  off
+	  Gain			  "3.6"
+	  ParamDataTypeStr	  "Inherit: Inherit via internal rule"
+	  OutDataTypeStr	  "Inherit: Inherit via internal rule"
+	  SaturateOnIntegerOverflow off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "SRX Accel Command"
+	  SID			  "78"
+	  Ports			  [5, 1]
+	  Position		  [365, 294, 610, 396]
+	  ZOrder		  45
+	  LibraryVersion	  "1.162"
+	  SourceBlock		  "srx_platform/SRX Accel Command"
+	  SourceType		  "SubSystem"
+	  ContentPreviewEnabled	  off
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Aceel  Command Status"
+	  SID			  "99"
+	  Position		  [670, 338, 700, 352]
+	  ZOrder		  63
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  36
+	  SrcBlock		  "SRX Accel Command"
+	  SrcPort		  1
+	  DstBlock		  "Aceel  Command Status"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  38
+	  SrcBlock		  "Speed Control"
+	  SrcPort		  1
+	  DstBlock		  "Bus\nSelector"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  48
+	  SrcBlock		  "Gain"
+	  SrcPort		  1
+	  DstBlock		  "SRX Accel Command"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  50
+	  SrcBlock		  "Gain1"
+	  SrcPort		  1
+	  DstBlock		  "SRX Accel Command"
+	  DstPort		  2
+	}
+	Line {
+	  Name			  "<max_accel_m_s2>"
+	  ZOrder		  51
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  1
+	  DstBlock		  "Gain"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<speed_command_m_s>"
+	  ZOrder		  52
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  2
+	  DstBlock		  "Gain1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<wrench_effort_command>"
+	  ZOrder		  53
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  3
+	  DstBlock		  "SRX Accel Command"
+	  DstPort		  3
+	}
+	Line {
+	  Name			  "<override_enabled>"
+	  ZOrder		  54
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  4
+	  DstBlock		  "Data Type Conversion1"
+	  DstPort		  1
+	}
+	Line {
+	  Name			  "<command_mode>"
+	  ZOrder		  55
+	  Labels		  [0, 0]
+	  SrcBlock		  "Bus\nSelector"
+	  SrcPort		  5
+	  DstBlock		  "Data Type Conversion"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  101
+	  SrcBlock		  "Data Type Conversion"
+	  SrcPort		  1
+	  DstBlock		  "SRX Accel Command"
+	  DstPort		  5
+	}
+	Line {
+	  ZOrder		  123
+	  SrcBlock		  "Data Type Conversion1"
+	  SrcPort		  1
+	  DstBlock		  "SRX Accel Command"
+	  DstPort		  4
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "Data Producer"
+      SID		      "52"
+      Ports		      [0, 1]
+      Position		      [265, 35, 445, 105]
+      ZOrder		      5
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		18
+	$ClassName		"Simulink.Mask"
+	Object {
+	  $PropName		  "Parameters"
+	  $ObjectID		  19
+	  $ClassName		  "Simulink.MaskParameter"
+	  Type			  "promote"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    "Triggered\nSubsystem/Constant2/Value"
+	    PropName		    "TypeOptions"
+	  }
+	  Name			  "Value"
+	  Prompt		  "Data Output Interval (s):"
+	  Value			  "0.05"
+	}
+	Array {
+	  Type			  "Simulink.dialog.Control"
+	  Dimension		  3
+	  Object {
+	    $ObjectID		    20
+	    $ClassName		    "Simulink.dialog.Group"
+	    Prompt		    "%<MaskType>"
+	    Object {
+	      $PropName		      "DialogControls"
+	      $ObjectID		      21
+	      $ClassName	      "Simulink.dialog.Text"
+	      Prompt		      "%<MaskDescription>"
+	      Name		      "DescTextVar"
+	    }
+	    Name		    "DescGroupVar"
+	  }
+	  Object {
+	    $ObjectID		    22
+	    $ClassName		    "Simulink.dialog.Group"
+	    Prompt		    "Simulink:studio:ToolBarParametersMenu"
+	    Name		    "ParameterGroupVar"
+	  }
+	  Object {
+	    $ObjectID		    23
+	    $ClassName		    "Simulink.dialog.parameter.Edit"
+	    Name		    "Value"
+	  }
+	  PropName		  "DialogControls"
+	}
+      }
+      System {
+	Name			"Data Producer"
+	Location		[-8, -8, 1288, 768]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"140"
+	Block {
+	  BlockType		  DataStoreRead
+	  Name			  "Data Store\nRead"
+	  SID			  "50"
+	  Ports			  [0, 1]
+	  Position		  [80, 127, 180, 163]
+	  ZOrder		  100
+	  DataStoreName		  "CarmaData"
+	  SampleTime		  "0.01"
+	  DataStoreElements	  "CarmaData"
+	}
+	Block {
+	  BlockType		  RateTransition
+	  Name			  "Rate Transition"
+	  SID			  "137"
+	  Position		  [225, 124, 265, 166]
+	  ZOrder		  99
+	  Deterministic		  off
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "Time-Triggered Task"
+	  SID			  "141"
+	  Ports			  [0, 1]
+	  Position		  [210, 28, 320, 72]
+	  ZOrder		  101
+	  LibraryVersion	  "1.42"
+	  SourceBlock		  "rtitttasklib/Time-Triggered Task"
+	  SourceType		  "RTI Time-Triggered Task"
+	  ContentPreviewEnabled	  off
+	  TimeTriggerId		  "data_prod"
+	  TLCFileName		  "rtitimetriggeredtask"
+	  DSProperties		  "struct('RTI',struct('Version',uint32(1),'BlockType',struct('isSLSource',uint8(1),'isSLSink',uint8("
+	  "0),'isHWSource',uint8(0),'isHWSink',uint8(0),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8(0),'isInter"
+	  "rupt',uint8(0),'isChannelwise',uint8(0)),'IOBoardType','RTITIMETRIGGER','UnitType','TIMETRIGGERED','Identifier','TA"
+	  "SK','DialogType','SL','BlockSet','NONE','SlaveProcessor','NONE'))"
+	  RTIBlockInterface	  "struct('OutputPortsActive',1,'OutputPortsWidth',int32(1),'FunctionCall',uint32(0),'OutputPorts"
+	  "Name',{{[' ']}},'InitLevel',3,'BlockDisplay',{{['Time-Triggered Task\\nID: ''''data_prod'''''],'center'}},'IconTran"
+	  "sparency','off','BlockName',struct('Token',{{['Time-Triggered Task']}}),'MaskDescription',['Specifies a time-trigge"
+	  "red task. The task trigger times are set by the assigned Time-Trigger Set block.' char(10) '' char(10) 'This block "
+	  "can only be used together with the Time-Trigger Set block.'])"
+	  RTIBlockParameters	  "struct('TimeTriggerId',{{'data_prod','OFF',[]}},'TLCFileName',{{'rtitimetriggeredtask','OFF',"
+	  "[]}})"
+	  RTISFcnParameters	  "struct('TLCFileName','char')"
+	  RTIBlockParaDefault	  "struct('TimeTriggerId','TT_ID','TLCFileName','rtitimetriggeredtask')"
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Triggered\nSubsystem"
+	  SID			  "128"
+	  Ports			  [1, 1, 0, 1]
+	  Position		  [335, 124, 435, 166]
+	  ZOrder		  87
+	  TreatAsAtomicUnit	  on
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "Triggered\nSubsystem"
+	    Location		    [-8, -8, 1288, 768]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "100"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      SID		      "138"
+	      Position		      [215, 138, 245, 152]
+	      ZOrder		      98
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      TriggerPort
+	      Name		      "Trigger"
+	      SID		      "130"
+	      Ports		      []
+	      Position		      [225, 20, 245, 40]
+	      ZOrder		      -2
+	      TriggerType	      "function-call"
+	      StatesWhenEnabling      "held"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant2"
+	      SID		      "134"
+	      Position		      [300, 40, 330, 70]
+	      ZOrder		      97
+	      Value		      "Value"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "Time-Trigger Set"
+	      SID		      "140"
+	      Ports		      [1]
+	      Position		      [370, 33, 570, 77]
+	      ZOrder		      100
+	      LibraryVersion	      "1.42"
+	      SourceBlock	      "rtitttasklib/Time-Trigger Set"
+	      SourceType	      "RTI Time-Trigger Set"
+	      ContentPreviewEnabled   off
+	      TimeTriggerId	      "data_prod"
+	      SampleTime	      "-1"
+	      RegisterAtSimulationStart	on
+	      TLCFileName	      "rtitimetriggerset"
+	      DSProperties	      "struct('RTI',struct('Version',uint32(1),'BlockType',struct('isSLSource',uint8(1),'isSLSink'"
+	      ",uint8(0),'isHWSource',uint8(0),'isHWSink',uint8(0),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8("
+	      "0),'isInterrupt',uint8(0),'isChannelwise',uint8(0)),'IOBoardType','RTITIMETRIGGER','UnitType','TIMETRIGGERED','"
+	      "Identifier','SET','DialogType','SL','BlockSet','NONE','SlaveProcessor','NONE'))"
+	      RTIBlockInterface	      "struct('InputPortsActive',1,'InputPortsWidth',{{'DYNAMICALLY_SIZED'}},'InputPortsDataT"
+	      "ype',{{'SS_DOUBLE'}},'InputPortsName',{{['Trigger delay']}},'InitLevel',3,'BlockDisplay',{{['Time-Trigger Set\\"
+	      "nID: ''''data_prod'''''],'center'}},'IconTransparency','on','BlockName',struct('Token',{{['Time-Trigger Set']}}"
+	      "),'MaskDescription',['When this block is evaluated it sets the task trigger times for the assigned time-trigger"
+	      "ed task.' char(10) '' char(10) 'This block can only be used together with the Time-Triggered Task block.'],'Sam"
+	      "pleTime',{{-1}})"
+	      RTIBlockParameters      "struct('TimeTriggerId',{{'data_prod','OFF',[]}},'SampleTime',{{-1,'OFF',[]}},'Register"
+	      "AtSimulationStart',{{logical(1),'OFF',[]}},'TLCFileName',{{'rtitimetriggerset','OFF',[]}})"
+	      RTISFcnParameters	      "struct('TimeTriggerId','char','SampleTime','double','TLCFileName','char','RegisterAtSi"
+	      "mulationStart','double')"
+	      RTIBlockParaDefault     "struct('TimeTriggerId','TT_ID','SampleTime',-1,'RegisterAtSimulationStart',0,'TLCFileN"
+	      "ame','rtitimetriggerset')"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Out1"
+	      SID		      "131"
+	      Position		      [340, 138, 370, 152]
+	      ZOrder		      -3
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      ZOrder		      4
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      DstBlock		      "Out1"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      6
+	      SrcBlock		      "Constant2"
+	      SrcPort		      1
+	      DstBlock		      "Time-Trigger Set"
+	      DstPort		      1
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "CarmaData"
+	  SID			  "53"
+	  Position		  [530, 138, 560, 152]
+	  ZOrder		  5
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  8
+	  SrcBlock		  "Rate Transition"
+	  SrcPort		  1
+	  DstBlock		  "Triggered\nSubsystem"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  10
+	  SrcBlock		  "Data Store\nRead"
+	  SrcPort		  1
+	  DstBlock		  "Rate Transition"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  11
+	  SrcBlock		  "Triggered\nSubsystem"
+	  SrcPort		  1
+	  DstBlock		  "CarmaData"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  12
+	  SrcBlock		  "Time-Triggered Task"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  DstBlock		  "Triggered\nSubsystem"
+	  DstPort		  trigger
+	}
+      }
+    }
+    Block {
+      BlockType		      SubSystem
+      Name		      "UDP Logger / HMI"
+      SID		      "230"
+      Ports		      [2, 2]
+      Position		      [40, 262, 245, 333]
+      ZOrder		      117
+      ForegroundColor	      "red"
+      BackgroundColor	      "yellow"
+      LibraryVersion	      "*1.64"
+      MinAlgLoopOccurrences   off
+      PropExecContextOutsideSubsystem off
+      RTWSystemCode	      "Auto"
+      FunctionWithSeparateData off
+      Opaque		      off
+      RequestExecContextInheritance off
+      MaskHideContents	      off
+      Object {
+	$PropName		"MaskObject"
+	$ObjectID		24
+	$ClassName		"Simulink.Mask"
+	Object {
+	  $PropName		  "Parameters"
+	  $ObjectID		  25
+	  $ClassName		  "Simulink.MaskParameter"
+	  Type			  "promote"
+	  Array {
+	    Type		    "Cell"
+	    Dimension		    1
+	    Cell		    "Subsystem/Constant2/Value"
+	    PropName		    "TypeOptions"
+	  }
+	  Name			  "Value"
+	  Prompt		  "Output Interval (s):"
+	  Value			  "0.05"
+	}
+	Array {
+	  Type			  "Simulink.dialog.Control"
+	  Dimension		  3
+	  Object {
+	    $ObjectID		    26
+	    $ClassName		    "Simulink.dialog.Group"
+	    Prompt		    "%<MaskType>"
+	    Object {
+	      $PropName		      "DialogControls"
+	      $ObjectID		      27
+	      $ClassName	      "Simulink.dialog.Text"
+	      Prompt		      "%<MaskDescription>"
+	      Name		      "DescTextVar"
+	    }
+	    Name		    "DescGroupVar"
+	  }
+	  Object {
+	    $ObjectID		    28
+	    $ClassName		    "Simulink.dialog.Group"
+	    Prompt		    "Simulink:studio:ToolBarParametersMenu"
+	    Name		    "ParameterGroupVar"
+	  }
+	  Object {
+	    $ObjectID		    29
+	    $ClassName		    "Simulink.dialog.parameter.Edit"
+	    Name		    "Value"
+	  }
+	  PropName		  "DialogControls"
+	}
+      }
+      System {
+	Name			"UDP Logger / HMI"
+	Location		[-8, -8, 1374, 746]
+	Open			off
+	ModelBrowserVisibility	on
+	ModelBrowserWidth	200
+	ScreenColor		"white"
+	PaperOrientation	"landscape"
+	PaperPositionMode	"auto"
+	PaperType		"usletter"
+	PaperUnits		"inches"
+	TiledPaperMargins	[0.500000, 0.500000, 0.500000, 0.500000]
+	TiledPageScale		1
+	ShowPageBoundaries	off
+	ZoomFactor		"80"
+	Block {
+	  BlockType		  Inport
+	  Name			  "CARMA Data"
+	  SID			  "651"
+	  Position		  [70, 163, 100, 177]
+	  ZOrder		  403
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Inport
+	  Name			  "PATH Control Data"
+	  SID			  "312"
+	  Position		  [70, 228, 100, 242]
+	  ZOrder		  400
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	  PortDimensions	  "[74]"
+	}
+	Block {
+	  BlockType		  RateTransition
+	  Name			  "Rate Transition"
+	  SID			  "144"
+	  Position		  [180, 149, 220, 191]
+	  ZOrder		  95
+	  Deterministic		  off
+	}
+	Block {
+	  BlockType		  RateTransition
+	  Name			  "Rate Transition1"
+	  SID			  "311"
+	  Position		  [180, 214, 220, 256]
+	  ZOrder		  98
+	  Deterministic		  off
+	}
+	Block {
+	  BlockType		  SubSystem
+	  Name			  "Subsystem"
+	  SID			  "145"
+	  Ports			  [2, 2, 0, 1]
+	  Position		  [300, 174, 525, 241]
+	  ZOrder		  94
+	  MinAlgLoopOccurrences	  off
+	  PropExecContextOutsideSubsystem off
+	  RTWSystemCode		  "Auto"
+	  FunctionWithSeparateData off
+	  Opaque		  off
+	  RequestExecContextInheritance	off
+	  MaskHideContents	  off
+	  System {
+	    Name		    "Subsystem"
+	    Location		    [-8, -8, 1374, 746]
+	    Open		    off
+	    ModelBrowserVisibility  on
+	    ModelBrowserWidth	    200
+	    ScreenColor		    "white"
+	    PaperOrientation	    "landscape"
+	    PaperPositionMode	    "auto"
+	    PaperType		    "usletter"
+	    PaperUnits		    "inches"
+	    TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
+	    TiledPageScale	    1
+	    ShowPageBoundaries	    off
+	    ZoomFactor		    "30"
+	    Block {
+	      BlockType		      Inport
+	      Name		      "In1"
+	      SID		      "146"
+	      Position		      [95, 868, 125, 882]
+	      ZOrder		      93
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Inport
+	      Name		      "PATH Control Data"
+	      SID		      "309"
+	      Position		      [560, 1658, 590, 1672]
+	      ZOrder		      399
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	      PortDimensions	      "[74]"
+	    }
+	    Block {
+	      BlockType		      TriggerPort
+	      Name		      "Trigger"
+	      SID		      "147"
+	      Ports		      []
+	      Position		      [357, 25, 377, 45]
+	      ZOrder		      100
+	      TriggerType	      "function-call"
+	      StatesWhenEnabling      "held"
+	      PortDimensions	      "1"
+	    }
+	    Block {
+	      BlockType		      BusSelector
+	      Name		      "Bus\nSelector"
+	      SID		      "148"
+	      Ports		      [1, 74]
+	      Position		      [270, 161, 275, 1629]
+	      ZOrder		      7
+	      ShowName		      off
+	      OutputSignals	      "radar_status.rx_timestamp_s,radar_status.value,acc_status.rx_timestamp_s,acc_status.value,"
+	      "path_ctrl_status.rx_timestamp_s,path_ctrl_status.value,throttle_ovr_flag.rx_timestamp_s,throttle_ovr_flag.value"
+	      ",acc_set_speed_m_s.rx_timestamp_s,acc_set_speed_m_s.value,accel_m_s2.rx_timestamp_s,accel_m_s2.value,speed_m_s."
+	      "rx_timestamp_s,speed_m_s.value,steering_wheel_angle_deg.rx_timestamp_s,steering_wheel_angle_deg.value,brk_light"
+	      "_flag.rx_timestamp_s,brk_light_flag.value,brk_pedal_deflect_percent.rx_timestamp_s,brk_pedal_deflect_percent.va"
+	      "lue,throttle_pedal_deflect_percent.rx_timestamp_s,throttle_pedal_deflect_percent.value,global_utc_time_s.rx_tim"
+	      "estamp_s,global_utc_time_s.value,global_lat_deg.rx_timestamp_s,global_lat_deg.value,global_long_deg.rx_timestam"
+	      "p_s,global_long_deg.value,global_alt_m.rx_timestamp_s,global_alt_m.value,global_roll_deg.rx_timestamp_s,global_"
+	      "roll_deg.value,global_pitch_deg.rx_timestamp_s,global_pitch_deg.value,global_yaw_deg.rx_timestamp_s,global_yaw_"
+	      "deg.value,local_north_m.rx_timestamp_s,local_north_m.value,local_east_m.rx_timestamp_s,local_east_m.value,local"
+	      "_down_m.rx_timestamp_s,local_down_m.value,local_roll_deg.rx_timestamp_s,local_roll_deg.value,local_pitch_deg.rx"
+	      "_timestamp_s,local_pitch_deg.value,local_yaw_deg.rx_timestamp_s,local_yaw_deg.value,horizontal_pos_accuracy_m.r"
+	      "x_timestamp_s,horizontal_pos_accuracy_m.value,vertical_pos_accuracy_m.rx_timestamp_s,vertical_pos_accuracy_m.va"
+	      "lue,velocity_fwd_m_s.rx_timestamp_s,velocity_fwd_m_s.value,velocity_right_m_s.rx_timestamp_s,velocity_right_m_s"
+	      ".value,velocity_down_m_s.rx_timestamp_s,velocity_down_m_s.value,velocity_accuracy_m_s.rx_timestamp_s,velocity_a"
+	      "ccuracy_m_s.value,accel_fwd_m_s2.rx_timestamp_s,accel_fwd_m_s2.value,accel_right_m_s2.rx_timestamp_s,accel_righ"
+	      "t_m_s2.value,accel_down_m_s2.rx_timestamp_s,accel_down_m_s2.value,dist_to_preceding_veh_m.rx_timestamp_s,dist_t"
+	      "o_preceding_veh_m.value,rel_speed_to_preceding_veh_m_s.rx_timestamp_s,rel_speed_to_preceding_veh_m_s.value,desi"
+	      "red_headway.rx_timestamp_s,desired_headway.value,requested_cacc_state.rx_timestamp_s,requested_cacc_state.value"
+	      Port {
+		PortNumber		1
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		2
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		3
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		4
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		5
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		6
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		7
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		8
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		9
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		10
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		11
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		12
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		13
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		14
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		15
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		16
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		17
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		18
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		19
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		20
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		21
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		22
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		23
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		24
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		25
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		26
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		27
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		28
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		29
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		30
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		31
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		32
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		33
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		34
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		35
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		36
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		37
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		38
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		39
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		40
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		41
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		42
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		43
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		44
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		45
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		46
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		47
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		48
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		49
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		50
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		51
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		52
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		53
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		54
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		55
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		56
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		57
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		58
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		59
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		60
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		61
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		62
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		63
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		64
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		65
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		66
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		67
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		68
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		69
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		70
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		71
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		72
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		73
+		Name			"<rx_timestamp_s>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	      Port {
+		PortNumber		74
+		Name			"<value>"
+		RTWStorageClass		"Auto"
+		DataLoggingNameMode	"SignalName"
+	      }
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant"
+	      SID		      "149"
+	      Position		      [920, 895, 950, 925]
+	      ZOrder		      86
+	      Value		      "1054"
+	      OutDataTypeStr	      "int32"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant1"
+	      SID		      "150"
+	      Position		      [920, 955, 950, 985]
+	      ZOrder		      90
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant2"
+	      SID		      "151"
+	      Position		      [615, 55, 645, 85]
+	      ZOrder		      99
+	      Value		      "Value"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant3"
+	      SID		      "322"
+	      Position		      [530, 1785, 605, 1815]
+	      ZOrder		      404
+	      Value		      "[12 68]"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant4"
+	      SID		      "323"
+	      Position		      [1120, 1800, 1150, 1830]
+	      ZOrder		      407
+	      Value		      "2"
+	      OutDataTypeStr	      "int32"
+	    }
+	    Block {
+	      BlockType		      Constant
+	      Name		      "Constant5"
+	      SID		      "324"
+	      Position		      [1120, 1860, 1150, 1890]
+	      ZOrder		      408
+	      OutDataTypeStr	      "boolean"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "DSEncode1"
+	      SID		      "325"
+	      Ports		      [1, 1]
+	      Position		      [910, 1758, 1010, 1802]
+	      ZOrder		      405
+	      LibraryVersion	      "1.7"
+	      SourceBlock	      "parse_utils/DSEncode32"
+	      SourceType	      "DSEncode32"
+	      byteordering	      "little endian (Intel)"
+	      offset		      "[ 0 ] "
+	      auto_offset	      on
+	      datatype		      "[3 3]"
+	      one_datatype	      off
+	      sampletime	      "-1"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "DSEncode32"
+	      SID		      "152"
+	      Ports		      [1, 1]
+	      Position		      [710, 853, 810, 897]
+	      ZOrder		      81
+	      LibraryVersion	      "1.7"
+	      SourceBlock	      "parse_utils/DSEncode32"
+	      SourceType	      "DSEncode32"
+	      byteordering	      "little endian (Intel)"
+	      offset		      "[ 0 ] "
+	      auto_offset	      on
+	      datatype		      "[9 9 3 9 3 9 3 9 3 9 8 9 8 9 8 9 8 9 3 9 8 9 8 9 9 9 9 9 9 9 9 9 8 9 8 9 8 9 9 9 9 9 9 9 8 9 8"
+	      " 9 8 9 8 9 8 9 8 9 8 9 8 9 8 9 8 9 8 9 8 9 8 9 8 9 6 9 3 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 "
+	      "9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9 9]"
+	      one_datatype	      off
+	      sampletime	      "-1"
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion"
+	      SID		      "153"
+	      Position		      [550, 158, 625, 172]
+	      ZOrder		      8
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion1"
+	      SID		      "154"
+	      Position		      [550, 178, 625, 192]
+	      ZOrder		      9
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion10"
+	      SID		      "155"
+	      Position		      [550, 358, 625, 372]
+	      ZOrder		      18
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion11"
+	      SID		      "156"
+	      Position		      [550, 378, 625, 392]
+	      ZOrder		      19
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion12"
+	      SID		      "157"
+	      Position		      [550, 398, 625, 412]
+	      ZOrder		      20
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion13"
+	      SID		      "158"
+	      Position		      [550, 418, 625, 432]
+	      ZOrder		      21
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion14"
+	      SID		      "159"
+	      Position		      [550, 598, 625, 612]
+	      ZOrder		      30
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion15"
+	      SID		      "160"
+	      Position		      [550, 618, 625, 632]
+	      ZOrder		      31
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion16"
+	      SID		      "161"
+	      Position		      [550, 438, 625, 452]
+	      ZOrder		      22
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion17"
+	      SID		      "162"
+	      Position		      [550, 458, 625, 472]
+	      ZOrder		      23
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion18"
+	      SID		      "163"
+	      Position		      [550, 478, 625, 492]
+	      ZOrder		      24
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion19"
+	      SID		      "164"
+	      Position		      [550, 498, 625, 512]
+	      ZOrder		      25
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion2"
+	      SID		      "165"
+	      Position		      [550, 198, 625, 212]
+	      ZOrder		      10
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion20"
+	      SID		      "166"
+	      Position		      [550, 518, 625, 532]
+	      ZOrder		      26
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion21"
+	      SID		      "167"
+	      Position		      [550, 538, 625, 552]
+	      ZOrder		      27
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion22"
+	      SID		      "168"
+	      Position		      [550, 558, 625, 572]
+	      ZOrder		      28
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion23"
+	      SID		      "169"
+	      Position		      [550, 578, 625, 592]
+	      ZOrder		      29
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion24"
+	      SID		      "170"
+	      Position		      [550, 638, 625, 652]
+	      ZOrder		      32
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion25"
+	      SID		      "171"
+	      Position		      [550, 658, 625, 672]
+	      ZOrder		      33
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion26"
+	      SID		      "172"
+	      Position		      [550, 838, 625, 852]
+	      ZOrder		      42
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion27"
+	      SID		      "173"
+	      Position		      [550, 858, 625, 872]
+	      ZOrder		      43
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion28"
+	      SID		      "174"
+	      Position		      [550, 878, 625, 892]
+	      ZOrder		      44
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion29"
+	      SID		      "175"
+	      Position		      [550, 898, 625, 912]
+	      ZOrder		      45
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion3"
+	      SID		      "176"
+	      Position		      [550, 218, 625, 232]
+	      ZOrder		      11
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion30"
+	      SID		      "177"
+	      Position		      [550, 1078, 625, 1092]
+	      ZOrder		      54
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion31"
+	      SID		      "178"
+	      Position		      [550, 1098, 625, 1112]
+	      ZOrder		      55
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion32"
+	      SID		      "179"
+	      Position		      [550, 918, 625, 932]
+	      ZOrder		      46
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion33"
+	      SID		      "180"
+	      Position		      [550, 938, 625, 952]
+	      ZOrder		      47
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion34"
+	      SID		      "181"
+	      Position		      [550, 958, 625, 972]
+	      ZOrder		      48
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion35"
+	      SID		      "182"
+	      Position		      [550, 978, 625, 992]
+	      ZOrder		      49
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion36"
+	      SID		      "183"
+	      Position		      [550, 678, 625, 692]
+	      ZOrder		      34
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion37"
+	      SID		      "184"
+	      Position		      [550, 998, 625, 1012]
+	      ZOrder		      50
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion38"
+	      SID		      "185"
+	      Position		      [550, 1018, 625, 1032]
+	      ZOrder		      51
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion39"
+	      SID		      "186"
+	      Position		      [550, 1038, 625, 1052]
+	      ZOrder		      52
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion4"
+	      SID		      "187"
+	      Position		      [550, 238, 625, 252]
+	      ZOrder		      12
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion40"
+	      SID		      "188"
+	      Position		      [550, 1058, 625, 1072]
+	      ZOrder		      53
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion41"
+	      SID		      "189"
+	      Position		      [550, 698, 625, 712]
+	      ZOrder		      35
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion42"
+	      SID		      "190"
+	      Position		      [550, 718, 625, 732]
+	      ZOrder		      36
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion43"
+	      SID		      "191"
+	      Position		      [550, 738, 625, 752]
+	      ZOrder		      37
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion44"
+	      SID		      "192"
+	      Position		      [550, 758, 625, 772]
+	      ZOrder		      38
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion45"
+	      SID		      "193"
+	      Position		      [550, 778, 625, 792]
+	      ZOrder		      39
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion46"
+	      SID		      "194"
+	      Position		      [550, 798, 625, 812]
+	      ZOrder		      40
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion47"
+	      SID		      "195"
+	      Position		      [550, 818, 625, 832]
+	      ZOrder		      41
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion48"
+	      SID		      "196"
+	      Position		      [550, 1118, 625, 1132]
+	      ZOrder		      56
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion49"
+	      SID		      "197"
+	      Position		      [550, 1138, 625, 1152]
+	      ZOrder		      57
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion5"
+	      SID		      "198"
+	      Position		      [550, 258, 625, 272]
+	      ZOrder		      13
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion50"
+	      SID		      "199"
+	      Position		      [550, 1318, 625, 1332]
+	      ZOrder		      66
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion51"
+	      SID		      "200"
+	      Position		      [550, 1338, 625, 1352]
+	      ZOrder		      67
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion52"
+	      SID		      "201"
+	      Position		      [550, 1358, 625, 1372]
+	      ZOrder		      68
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion53"
+	      SID		      "202"
+	      Position		      [550, 1378, 625, 1392]
+	      ZOrder		      69
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion54"
+	      SID		      "203"
+	      Position		      [550, 1558, 625, 1572]
+	      ZOrder		      78
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion55"
+	      SID		      "204"
+	      Position		      [550, 1578, 625, 1592]
+	      ZOrder		      79
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion56"
+	      SID		      "205"
+	      Position		      [550, 1398, 625, 1412]
+	      ZOrder		      70
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion57"
+	      SID		      "206"
+	      Position		      [550, 1418, 625, 1432]
+	      ZOrder		      71
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion58"
+	      SID		      "207"
+	      Position		      [550, 1438, 625, 1452]
+	      ZOrder		      72
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion59"
+	      SID		      "208"
+	      Position		      [550, 1458, 625, 1472]
+	      ZOrder		      73
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion6"
+	      SID		      "209"
+	      Position		      [550, 278, 625, 292]
+	      ZOrder		      14
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion60"
+	      SID		      "210"
+	      Position		      [550, 1158, 625, 1172]
+	      ZOrder		      58
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion61"
+	      SID		      "211"
+	      Position		      [550, 1478, 625, 1492]
+	      ZOrder		      74
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion62"
+	      SID		      "212"
+	      Position		      [550, 1498, 625, 1512]
+	      ZOrder		      75
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion63"
+	      SID		      "213"
+	      Position		      [550, 1518, 625, 1532]
+	      ZOrder		      76
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion64"
+	      SID		      "214"
+	      Position		      [550, 1538, 625, 1552]
+	      ZOrder		      77
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion65"
+	      SID		      "215"
+	      Position		      [550, 1178, 625, 1192]
+	      ZOrder		      59
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion66"
+	      SID		      "216"
+	      Position		      [550, 1198, 625, 1212]
+	      ZOrder		      60
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion67"
+	      SID		      "217"
+	      Position		      [550, 1218, 625, 1232]
+	      ZOrder		      61
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion68"
+	      SID		      "218"
+	      Position		      [550, 1238, 625, 1252]
+	      ZOrder		      62
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion69"
+	      SID		      "219"
+	      Position		      [550, 1258, 625, 1272]
+	      ZOrder		      63
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion7"
+	      SID		      "220"
+	      Position		      [550, 298, 625, 312]
+	      ZOrder		      15
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion70"
+	      SID		      "221"
+	      Position		      [550, 1278, 625, 1292]
+	      ZOrder		      64
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion71"
+	      SID		      "222"
+	      Position		      [550, 1298, 625, 1312]
+	      ZOrder		      65
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion72"
+	      SID		      "233"
+	      Position		      [550, 138, 625, 152]
+	      ZOrder		      103
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion73"
+	      SID		      "316"
+	      Position		      [550, 1598, 625, 1612]
+	      ZOrder		      401
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion74"
+	      SID		      "317"
+	      Position		      [550, 1618, 625, 1632]
+	      ZOrder		      402
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion8"
+	      SID		      "223"
+	      Position		      [550, 318, 625, 332]
+	      ZOrder		      16
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DataTypeConversion
+	      Name		      "Data Type Conversion9"
+	      SID		      "224"
+	      Position		      [550, 338, 625, 352]
+	      ZOrder		      17
+	      ShowName		      off
+	      OutDataTypeStr	      "double"
+	      RndMeth		      "Floor"
+	      SaturateOnIntegerOverflow	off
+	    }
+	    Block {
+	      BlockType		      DigitalClock
+	      Name		      "Digital Clock"
+	      SID		      "232"
+	      Position		      [310, 103, 375, 127]
+	      ZOrder		      102
+	      SampleTime	      "-1"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "ETHERNET_UDP_TX_BL1"
+	      SID		      "225"
+	      Ports		      [3, 1]
+	      Position		      [1165, 860, 1430, 960]
+	      ZOrder		      82
+	      LibraryVersion	      "1.142"
+	      SourceBlock	      "rtiethernetudplib/ETHERNET_UDP_TX_BL1"
+	      SourceType	      "RTI"
+	      ContentPreviewEnabled   off
+	      InterfaceName	      "rti_ethernet_interface_name"
+	      BoardType		      "ETH Type 1"
+	      ModuleNo		      "1"
+	      ChannelNo		      "1"
+	      SocketNo		      "3"
+	      MaxMessageSize	      "1054"
+	      SendTimeout	      "0.0005"
+	      LocalSocket	      "192.168.88.21:5002"
+	      RemoteSocket	      "192.168.88.10:5002"
+	      DSProperties	      "struct('RTI',struct('Version',uint32(2),'BlockType',struct('isSLSource',uint8(1),'isSLSink'"
+	      ",uint8(1),'isHWSource',uint8(1),'isHWSink',uint8(1),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8("
+	      "1),'isInterrupt',uint8(0),'isChannelwise',uint8(1)),'IOBoardType','DSETHERNETUDP','UnitType','ETHUDP','Identifi"
+	      "er','TX','DialogType','SL','BlockSet','RTIETHERNETUDP','SlaveProcessor','NONE'))"
+	      RTIBlockInterface	      "struct('OutputPortsWidth',int32(1),'OutputPortsActive',1,'OutputPortsName',{{'Status'}"
+	      "},'OutputPortsDataType',{{'SS_UINT16'}},'InputPortsWidth',int32([1 1 1]),'InputPortsActive',[1 1 1],'InputPorts"
+	      "Name',{{'Data',['Message Size'],'Enable'}},'InputPortsDataType',{{'SS_UINT32','SS_INT32','SS_BOOLEAN'}},'BlockD"
+	      "isplay',{{['Ethernet UDP Transmit\\nBoard Type: ETH Type 1\\nModule: 1\\nSocket: 3\\nMaximum Message Size: 1054"
+	      "'],'center'}},'IconTransparency','on','InitLevel',3,'BlockName',struct('Token',{{'ETHERNET_UDP_TX_BL1'}}),'Mask"
+	      "Description',['To send messages via the Ethernet UDP interface.'])"
+	      RTIBlockParameters      "struct('InterfaceName',{{'rti_ethernet_interface_name','OFF',[]}},'BoardType',{{1,'OFF"
+	      "',[]}},'ModuleNo',{{1,'OFF',[1 16]}},'ChannelNo',{{1,'OFF',[1 2]}},'SocketNo',{{3,'OFF',[1 4]}},'MaxMessageSize"
+	      "',{{1054,'ON',[1 1472]}},'SendTimeout',{{0.0005,'ON',[1e-05 2]}},'LocalSocket',{{'192.168.88.21:5002','OFF',[]}"
+	      "},'RemoteSocket',{{'192.168.88.10:5002','OFF',[]}})"
+	      RTISFcnParameters	      "struct('InterfaceName','char','BoardType','double','ModuleNo','double','ChannelNo','do"
+	      "uble','SocketNo','double','MaxMessageSize','double','SendTimeout','double','LocalSocket','char','RemoteSocket',"
+	      "'char')"
+	      RTIBlockParaDefault     "struct('InterfaceName','rti_ethernet_interface_name','BoardType',1,'ModuleNo',1,'Chann"
+	      "elNo',1,'SocketNo',1,'MaxMessageSize',625,'SendTimeout',0.0005,'LocalSocket','XXX.XXX.XXX.XXX:5000','RemoteSock"
+	      "et','XXX.XXX.XXX.XXX:5000')"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "ETHERNET_UDP_TX_BL2"
+	      SID		      "326"
+	      Ports		      [3, 1]
+	      Position		      [1365, 1765, 1630, 1865]
+	      ZOrder		      406
+	      LibraryVersion	      "1.142"
+	      SourceBlock	      "rtiethernetudplib/ETHERNET_UDP_TX_BL1"
+	      SourceType	      "RTI"
+	      ContentPreviewEnabled   off
+	      InterfaceName	      "rti_ethernet_interface_name"
+	      BoardType		      "ETH Type 1"
+	      ModuleNo		      "1"
+	      ChannelNo		      "1"
+	      SocketNo		      "4"
+	      MaxMessageSize	      "2"
+	      SendTimeout	      "0.0005"
+	      LocalSocket	      "192.168.88.21:5003"
+	      RemoteSocket	      "192.168.88.10:5003"
+	      DSProperties	      "struct('RTI',struct('Version',uint32(2),'BlockType',struct('isSLSource',uint8(1),'isSLSink'"
+	      ",uint8(1),'isHWSource',uint8(1),'isHWSink',uint8(1),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8("
+	      "1),'isInterrupt',uint8(0),'isChannelwise',uint8(1)),'IOBoardType','DSETHERNETUDP','UnitType','ETHUDP','Identifi"
+	      "er','TX','DialogType','SL','BlockSet','RTIETHERNETUDP','SlaveProcessor','NONE'))"
+	      RTIBlockInterface	      "struct('OutputPortsWidth',int32(1),'OutputPortsActive',1,'OutputPortsName',{{'Status'}"
+	      "},'OutputPortsDataType',{{'SS_UINT16'}},'InputPortsWidth',int32([1 1 1]),'InputPortsActive',[1 1 1],'InputPorts"
+	      "Name',{{'Data',['Message Size'],'Enable'}},'InputPortsDataType',{{'SS_UINT32','SS_INT32','SS_BOOLEAN'}},'BlockD"
+	      "isplay',{{['Ethernet UDP Transmit\\nBoard Type: ETH Type 1\\nModule: 1\\nSocket: 4\\nMaximum Message Size: 2'],"
+	      "'center'}},'IconTransparency','on','InitLevel',3,'BlockName',struct('Token',{{'ETHERNET_UDP_TX_BL1'}}),'MaskDes"
+	      "cription',['To send messages via the Ethernet UDP interface.'])"
+	      RTIBlockParameters      "struct('InterfaceName',{{'rti_ethernet_interface_name','OFF',[]}},'BoardType',{{1,'OFF"
+	      "',[]}},'ModuleNo',{{1,'OFF',[1 16]}},'ChannelNo',{{1,'OFF',[1 2]}},'SocketNo',{{4,'OFF',[1 4]}},'MaxMessageSize"
+	      "',{{2,'ON',[1 1472]}},'SendTimeout',{{0.0005,'ON',[1e-05 2]}},'LocalSocket',{{'192.168.88.21:5003','OFF',[]}},'"
+	      "RemoteSocket',{{'192.168.88.10:5003','OFF',[]}})"
+	      RTISFcnParameters	      "struct('InterfaceName','char','BoardType','double','ModuleNo','double','ChannelNo','do"
+	      "uble','SocketNo','double','MaxMessageSize','double','SendTimeout','double','LocalSocket','char','RemoteSocket',"
+	      "'char')"
+	      RTIBlockParaDefault     "struct('InterfaceName','rti_ethernet_interface_name','BoardType',1,'ModuleNo',1,'Chann"
+	      "elNo',1,'SocketNo',1,'MaxMessageSize',625,'SendTimeout',0.0005,'LocalSocket','XXX.XXX.XXX.XXX:5000','RemoteSock"
+	      "et','XXX.XXX.XXX.XXX:5000')"
+	    }
+	    Block {
+	      BlockType		      Mux
+	      Name		      "Mux"
+	      SID		      "226"
+	      Ports		      [76, 1]
+	      Position		      [650, 140, 655, 1650]
+	      ZOrder		      80
+	      ShowName		      off
+	      Inputs		      "76"
+	      DisplayOption	      "bar"
+	    }
+	    Block {
+	      BlockType		      Selector
+	      Name		      "Selector"
+	      SID		      "321"
+	      Ports		      [2, 1]
+	      Position		      [705, 1741, 820, 1819]
+	      ZOrder		      403
+	      IndexMode		      "Zero-based"
+	      IndexOptions	      "Index vector (port)"
+	      Indices		      "[1 3]"
+	      OutputSizes	      "1"
+	    }
+	    Block {
+	      BlockType		      Reference
+	      Name		      "test trigger set"
+	      SID		      "228"
+	      Ports		      [1]
+	      Position		      [680, 48, 880, 92]
+	      ZOrder		      98
+	      LibraryVersion	      "1.42"
+	      SourceBlock	      "rtitttasklib/Time-Trigger Set"
+	      SourceType	      "RTI Time-Trigger Set"
+	      ContentPreviewEnabled   off
+	      TimeTriggerId	      "TT_ID"
+	      SampleTime	      "-1"
+	      RegisterAtSimulationStart	on
+	      TLCFileName	      "rtitimetriggerset"
+	      DSProperties	      "struct('RTI',struct('Version',uint32(1),'BlockType',struct('isSLSource',uint8(1),'isSLSink'"
+	      ",uint8(0),'isHWSource',uint8(0),'isHWSink',uint8(0),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8("
+	      "0),'isInterrupt',uint8(0),'isChannelwise',uint8(0)),'IOBoardType','RTITIMETRIGGER','UnitType','TIMETRIGGERED','"
+	      "Identifier','SET','DialogType','SL','BlockSet','NONE','SlaveProcessor','NONE'))"
+	      RTIBlockInterface	      "struct('InputPortsActive',1,'InputPortsWidth',{{'DYNAMICALLY_SIZED'}},'InputPortsDataT"
+	      "ype',{{'SS_DOUBLE'}},'InputPortsName',{{['Trigger delay']}},'InitLevel',3,'BlockDisplay',{{['Time-Trigger Set\\"
+	      "nID: ''''TT_ID'''''],'center'}},'IconTransparency','on','BlockName',struct('Token',{{['Time-Trigger Set']}}),'M"
+	      "askDescription',['When this block is evaluated it sets the task trigger times for the assigned time-triggered t"
+	      "ask.' char(10) '' char(10) 'This block can only be used together with the Time-Triggered Task block.'],'SampleT"
+	      "ime',{{-1}})"
+	      RTIBlockParameters      "struct('TimeTriggerId',{{'TT_ID','OFF',[]}},'SampleTime',{{-1,'OFF',[]}},'RegisterAtSi"
+	      "mulationStart',{{logical(1),'OFF',[]}},'TLCFileName',{{'rtitimetriggerset','OFF',[]}})"
+	      RTISFcnParameters	      "struct('TimeTriggerId','char','SampleTime','double','TLCFileName','char','RegisterAtSi"
+	      "mulationStart','double')"
+	      RTIBlockParaDefault     "struct('TimeTriggerId','TT_ID','SampleTime',-1,'RegisterAtSimulationStart',0,'TLCFileN"
+	      "ame','rtitimetriggerset')"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "Logging status"
+	      SID		      "313"
+	      Position		      [1480, 903, 1510, 917]
+	      ZOrder		      400
+	      IconDisplay	      "Port number"
+	    }
+	    Block {
+	      BlockType		      Outport
+	      Name		      "HMI Status"
+	      SID		      "327"
+	      Position		      [1680, 1808, 1710, 1822]
+	      ZOrder		      409
+	      Port		      "2"
+	      IconDisplay	      "Port number"
+	    }
+	    Line {
+	      ZOrder		      1
+	      SrcBlock		      "DSEncode32"
+	      SrcPort		      1
+	      DstBlock		      "ETHERNET_UDP_TX_BL1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      2
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      1
+	      DstBlock		      "Data Type Conversion"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      3
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      43
+	      DstBlock		      "Data Type Conversion37"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      4
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      6
+	      DstBlock		      "Data Type Conversion5"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      5
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      3
+	      DstBlock		      "Data Type Conversion2"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      6
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      2
+	      DstBlock		      "Data Type Conversion1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      7
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      39
+	      DstBlock		      "Data Type Conversion32"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      8
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      23
+	      DstBlock		      "Data Type Conversion14"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      9
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      69
+	      DstBlock		      "Data Type Conversion63"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      10
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      24
+	      DstBlock		      "Data Type Conversion15"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      11
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      61
+	      DstBlock		      "Data Type Conversion52"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      12
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      7
+	      DstBlock		      "Data Type Conversion6"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      13
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      20
+	      DstBlock		      "Data Type Conversion21"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      14
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      10
+	      DstBlock		      "Data Type Conversion9"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      15
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      71
+	      DstBlock		      "Data Type Conversion54"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      16
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      12
+	      DstBlock		      "Data Type Conversion11"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      17
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      49
+	      DstBlock		      "Data Type Conversion48"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      18
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      44
+	      DstBlock		      "Data Type Conversion38"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      19
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      48
+	      DstBlock		      "Data Type Conversion31"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      20
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      4
+	      DstBlock		      "Data Type Conversion3"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      21
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      8
+	      DstBlock		      "Data Type Conversion7"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      22
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      33
+	      DstBlock		      "Data Type Conversion46"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      23
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      29
+	      DstBlock		      "Data Type Conversion42"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      24
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      56
+	      DstBlock		      "Data Type Conversion69"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      25
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      53
+	      DstBlock		      "Data Type Conversion66"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      26
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      11
+	      DstBlock		      "Data Type Conversion10"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      27
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      36
+	      DstBlock		      "Data Type Conversion27"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      29
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      51
+	      DstBlock		      "Data Type Conversion60"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      30
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      18
+	      DstBlock		      "Data Type Conversion19"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      31
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      26
+	      DstBlock		      "Data Type Conversion25"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      32
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      67
+	      DstBlock		      "Data Type Conversion61"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      33
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      72
+	      DstBlock		      "Data Type Conversion55"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      34
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      59
+	      DstBlock		      "Data Type Conversion50"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      35
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      64
+	      DstBlock		      "Data Type Conversion57"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      36
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      21
+	      DstBlock		      "Data Type Conversion22"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      37
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      46
+	      DstBlock		      "Data Type Conversion40"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      39
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      34
+	      DstBlock		      "Data Type Conversion47"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      40
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      13
+	      DstBlock		      "Data Type Conversion12"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      41
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      57
+	      DstBlock		      "Data Type Conversion70"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      42
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      54
+	      DstBlock		      "Data Type Conversion67"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      43
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      5
+	      DstBlock		      "Data Type Conversion4"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      44
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      30
+	      DstBlock		      "Data Type Conversion43"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      45
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      35
+	      DstBlock		      "Data Type Conversion26"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      46
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      38
+	      DstBlock		      "Data Type Conversion29"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      47
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      14
+	      DstBlock		      "Data Type Conversion13"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      48
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      28
+	      DstBlock		      "Data Type Conversion41"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      49
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      52
+	      DstBlock		      "Data Type Conversion65"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      50
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      17
+	      DstBlock		      "Data Type Conversion18"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      51
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      15
+	      DstBlock		      "Data Type Conversion16"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      52
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      45
+	      DstBlock		      "Data Type Conversion39"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      53
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      19
+	      DstBlock		      "Data Type Conversion20"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      54
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      42
+	      DstBlock		      "Data Type Conversion35"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      55
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      50
+	      DstBlock		      "Data Type Conversion49"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      56
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      55
+	      DstBlock		      "Data Type Conversion68"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      57
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      65
+	      DstBlock		      "Data Type Conversion58"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      58
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      66
+	      DstBlock		      "Data Type Conversion59"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      59
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      62
+	      DstBlock		      "Data Type Conversion53"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      60
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      58
+	      DstBlock		      "Data Type Conversion71"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      61
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      27
+	      DstBlock		      "Data Type Conversion36"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      62
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      40
+	      DstBlock		      "Data Type Conversion33"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      63
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      22
+	      DstBlock		      "Data Type Conversion23"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      64
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      32
+	      DstBlock		      "Data Type Conversion45"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      65
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      9
+	      DstBlock		      "Data Type Conversion8"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      66
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      60
+	      DstBlock		      "Data Type Conversion51"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      67
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      47
+	      DstBlock		      "Data Type Conversion30"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      68
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      63
+	      DstBlock		      "Data Type Conversion56"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      69
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      37
+	      DstBlock		      "Data Type Conversion28"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      70
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      16
+	      DstBlock		      "Data Type Conversion17"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      71
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      25
+	      DstBlock		      "Data Type Conversion24"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      72
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      31
+	      DstBlock		      "Data Type Conversion44"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      73
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      41
+	      DstBlock		      "Data Type Conversion34"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      74
+	      SrcBlock		      "Mux"
+	      SrcPort		      1
+	      Points		      [9, 0; 0, -20]
+	      DstBlock		      "DSEncode32"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      75
+	      SrcBlock		      "Constant"
+	      SrcPort		      1
+	      DstBlock		      "ETHERNET_UDP_TX_BL1"
+	      DstPort		      2
+	    }
+	    Line {
+	      ZOrder		      76
+	      SrcBlock		      "Constant1"
+	      SrcPort		      1
+	      Points		      [132, 0; 0, -25]
+	      DstBlock		      "ETHERNET_UDP_TX_BL1"
+	      DstPort		      3
+	    }
+	    Line {
+	      ZOrder		      77
+	      SrcBlock		      "ETHERNET_UDP_TX_BL1"
+	      SrcPort		      1
+	      DstBlock		      "Logging status"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      78
+	      SrcBlock		      "In1"
+	      SrcPort		      1
+	      Points		      [125, 0]
+	      DstBlock		      "Bus\nSelector"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      79
+	      SrcBlock		      "Constant2"
+	      SrcPort		      1
+	      DstBlock		      "test trigger set"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      80
+	      SrcBlock		      "Digital Clock"
+	      SrcPort		      1
+	      Points		      [82, 0; 0, 30]
+	      DstBlock		      "Data Type Conversion72"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      81
+	      SrcBlock		      "Data Type Conversion39"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      46
+	    }
+	    Line {
+	      ZOrder		      82
+	      SrcBlock		      "Data Type Conversion"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      2
+	    }
+	    Line {
+	      ZOrder		      83
+	      SrcBlock		      "Data Type Conversion1"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      3
+	    }
+	    Line {
+	      ZOrder		      84
+	      SrcBlock		      "Data Type Conversion10"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      12
+	    }
+	    Line {
+	      ZOrder		      85
+	      SrcBlock		      "Data Type Conversion11"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      13
+	    }
+	    Line {
+	      ZOrder		      86
+	      SrcBlock		      "Data Type Conversion12"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      14
+	    }
+	    Line {
+	      ZOrder		      87
+	      SrcBlock		      "Data Type Conversion13"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      15
+	    }
+	    Line {
+	      ZOrder		      88
+	      SrcBlock		      "Data Type Conversion14"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      24
+	    }
+	    Line {
+	      ZOrder		      89
+	      SrcBlock		      "Data Type Conversion15"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      25
+	    }
+	    Line {
+	      ZOrder		      90
+	      SrcBlock		      "Data Type Conversion16"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      16
+	    }
+	    Line {
+	      ZOrder		      91
+	      SrcBlock		      "Data Type Conversion17"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      17
+	    }
+	    Line {
+	      ZOrder		      92
+	      SrcBlock		      "Data Type Conversion18"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      18
+	    }
+	    Line {
+	      ZOrder		      93
+	      SrcBlock		      "Data Type Conversion19"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      19
+	    }
+	    Line {
+	      ZOrder		      94
+	      SrcBlock		      "Data Type Conversion2"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      4
+	    }
+	    Line {
+	      ZOrder		      95
+	      SrcBlock		      "Data Type Conversion20"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      20
+	    }
+	    Line {
+	      ZOrder		      96
+	      SrcBlock		      "Data Type Conversion21"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      21
+	    }
+	    Line {
+	      ZOrder		      97
+	      SrcBlock		      "Data Type Conversion22"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      22
+	    }
+	    Line {
+	      ZOrder		      98
+	      SrcBlock		      "Data Type Conversion23"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      23
+	    }
+	    Line {
+	      ZOrder		      99
+	      SrcBlock		      "Data Type Conversion24"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      26
+	    }
+	    Line {
+	      ZOrder		      100
+	      SrcBlock		      "Data Type Conversion25"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      27
+	    }
+	    Line {
+	      ZOrder		      101
+	      SrcBlock		      "Data Type Conversion26"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      36
+	    }
+	    Line {
+	      ZOrder		      102
+	      SrcBlock		      "Data Type Conversion27"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      37
+	    }
+	    Line {
+	      ZOrder		      103
+	      SrcBlock		      "Data Type Conversion28"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      38
+	    }
+	    Line {
+	      ZOrder		      104
+	      SrcBlock		      "Data Type Conversion29"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      39
+	    }
+	    Line {
+	      ZOrder		      105
+	      SrcBlock		      "Data Type Conversion3"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      5
+	    }
+	    Line {
+	      ZOrder		      106
+	      SrcBlock		      "Data Type Conversion30"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      48
+	    }
+	    Line {
+	      ZOrder		      107
+	      SrcBlock		      "Data Type Conversion31"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      49
+	    }
+	    Line {
+	      ZOrder		      108
+	      SrcBlock		      "Data Type Conversion32"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      40
+	    }
+	    Line {
+	      ZOrder		      109
+	      SrcBlock		      "Data Type Conversion33"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      41
+	    }
+	    Line {
+	      ZOrder		      110
+	      SrcBlock		      "Data Type Conversion34"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      42
+	    }
+	    Line {
+	      ZOrder		      111
+	      SrcBlock		      "Data Type Conversion35"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      43
+	    }
+	    Line {
+	      ZOrder		      112
+	      SrcBlock		      "Data Type Conversion36"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      28
+	    }
+	    Line {
+	      ZOrder		      113
+	      SrcBlock		      "Data Type Conversion37"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      44
+	    }
+	    Line {
+	      ZOrder		      114
+	      SrcBlock		      "Data Type Conversion38"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      45
+	    }
+	    Line {
+	      ZOrder		      115
+	      SrcBlock		      "Data Type Conversion4"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      6
+	    }
+	    Line {
+	      ZOrder		      116
+	      SrcBlock		      "Data Type Conversion40"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      47
+	    }
+	    Line {
+	      ZOrder		      117
+	      SrcBlock		      "Data Type Conversion41"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      29
+	    }
+	    Line {
+	      ZOrder		      118
+	      SrcBlock		      "Data Type Conversion42"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      30
+	    }
+	    Line {
+	      ZOrder		      119
+	      SrcBlock		      "Data Type Conversion43"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      31
+	    }
+	    Line {
+	      ZOrder		      120
+	      SrcBlock		      "Data Type Conversion44"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      32
+	    }
+	    Line {
+	      ZOrder		      121
+	      SrcBlock		      "Data Type Conversion45"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      33
+	    }
+	    Line {
+	      ZOrder		      122
+	      SrcBlock		      "Data Type Conversion46"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      34
+	    }
+	    Line {
+	      ZOrder		      123
+	      SrcBlock		      "Data Type Conversion47"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      35
+	    }
+	    Line {
+	      ZOrder		      124
+	      SrcBlock		      "Data Type Conversion48"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      50
+	    }
+	    Line {
+	      ZOrder		      125
+	      SrcBlock		      "Data Type Conversion49"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      51
+	    }
+	    Line {
+	      ZOrder		      126
+	      SrcBlock		      "Data Type Conversion5"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      7
+	    }
+	    Line {
+	      ZOrder		      127
+	      SrcBlock		      "Data Type Conversion50"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      60
+	    }
+	    Line {
+	      ZOrder		      128
+	      SrcBlock		      "Data Type Conversion51"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      61
+	    }
+	    Line {
+	      ZOrder		      129
+	      SrcBlock		      "Data Type Conversion52"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      62
+	    }
+	    Line {
+	      ZOrder		      130
+	      SrcBlock		      "Data Type Conversion53"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      63
+	    }
+	    Line {
+	      ZOrder		      131
+	      SrcBlock		      "Data Type Conversion54"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      72
+	    }
+	    Line {
+	      ZOrder		      132
+	      SrcBlock		      "Data Type Conversion55"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      73
+	    }
+	    Line {
+	      ZOrder		      133
+	      SrcBlock		      "Data Type Conversion56"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      64
+	    }
+	    Line {
+	      ZOrder		      134
+	      SrcBlock		      "Data Type Conversion57"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      65
+	    }
+	    Line {
+	      ZOrder		      135
+	      SrcBlock		      "Data Type Conversion58"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      66
+	    }
+	    Line {
+	      ZOrder		      136
+	      SrcBlock		      "Data Type Conversion59"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      67
+	    }
+	    Line {
+	      ZOrder		      137
+	      SrcBlock		      "Data Type Conversion6"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      8
+	    }
+	    Line {
+	      ZOrder		      138
+	      SrcBlock		      "Data Type Conversion60"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      52
+	    }
+	    Line {
+	      ZOrder		      139
+	      SrcBlock		      "Data Type Conversion61"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      68
+	    }
+	    Line {
+	      ZOrder		      140
+	      SrcBlock		      "Data Type Conversion62"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      69
+	    }
+	    Line {
+	      ZOrder		      141
+	      SrcBlock		      "Data Type Conversion63"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      70
+	    }
+	    Line {
+	      ZOrder		      142
+	      SrcBlock		      "Data Type Conversion64"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      71
+	    }
+	    Line {
+	      ZOrder		      143
+	      SrcBlock		      "Data Type Conversion65"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      53
+	    }
+	    Line {
+	      ZOrder		      144
+	      SrcBlock		      "Data Type Conversion66"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      54
+	    }
+	    Line {
+	      ZOrder		      145
+	      SrcBlock		      "Data Type Conversion67"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      55
+	    }
+	    Line {
+	      ZOrder		      146
+	      SrcBlock		      "Data Type Conversion68"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      56
+	    }
+	    Line {
+	      ZOrder		      147
+	      SrcBlock		      "Data Type Conversion69"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      57
+	    }
+	    Line {
+	      ZOrder		      148
+	      SrcBlock		      "Data Type Conversion7"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      9
+	    }
+	    Line {
+	      ZOrder		      149
+	      SrcBlock		      "Data Type Conversion70"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      58
+	    }
+	    Line {
+	      ZOrder		      150
+	      SrcBlock		      "Data Type Conversion71"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      59
+	    }
+	    Line {
+	      ZOrder		      151
+	      SrcBlock		      "Data Type Conversion8"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      10
+	    }
+	    Line {
+	      ZOrder		      152
+	      SrcBlock		      "Data Type Conversion9"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      11
+	    }
+	    Line {
+	      ZOrder		      153
+	      SrcBlock		      "Data Type Conversion72"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      154
+	      SrcBlock		      "PATH Control Data"
+	      SrcPort		      1
+	      Points		      [25, 0]
+	      Branch {
+		ZOrder			155
+		Points			[0, 95]
+		DstBlock		"Selector"
+		DstPort			1
+	      }
+	      Branch {
+		ZOrder			156
+		Points			[0, -20]
+		DstBlock		"Mux"
+		DstPort			76
+	      }
+	    }
+	    Line {
+	      Name		      "<rx_timestamp_s>"
+	      ZOrder		      157
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      73
+	      DstBlock		      "Data Type Conversion73"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      158
+	      SrcBlock		      "Data Type Conversion73"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      74
+	    }
+	    Line {
+	      ZOrder		      159
+	      SrcBlock		      "Data Type Conversion74"
+	      SrcPort		      1
+	      DstBlock		      "Mux"
+	      DstPort		      75
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      160
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      74
+	      DstBlock		      "Data Type Conversion74"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      161
+	      SrcBlock		      "Constant3"
+	      SrcPort		      1
+	      DstBlock		      "Selector"
+	      DstPort		      2
+	    }
+	    Line {
+	      ZOrder		      162
+	      SrcBlock		      "DSEncode1"
+	      SrcPort		      1
+	      DstBlock		      "ETHERNET_UDP_TX_BL2"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      163
+	      SrcBlock		      "Constant4"
+	      SrcPort		      1
+	      DstBlock		      "ETHERNET_UDP_TX_BL2"
+	      DstPort		      2
+	    }
+	    Line {
+	      ZOrder		      164
+	      SrcBlock		      "Constant5"
+	      SrcPort		      1
+	      Points		      [132, 0; 0, -25]
+	      DstBlock		      "ETHERNET_UDP_TX_BL2"
+	      DstPort		      3
+	    }
+	    Line {
+	      ZOrder		      165
+	      SrcBlock		      "ETHERNET_UDP_TX_BL2"
+	      SrcPort		      1
+	      DstBlock		      "HMI Status"
+	      DstPort		      1
+	    }
+	    Line {
+	      ZOrder		      166
+	      SrcBlock		      "Selector"
+	      SrcPort		      1
+	      DstBlock		      "DSEncode1"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      172
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      68
+	      DstBlock		      "Data Type Conversion62"
+	      DstPort		      1
+	    }
+	    Line {
+	      Name		      "<value>"
+	      ZOrder		      173
+	      Labels		      [0, 0]
+	      SrcBlock		      "Bus\nSelector"
+	      SrcPort		      70
+	      DstBlock		      "Data Type Conversion64"
+	      DstPort		      1
+	    }
+	    Annotation {
+	      SID		      "320"
+	      Name		      "Send out the acc_cacc_state flag and \nmax_braking_exceeded flags to the HMI port"
+	      Position		      [662, 1684, 859, 1712]
+	      AutoSize		      on
+	      WordWrap		      off
+	      HorizontalAlignment     "left"
+	      VerticalAlignment	      "top"
+	      ZOrder		      -1
+	    }
+	    Annotation {
+	      SID		      "310"
+	      Name		      "This is a 74 element array (of doubles)\nof control information that \nPATH wants to log"
+	      Position		      [360, 1662, 528, 1703]
+	      AutoSize		      on
+	      WordWrap		      off
+	      HorizontalAlignment     "left"
+	      VerticalAlignment	      "top"
+	      ZOrder		      -2
+	    }
+	  }
+	}
+	Block {
+	  BlockType		  Reference
+	  Name			  "test trigger"
+	  SID			  "229"
+	  Ports			  [0, 1]
+	  Position		  [85, 23, 195, 67]
+	  ZOrder		  96
+	  LibraryVersion	  "1.42"
+	  SourceBlock		  "rtitttasklib/Time-Triggered Task"
+	  SourceType		  "RTI Time-Triggered Task"
+	  ContentPreviewEnabled	  off
+	  TimeTriggerId		  "TT_ID"
+	  TLCFileName		  "rtitimetriggeredtask"
+	  DSProperties		  "struct('RTI',struct('Version',uint32(1),'BlockType',struct('isSLSource',uint8(1),'isSLSink',uint8("
+	  "0),'isHWSource',uint8(0),'isHWSink',uint8(0),'isSetup',uint8(0),'isInline',uint8(1),'isNonInline',uint8(0),'isInter"
+	  "rupt',uint8(0),'isChannelwise',uint8(0)),'IOBoardType','RTITIMETRIGGER','UnitType','TIMETRIGGERED','Identifier','TA"
+	  "SK','DialogType','SL','BlockSet','NONE','SlaveProcessor','NONE'))"
+	  RTIBlockInterface	  "struct('OutputPortsActive',1,'OutputPortsWidth',int32(1),'FunctionCall',uint32(0),'OutputPorts"
+	  "Name',{{[' ']}},'InitLevel',3,'BlockDisplay',{{['Time-Triggered Task\\nID: ''''TT_ID'''''],'center'}},'IconTranspar"
+	  "ency','off','BlockName',struct('Token',{{['Time-Triggered Task']}}),'MaskDescription',['Specifies a time-triggered "
+	  "task. The task trigger times are set by the assigned Time-Trigger Set block.' char(10) '' char(10) 'This block can "
+	  "only be used together with the Time-Trigger Set block.'])"
+	  RTIBlockParameters	  "struct('TimeTriggerId',{{'TT_ID','OFF',[]}},'TLCFileName',{{'rtitimetriggeredtask','OFF',[]}})"
+	  RTISFcnParameters	  "struct('TLCFileName','char')"
+	  RTIBlockParaDefault	  "struct('TimeTriggerId','TT_ID','TLCFileName','rtitimetriggeredtask')"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "Logging Send Status"
+	  SID			  "314"
+	  Position		  [575, 183, 605, 197]
+	  ZOrder		  401
+	  IconDisplay		  "Port number"
+	}
+	Block {
+	  BlockType		  Outport
+	  Name			  "HMI Send Status"
+	  SID			  "328"
+	  Position		  [585, 218, 615, 232]
+	  ZOrder		  402
+	  Port			  "2"
+	  IconDisplay		  "Port number"
+	}
+	Line {
+	  ZOrder		  8
+	  SrcBlock		  "CARMA Data"
+	  SrcPort		  1
+	  DstBlock		  "Rate Transition"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  2
+	  SrcBlock		  "Rate Transition"
+	  SrcPort		  1
+	  Points		  [35, 0; 0, 20]
+	  DstBlock		  "Subsystem"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  3
+	  SrcBlock		  "test trigger"
+	  SrcPort		  1
+	  Points		  [210, 0]
+	  DstBlock		  "Subsystem"
+	  DstPort		  trigger
+	}
+	Line {
+	  ZOrder		  4
+	  SrcBlock		  "Rate Transition1"
+	  SrcPort		  1
+	  Points		  [60, 0]
+	  DstBlock		  "Subsystem"
+	  DstPort		  2
+	}
+	Line {
+	  ZOrder		  5
+	  SrcBlock		  "PATH Control Data"
+	  SrcPort		  1
+	  DstBlock		  "Rate Transition1"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  6
+	  SrcBlock		  "Subsystem"
+	  SrcPort		  1
+	  DstBlock		  "Logging Send Status"
+	  DstPort		  1
+	}
+	Line {
+	  ZOrder		  7
+	  SrcBlock		  "Subsystem"
+	  SrcPort		  2
+	  DstBlock		  "HMI Send Status"
+	  DstPort		  1
+	}
+      }
+    }
+  }
+}

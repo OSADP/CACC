@@ -1,0 +1,118 @@
+VERSION "created by canmatrix"
+
+
+NS_ :
+
+BS_:
+
+BU_: 
+
+
+BO_ 715 PPEI_Adaptive_Cruise_Axl_Trq_Req: 8 Vector__XXX
+ SG_ ACCCmndAlvRlgCnt : 7|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCAct : 0|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCType : 15|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCDrvAstdGoSt : 13|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCSplREngInpR : 11|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCAxlTrqRq : 10|19@0+ (0.125,-22534.0) [0|0] "NM" Dummy_FO
+ SG_ ACCAxlTrqCmdProt : 32|25@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 880 Adaptive_Cruise_Disp_Stat_HS: 6 Vector__XXX
+ SG_ ServAdpCrsCtrlIndOn : 7|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCSnsClnRqdIO : 5|32@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCTmpUnavlbleIO : 5|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCHdwayStngIO : 4|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ DrvThrtlOvrdIO : 3|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCUnavlbleDTWthrIO : 2|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCDrvrSeltdSpdIO : 1|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCAct370 : 23|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCHdwyStg : 22|3@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ ACCDrvrSeltdSpd : 19|12@0+ (0.0625,0) [0|0] "km/h" Dummy_FO
+ SG_ FOAI_AlrtChmIhbRq : 32|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FOAI_VehAhdIndRq : 47|4@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FOAI_AlrtWrnIndRq : 43|4@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 840 Driven_Wheel_Grnd_Velocity_HS: 5 Vector__XXX
+ SG_ WhlGrndVlctyLftDrvnV : 6|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ WhlGrndVlctyLftDrvn : 5|14@0+ (0.03125,0) [0|0] "km/h" Dummy_FO
+ SG_ WhlGrndVlctyRtDrvnV : 22|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ WhlGrndVlctyRtDrvn : 21|14@0+ (0.03125,0) [0|0] "km/h" Dummy_FO
+ SG_ WhlRotDrctnlStLftDrvn : 37|3@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ WhlRotDrctnlStRtDrvn : 34|3@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 842 NonDriven_Wheel_Grnd_Velocity_HS: 5 Vector__XXX
+ SG_ WhlGrndVlctyLftNnDrvnV : 6|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ WhlGrndVlctyLftNnDrvn : 5|14@0+ (0.03125,0) [0|0] "km/h" Dummy_FO
+ SG_ WhlGrndVlctyRtNnDrvnV : 22|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ WhlGrndVlctyRtNnDrvn : 21|14@0+ (0.03125,0) [0|0] "km/h" Dummy_FO
+ SG_ WhlRotDrctnlStLftNDrvn : 37|3@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ WhlRotDrctnlStRtNDrvn : 34|3@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 381 Antilock_Brake_and_TC_Status_HC: 6 Vector__XXX
+ SG_ ActVehAccel : 35|12@0- (0.01,0) [0|0] "m/s^2" Dummy_FO
+
+BO_ 320 Exterior_Lighting_HS: 3 Vector__XXX
+ SG_ BrkLtsAtv : 6|1@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 190 PTEI_Brake_Apply_Status: 5 Vector__XXX
+ SG_ PTSnsdBrkPdlInfARC : 3|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ TrnsAuxPmpAct : 1|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ PSBPI_PTSnBrkPdlPsV : 0|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ PSBPI_PTSnBrkPdlPs : 15|8@0+ (0.392157,0) [0|0] "%" Dummy_FO
+ SG_ AccPos : 23|8@0+ (0.392157,0) [0|0] "%" Dummy_FO
+
+BO_ 485 PPEI_Steering_Wheel_Angle: 8 Vector__XXX
+ SG_ StrWhAngV : 7|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ StrWhlAngSenCalStat : 6|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ StrWhlAngSenTyp : 4|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ StrWhAngMask : 2|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ StrWhAng : 15|16@0- (0.0625,0) [0|0] "deg" Dummy_FO
+ SG_ StrWhAngGrdV : 31|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ StWhlAngAliveRollCnt : 30|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ StrWhAngGrdMsk : 28|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ StrWhAngGrd : 27|12@0- (0,0) [0|0] "" Dummy_FO
+
+BO_ 417 ETEI_Engine_General_Status: 8 Vector__XXX
+ SG_ AccPdlPosPcntFullRngV : 17|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ AccPdlPosPcntFullRng : 55|8@0+ (0.392157,0) [0|0] "%" Dummy_FO
+
+
+
+CM_ SG_ 715 ACCCmndAlvRlgCnt "Adaptive Cruise Control Command Alive Rolling Count";
+CM_ SG_ 715 ACCAct "Adaptive Cruise Control Active";
+CM_ SG_ 715 ACCType "Adaptive Cruise Control Axle Torque Command : Adaptive Cruise Control Type";
+CM_ SG_ 715 ACCDrvAstdGoSt "Adaptive Cruise Control Axle Torque Command : Driver Assisted Go State";
+CM_ SG_ 715 ACCSplREngInpR "Adaptive Cruise Control Axle Torque Command : Special Re-engagement Input Required";
+CM_ SG_ 715 ACCAxlTrqRq "Adaptive Cruise Control Axle Torque Command : Axle Torque Request";
+CM_ SG_ 715 ACCAxlTrqCmdProt "Adaptive Cruise Control Axle torque Command Protection";
+CM_ SG_ 880 ServAdpCrsCtrlIndOn "Service Adaptive Cruise Control Indication On";
+CM_ SG_ 880 ACCSnsClnRqdIO "Adaptive Cruise Control Sensor Cleaning Required Indication On";
+CM_ SG_ 880 ACCTmpUnavlbleIO "Adaptive Cruise Control Temporarily Unavailable Indication On";
+CM_ SG_ 880 ACCHdwayStngIO "Adaptive Cruise Control Headway Setting Indication On";
+CM_ SG_ 880 DrvThrtlOvrdIO "Driver Throttle Override Indication On";
+CM_ SG_ 880 ACCUnavlbleDTWthrIO "Adaptive Cruise Unavailable Due To Weather Indication On";
+CM_ SG_ 880 ACCDrvrSeltdSpdIO "Adaptive Cruise Control Driver Selected Speed Indication On";
+CM_ SG_ 880 ACCAct370 "Adaptive Cruise Control Active";
+CM_ SG_ 880 ACCHdwyStg "Adaptive Cruise Control Headway Setting";
+CM_ SG_ 880 FOAI_AlrtChmIhbRq "Forward Object Alert Indications : Alert Warning Chime Inhibit Request";
+CM_ SG_ 880 FOAI_VehAhdIndRq "Forward Object Alert Indications : Vehicle Ahead Indication Request";
+CM_ SG_ 880 FOAI_AlrtWrnIndRq "Forward Object Alert Indications : Alert Warning Indication Request";
+CM_ SG_ 190 PTSnsdBrkPdlInfARC "Powertrain Sensed Brake Pedal Information Alive Rolling Count";
+CM_ SG_ 190 TrnsAuxPmpAct "Transmission Auxiliary Pump Active";
+CM_ SG_ 190 PSBPI_PTSnBrkPdlPsV "Powertrain Sensed Brake Pedal Position Validity";
+CM_ SG_ 190 PSBPI_PTSnBrkPdlPs "Powertrain Sensed Brake Pedal Position";
+CM_ SG_ 190 AccPos "Accelerator Effective Position";
+CM_ SG_ 485 StrWhAngV "Steering Wheel Angle Validity";
+CM_ SG_ 485 StrWhlAngSenCalStat "Steering Wheel Angle Sensor Calibration Status";
+CM_ SG_ 485 StrWhlAngSenTyp "Steering Wheel Angle Sensor Type";
+CM_ SG_ 485 StrWhAng "Steering Wheel Angle";
+CM_ SG_ 485 StrWhAngGrdV "Steering Wheel Angle Gradient Validity";
+CM_ SG_ 485 StWhlAngAliveRollCnt "Steering Wheel Angle Alive Rolling Count";
+CM_ SG_ 485 StrWhAngGrdMsk "Steering Wheel Angle Gradient Mask";
+CM_ SG_ 485 StrWhAngGrd "Steering Wheel Angle Gradient";
+
+
+
+
+
+

@@ -1,0 +1,14 @@
+Key contributors to the development of the Connected Vehicle Research Platform software, 
+version 1.0, include:
+Frank Perry, Kyle Rush, Dave Ference, John Stark of Leidos
+Aaron Dalton, Scott Schlachter, Nick Elder of TORC Robotics
+Xiao-Yun Lu, Steve Shladover of University of California-Berkeley PATH
+
+The developers also wish to acknowledge contributors to this study:
+
+Government task lead:  Taylor Lochrane (FHWA TFHRC)
+Task advisor:  Dan Daley (University of Washington)
+COR:  Randy VanGorder (FHWA TFHRC)
+Test facility management:  Jim Rugh and Martin Schy (Willow Grove NAS, Philadelphia, PA)
+Hardware integration and testing support:  Cary Vick, Ed Leslie (Leidos)
+Travel and Logistics Coordination: Margaret Hailemariam, Ayeshah Abuelhiga, Samantha Adam of Leidos

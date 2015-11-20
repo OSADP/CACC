@@ -1,0 +1,284 @@
+-- Version: 0.1.0-draft
+-- Date: 2015-08-06
+-- Developed by Frank Perry
+-- at Leidos
+-- for the FHWA CACC Project (STOL TOPR 5)
+-- ASN.1 Schema validation site: http://asn1-playground.oss.com/
+-- ASN.1 to XML Schema Definition (XSD) site:  http://www.obj-sys.com/webtools/asn2xsd.php
+--
+-- Change log:
+-- 0.1.0: Began filling in CaccData Data Frame
+-- 0.0.0: Initial version, BSM Part I
+
+-- Beginning of CACC Module
+CACC DEFINITIONS IMPLICIT TAGS::= BEGIN
+
+
+BasicSafetyMessage ::=  SEQUENCE {
+-- Part I
+	msgID	[0]DSRCmsgID,	-- 1 byte
+	blob1	[1]BSMblob,		-- Sent as a single octet blob 
+
+-- Part II, contains CACC specific data
+ 	caccData [2]CaccData	-- CACC defined Data
+
+}
+ 
+ 
+-- Data Frames 
+-- DE_DSRC_MessageID (Desc Name) Record 37
+DSRCmsgID ::= ENUMERATED {
+   reserved                        (0), 
+   alaCarteMessage                 (1),  -- ACM
+   basicSafetyMessage              (2),  -- BSM, heartbeat msg
+   basicSafetyMessageVerbose       (3),  -- used for testing only
+   commonSafetyRequest             (4),  -- CSR
+   emergencyVehicleAlert           (5),  -- EVA
+   intersectionCollisionAlert      (6),  -- ICA
+   mapData                         (7),  -- MAP, GID, intersections 
+   nmeaCorrections                 (8),  -- NMEA
+   probeDataManagement             (9),  -- PDM
+   probeVehicleData                (10), -- PVD
+   roadSideAlert                   (11), -- RSA
+   rtcmCorrections                 (12), -- RTCM
+   signalPhaseAndTimingMessage     (13), -- SPAT
+   signalRequestMessage            (14), -- SRM
+   signalStatusMessage             (15), -- SSM
+   travelerInformation             (16), -- TIM
+   
+   ... -- # LOCAL_CONTENT
+} 
+   -- values to 127 reserved for std use
+   -- values 128 to 255 reserved for local use
+
+BSMblob ::= OCTET STRING (SIZE(38)) 
+   -- made up of the following 38 packed bytes:
+   -- msgCnt      MsgCount,             -x- 1 byte
+   -- id          TemporaryID,          -x- 4 bytes
+   -- secMark     DSecond,              -x- 2 bytes, vehicle CAN Bus sync time
+   -- lat         Latitude,             -x- 4 bytes 
+   -- long        Longitude,            -x- 4 bytes
+   -- elev        Elevation,            -x- 2 bytes
+   -- accuracy    PositionalAccuracy,   -x- 4 bytes
+   -- speed       TransmissionAndSpeed, -x- 2 bytes
+   -- heading     Heading,              -x- 2 byte
+   -- angle       SteeringWheelAngle    -x- 1 byte
+   -- accelSet    AccelerationSet4Way,  -x- accel set (four way) 7 bytes
+   -- brakes      BrakeSystemStatus,    -x- 2 bytes
+   -- size        VehicleSize,          -x- 3 bytes
+
+
+Position3D ::= SEQUENCE {
+	lat 		[0]Latitude,	-- in 1/10th micro degrees
+	lon 		[1]Longitude,	-- in 1/10th micro degrees
+	elevation	[2]Elevation OPTIONAL
+}
+
+
+CaccData ::= SEQUENCE {
+	flags		[0]CACCFlags,				-- Radar\Lidar, ACC Switch, ACC Setting type, ACC Resume\Engaged, (ACC) Cancel Button, ACC\CACC Flag
+	setSpeed	[1]Speed,
+	throtPos	[2]ThrottlePosition,
+	lclPN		[3]OCTET STRING (SIZE(4)),	-- PinPoint Local Position North in mm, (I32) 4-Byte Signed Int. from getLocalPose: Method ID = 9
+	lclPE		[4]OCTET STRING (SIZE(4)),	-- PinPoint Local Position East in mm, (I32) 4-Byte Signed Int. from getLocalPose: Method ID = 9
+	lclPD		[5]OCTET STRING (SIZE(4)),	-- PinPoint Local Position Down in mm, (I32) 4-Byte Signed Int. from getLocalPose: Method ID = 9
+	roll		[6]OCTET STRING (SIZE(2)),	-- PinPoint Roll; 180 deg/2^15, (I16) 2-Byte Signed Int. from getLocalPose: Method ID = 9
+	pitch		[7]OCTET STRING (SIZE(2)),	-- PinPoint Pitch; 180 deg/2^15, (I16) 2-Byte Signed Int. from getLocalPose: Method ID = 9
+	yaw			[8]OCTET STRING (SIZE(2)),	-- PinPoint Yaw; 180 deg/2^15, (I16) 2-Byte Signed Int. from getLocalPose: Method ID = 9
+	hPosAcry	[9]OCTET STRING (SIZE(4)),	-- PinPoint North Accuracy m, (F32) 4-Byte Float, getFilterAccuracy: Method ID =6
+	vPosAcry	[10]OCTET STRING (SIZE(4)),	-- PinPoint North Accuracy m, (F32) 4-Byte Float, getFilterAccuracy: Method ID =6
+	fwrdVel		[11]OCTET STRING (SIZE(4)),	-- PinPoint North Velocity m/s, (F32) 4-Byte Float, newRawGpsData: Signal ID = 6
+	rightVel	[12]OCTET STRING (SIZE(4)),	-- PinPoint East Velocity m/s, (F32) 4-Byte Float
+	downVel		[13]OCTET STRING (SIZE(4)),	-- PinPoint Down Velocity m/s, (F32) 4-Byte Float
+	velAcc		[14]OCTET STRING (SIZE(4)),	-- Velocity Accuracy m/s, (F32) 4-Byte Float
+	fwrdAcc		[15]OCTET STRING (SIZE(2)),	-- CAN bus Acceleration mm/s^2, (I16), 2-Byte Signed Int
+	rightAcc	[16]OCTET STRING (SIZE(2)),	-- PinPoint Right Acceleration mm/s^2, (I16), 2-Byte Signed Int., getBodyAcceleration: Method ID =18
+	dwnAcc		[17]OCTET STRING (SIZE(2)),	-- PinPoint Down Acceleration mm/s^2, (I16), 2-Byte Signed Int., getBodyAcceleration: Method ID =18 
+	grpID		[18]INTEGER (0..7),			-- Group ID
+	grpSize		[19]INTEGER (0..15),		-- Group Size
+	grpMode		[20]INTEGER (0..7),			-- Group Mode
+	grpManDes	[21]INTEGER (0..127),		-- Group Maneuver des
+	grpManID	[22]INTEGER (0..127),		-- Group Maneuver ID
+	vehID		[23]OCTET STRING (SIZE(1)),	-- Vehicle Unique ID 
+	frntCutIn	[24]INTEGER (0..7),			-- Front cut-in flag
+	vehGrpPos	[25]INTEGER (0..15),		-- Vehicles' Position in Group
+	vehFltMode	[26]INTEGER (0..15),		-- Vehicle fault mode ID
+	vehManDes	[27]INTEGER (0..127), 		-- Vehicle Maneuver des
+	vehManID	[28]INTEGER (0..127),		-- Vehicle Maneuver ID
+	distToPVeh	[29]INTEGER (0..127), 		-- distance to preceding veh, in meters
+	relSpdPVeh	[30]INTEGER (0..127), 		-- relative speed to preceding veh in m/s, range +/- 40, E = (N/0.625)+64
+	disToLVeh	[31]INTEGER (0..127), 		-- distance to lead veh, in meters
+	relSpdLVeh	[32]INTEGER (0..127),		-- relative speed to lead veh in m/s range +/- 40, E = (N/0.625)+64
+	desTGapPVeh	[33]INTEGER (0..30),		-- Desired time gap to preceding veh in 100 ms increments, range 0-3.0 s
+	desTGapLVeh	[34]INTEGER (0..30),		-- Desired time gap to lead veh in 100 ms increments, range 0-3.0 s
+	estDisPVeh	[35]INTEGER (0..150), 		-- Estimated distance gap to preceding veh in m 0-150, **<try to reduce to 1 Byte, need to know acceptable resolution>
+	estDisLVeh	[36]INTEGER (0..150),		-- Estimated distance gap to lead veh in m 0-150 **<try to reduce to 1 Byte, need to know acceptable resolution>
+	desSpd		[37]INTEGER (0..35),		-- Desired speed (control) in m/s 0-35
+	desTrq		[38]INTEGER (0..2500),		-- Desired torque (control) in N-m 0-2500 **<try to reduce to 1 Byte, need to know acceptable resolution>
+	userDE1		[39]OCTET STRING (SIZE(1)) OPTIONAL,	-- User Defined element 1 
+	userDE2		[40]OCTET STRING (SIZE(1)) OPTIONAL,	-- User Defined element 2 
+	userDE3		[41]OCTET STRING (SIZE(1)) OPTIONAL,	-- User Defined element 3 
+	userDE4		[42]OCTET STRING (SIZE(1)) OPTIONAL,	-- User Defined element 4 
+	userDE5		[43]OCTET STRING (SIZE(1)) OPTIONAL 	-- User Defined element 5 
+	--	utcTime		[20]DSecond					 Time Stamp in UTC **<do we really need Time Stamp again, DSecond is part of BSM Part I>
+	-- gpsSpeed	[3]Speed, 
+	-- [4] GPS Quality?
+}
+
+   VehicleSize ::=  SEQUENCE {
+   width     VehicleWidth,
+   length    VehicleLength
+   }  -- 3 bytes in length
+
+-- Data Elements
+
+MsgCount ::= INTEGER (0..127)
+
+DSecond ::= INTEGER (0..65535) -- units of miliseconds
+
+TemporaryID ::= OCTET STRING (SIZE(4)) -- a 4 byte string array
+
+Latitude ::= INTEGER (-900000000..900000001)
+	-- LSB = 1/10 micro degree
+	-- Providing a range of plus-minus 90 degrees
+
+Longitude ::= INTEGER (-1800000000..1800000001)
+	-- LSB = 1/10 micro degree
+	-- Providing a range of plus-minus 180 degrees
+
+Elevation ::= OCTET STRING (SIZE(2))
+	-- 1 decimeter LSB (10 cm)
+	-- Encode elevations from 0 to 6143.9 meters
+	-- above the reference ellipsoid as 0x0000 to 0xEFFF.
+	-- Encode elevations from -409.5 to -0.1 meters,
+	-- i.e. below the reference ellipsoid, as 0xF001 to 0xFFFF
+	-- unknown as 0xF000
+
+PositionalAccuracy ::= OCTET STRING (SIZE(4)) 
+  -- And the bytes defined as folllows
+
+  -- Byte 1: semi-major accuracy at one standard dev 
+  -- range 0-12.7 meter, LSB = .05m
+  -- 0xFE=254=any value equal or greater than 12.70 meter
+  -- 0xFF=255=unavailable semi-major value 
+
+  -- Byte 2: semi-minor accuracy at one standard dev 
+  -- range 0-12.7 meter, LSB = .05m
+  -- 0xFE=254=any value equal or greater than 12.70 meter
+  -- 0xFF=255=unavailable semi-minor value 
+
+  -- Bytes 3-4: orientation of semi-major axis 
+  -- relative to true north (0~359.9945078786 degrees)
+  -- LSB units of 360/65535 deg  = 0.0054932479
+  -- a value of 0x0000 =0 shall be 0 degrees
+  -- a value of 0x0001 =1 shall be 0.0054932479degrees 
+  -- a value of 0xFFFE =65534 shall be 359.9945078786 deg
+  -- a value of 0xFFFF =65535 shall be used for orientation unavailable 
+  -- (In NMEA GPGST)
+
+TransmissionAndSpeed ::= OCTET STRING (SIZE(2)) 
+    -- Bits 14~16 to be made up of the data element
+    -- DE_TransmissionState 
+    -- Bits 1~13 to be made up of the data element
+    -- DE_Speed
+
+Heading ::= INTEGER (0..28800) 
+   -- LSB of 0.0125 degrees
+   -- A range of 0 to 359.9875 degrees
+   
+SteeringWheelAngle ::= OCTET STRING (SIZE(1)) 
+    -- LSB units of 1.5 degrees.  
+    -- a range of -189 to +189 degrees
+    -- 0x01 = 00 = +1.5 deg
+    -- 0x81 = -126 = -189 deg and beyond
+    -- 0x7E = +126 = +189 deg and beyond
+    -- 0x7F = +127 to be used for unavailable
+	
+AccelerationSet4Way ::= OCTET STRING (SIZE(7)) 
+   -- composed of the following:
+   -- SEQUENCE {
+   --    long Acceleration,          -x- Along the Vehicle Longitudinal axis
+   --    lat  Acceleration,          -x- Along the Vehicle Lateral axis
+   --    vert VerticalAcceleration,  -x- Along the Vehicle Vertical axis
+   --    yaw  YawRate
+   --    }
+
+Acceleration ::= INTEGER (-2000..2001) 
+    -- LSB units are 0.01 m/s^2
+   -- the value 2000 shall be used for values greater than 2000     
+   -- the value -2000 shall be used for values less than -2000  
+   -- a value of 2001 shall be used for Unavailable
+   
+VerticalAcceleration ::= INTEGER (-127..127) 
+   -- LSB units of 0.02 G steps over 
+   -- a range +1.54 to -3.4G 
+   -- and offset by 50  Value 50 = 0g, Value 0 = -1G
+   -- value +127 = 1.54G, 
+   -- value -120 = -3.4G
+   -- value -121 for ranges -3.4 to -4.4G
+   -- value -122 for ranges -4.4 to -5.4G
+   -- value -123 for ranges -5.4 to -6.4G
+   -- value -124 for ranges -6.4 to -7.4G
+   -- value -125 for ranges -7.4 to -8.4G
+   -- value -126 for ranges larger than -8.4G
+   -- value -127 for unavailable data
+
+YawRate ::= INTEGER (-32767..32767) 
+   -- LSB units of 0.01 degrees per second (signed)
+   
+BrakeSystemStatus ::= OCTET STRING (SIZE(2))
+   -- Encoded with the packed content of: 
+   -- SEQUENCE {
+   --   wheelBrakes        BrakeAppliedStatus,
+   --                      -x- 4 bits
+   --   wheelBrakesUnavailable  BOOL
+   --                      -x- 1 bit (1=true)
+   --   spareBit
+   --                      -x- 1 bit, set to zero
+   --   traction           TractionControlState,
+   --                      -x- 2 bits
+   --   abs                AntiLockBrakeStatus, 
+   --                      -x- 2 bits
+   --   scs                StabilityControlStatus,
+   --                      -x- 2 bits
+   --   brakeBoost         BrakeBoostApplied, 
+   --                      -x- 2 bits
+   --   auxBrakes          AuxiliaryBrakeStatus,
+   --                      -x- 2 bits
+   --   }
+
+
+ThrottlePosition ::= INTEGER (0..200) -- LSB units are 0.5 percent   
+
+VehicleWidth ::= INTEGER (0..1023) -- LSB units are 1 cm
+   
+VehicleLength ::= INTEGER (0..16383) -- LSB units are 1 cm
+
+TransmissionState ::= ENUMERATED {
+   neutral         (0), -- Neutral, speed relative to the vehicle alignment
+   park            (1), -- Park, speed relative the to vehicle alignment
+   forwardGears    (2), -- Forward gears, speed relative the to vehicle alignment
+   reverseGears    (3), -- Reverse gears, speed relative the to vehicle alignment 
+   reserved1       (4),      
+   reserved2       (5),      
+   reserved3       (6),      
+   unavailable     (7), -- not-equipped or unavailable value,
+                        -- speed relative to the vehicle alignment
+
+   ... -- # LOCAL_CONTENT
+   }
+
+Speed ::= INTEGER (0..8191) -- Units of 0.02 m/s
+          -- The value 8191 indicates speed is unavailable
+
+CACCFlags ::= OCTET STRING (SIZE(1))
+	-- Radar\Lidar			(1),	"00000001"	0=off, 1=on
+	-- ACC Switch			(2),	"00000010"  0=False\off, 1=True\on
+	-- ACC Setting type		(4), 	"00000100"	0=Manual, 1=Auto
+	-- ACC Resume\Engaged	(8),	"00001000" 	0=off, 1=on
+	-- ACC) Cancel Button	(16),	"00010000" 	0=off, 1=on
+	-- ACC\CACC Flag		(32),	"00100000" 	0=off, 1=on
+	-- PATH Control Flag    (64),   "01000000"  0=off, 1=on
+
+END
+-- END of CACC module

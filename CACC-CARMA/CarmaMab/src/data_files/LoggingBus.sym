@@ -1,0 +1,80 @@
+FormatVersion=5.0 // Do not edit this line!
+Title="LoggingBus"
+
+{SENDRECEIVE}
+
+[PinPt_utc_time]
+ID=012h
+DLC=8
+Var=utc_time double 0,64 /u:s
+
+[PinPt_global_lat]
+ID=013h
+DLC=8
+Var=global_lat double 0,64 /u:deg
+
+[PinPt_global_long]
+ID=014h
+DLC=8
+Var=global_long double 0,64 /u:deg
+
+[PinPt_global_alt]
+ID=015h
+DLC=8
+Var=global_alt double 0,64 /u:m
+
+[PinPt_global_roll]
+ID=016h
+DLC=8
+Var=global_roll float 0,32 /u:deg
+
+[PinPt_global_pitch]
+ID=017h
+DLC=8
+Var=global_pitch float 0,32 /u:deg
+
+[PinPt_global_yaw]
+ID=018h
+DLC=8
+Var=global_yaw float 0,32 /u:deg
+
+[PinPt_local_north]
+ID=019h
+DLC=8
+Var=local_north double 0,64 /u:m
+
+[PinPt_local_east]
+ID=01Ah
+DLC=8
+Var=local_east double 0,64 /u:m
+
+[PinPt_local_down]
+ID=01Bh
+DLC=8
+Var=local_down double 0,64 /u:m
+
+[PinPt_local_roll]
+ID=01Ch
+DLC=8
+Var=local_roll float 0,32 /u:deg
+
+[PinPt_local_pitch]
+ID=01Dh
+DLC=8
+Var=local_pitch float 0,32 /u:deg
+
+[PinPt_local_yaw]
+ID=01Eh
+DLC=8
+Var=local_yaw float 0,32 /u:deg
+
+[num_vehicles_in_string]
+ID=040h
+DLC=1
+Var=num_vehicles_in_string unsigned 0,8
+
+[position_in_string]
+ID=041h
+DLC=1
+Var=position_in_string unsigned 0,8
+

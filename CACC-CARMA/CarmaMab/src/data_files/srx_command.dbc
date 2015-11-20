@@ -1,0 +1,127 @@
+VERSION "created by canmatrix"
+
+
+NS_ :
+
+BS_:
+
+BU_: 
+
+
+BO_ 256 AccelControl: 8 Vector__XXX
+ SG_ CommandCntr : 1|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ OverrideEnable : 2|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ CommandMode : 4|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ SpeedControl : 31|16@0+ (0.03125,0) [0|0] "km/h" Dummy_FO
+ SG_ WrenchEffort : 15|16@0+ (0.025,-100.0) [0|0] "%" Dummy_FO
+ SG_ MaxAccel : 47|16@0+ (0.03125,0) [0|0] "(km/h)/s" Dummy_FO
+ SG_ Checksum : 63|8@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 257 SpeedControlParams: 8 Vector__XXX
+ SG_ P_Numerator : 7|16@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ I_Numerator : 23|16@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ D_Numerator : 39|16@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ PID_Divisor : 55|16@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 258 ACC_Injection: 1 Vector__XXX
+ SG_ SwitchSpoofCommand : 7|8@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 259 FrontLightControl: 1 Vector__XXX
+ SG_ FrontOutputCmd1 : 0|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutputCmd2 : 1|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutputCmd3 : 2|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutputCmd4 : 3|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutputCmd5 : 4|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutputCmd6 : 5|1@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 260 RearLightControl: 1 Vector__XXX
+ SG_ RearOutputCmd1 : 0|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutputCmd2 : 1|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutputCmd3 : 2|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutputCmd4 : 3|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutputCmd5 : 4|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutputCmd6 : 5|1@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 275 FrontLightStatus: 1 Vector__XXX
+ SG_ FrontOutput1 : 0|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutput2 : 1|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutput3 : 2|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutput4 : 3|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutput5 : 4|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ FrontOutput6 : 5|1@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 276 RearLightStatus: 1 Vector__XXX
+ SG_ RearOutput1 : 0|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutput2 : 1|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutput3 : 2|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutput4 : 3|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutput5 : 4|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ RearOutput6 : 5|1@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 416 AccelModuleFeedback: 4 Vector__XXX
+ SG_ AccelCmdInjectionFlag : 0|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ AccelCmdTimeoutFlag : 1|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ AccelCmdModeEcho : 3|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ AccelCanTimeoutFlag : 4|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ AccelDriverOverride : 5|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ AccelInjectionMsg : 6|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ AccelPairTimeoutFlag : 7|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ Torque : 15|24@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 432 BrakeModuleFeedback: 3 Vector__XXX
+ SG_ BrakeCmdInjectionFlag : 0|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ BrakeCmdTimeoutFlag : 1|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ BrakeCmdModeEcho : 3|2@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ BrakeCanTimoutFlag : 4|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ BrakeDriverOverride : 5|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ BrakeInjectionMsg : 6|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ BrakePairTimeoutFlag : 7|1@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ BrakeForce : 11|12@0+ (0.01,-20.48) [0|0] "" Dummy_FO
+
+BO_ 273 SpeedControlEcho: 8 Vector__XXX
+ SG_ P_NumeratorEcho : 7|16@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ D_NumeratorEcho : 39|16@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ I_NumeratorEcho : 23|16@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ PID_DivisorEcho : 55|16@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 274 ACC_InjectionComplete: 1 Vector__XXX
+ SG_ SwitchSpoofFeedback : 7|8@0+ (0,0) [0|0] "" Dummy_FO
+
+BO_ 90 UTC_Time: 8 Vector__XXX
+ SG_ UTC_Upper : 7|32@0+ (0,0) [0|0] "" Dummy_FO
+ SG_ UTC_Lower : 39|32@0+ (0,0) [0|0] "" Dummy_FO
+
+
+
+CM_ SG_ 259 FrontOutputCmd1 "Unassigned Output";
+CM_ SG_ 259 FrontOutputCmd2 "Left Arrow";
+CM_ SG_ 259 FrontOutputCmd3 "Right Arrow";
+CM_ SG_ 259 FrontOutputCmd4 "Takedown";
+CM_ SG_ 259 FrontOutputCmd5 "Flash";
+CM_ SG_ 259 FrontOutputCmd6 "Unassigned Output";
+CM_ SG_ 260 RearOutputCmd1 "Unassigned Output";
+CM_ SG_ 260 RearOutputCmd2 "Left Arrow";
+CM_ SG_ 260 RearOutputCmd3 "Right Arrow";
+CM_ SG_ 260 RearOutputCmd4 "Takedown";
+CM_ SG_ 260 RearOutputCmd5 "Flash";
+CM_ SG_ 260 RearOutputCmd6 "Unassigned Output";
+CM_ SG_ 275 FrontOutput1 "Unassigned Output";
+CM_ SG_ 275 FrontOutput2 "Left Arrow";
+CM_ SG_ 275 FrontOutput3 "Right Arrow";
+CM_ SG_ 275 FrontOutput4 "Takedown";
+CM_ SG_ 275 FrontOutput5 "Flash";
+CM_ SG_ 275 FrontOutput6 "Unassigned Output";
+CM_ SG_ 276 RearOutput1 "Unassigned Output";
+CM_ SG_ 276 RearOutput2 "Left Arrow";
+CM_ SG_ 276 RearOutput3 "Right Arrow";
+CM_ SG_ 276 RearOutput4 "Takedown";
+CM_ SG_ 276 RearOutput5 "Flash";
+CM_ SG_ 276 RearOutput6 "Unassigned Output";
+
+VAL_ 256 CommandMode 3 "RESERVED" 2 "SpeedControl" 1 "WrenchEffort" 0 "ACC_Disable" ; 
+VAL_ 416 AccelCmdModeEcho 3 "RESERVED" 2 "SpeedControl" 1 "WrenchEffort" 0 "ACC_Disable" ; 
+VAL_ 432 BrakeCmdModeEcho 3 "RESERVED" 2 "SpeedControl" 1 "WrenchEffort" 0 "ACC_Disable" ; 
+
+
+
+

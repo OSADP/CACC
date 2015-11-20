@@ -1,0 +1,22 @@
+FormatVersion=5.0 // Do not edit!
+Title="Untitled"
+
+{ENUMS}
+enum AccelCommandMode(0="ACC_Disable", // Disable ACC system
+  1="WrenchEffort", // Wrench Effort Command
+  2="SpeedControl", // Robotic Speed Control
+  3="RESERVED")
+
+{SENDRECEIVE}
+
+[AccelerationControl]
+ID=100h
+DLC=8
+Var="Command Counter" unsigned 0,2
+Var="Override Enabled" bit 2,1
+Var="Command Mode" AccelCommandMode 3,2
+Var="Speed Control" unsigned 24,16 /u:km/h
+Var="Wrench Effort" unsigned 8,16 -m /u:% /f:0.025 /o:-100
+Var="Max Accel" unsigned 40,16 /u:(km/h)/s
+Var=Checksum unsigned 56,8
+

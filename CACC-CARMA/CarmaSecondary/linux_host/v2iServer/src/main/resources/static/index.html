@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle to Infrastructure Server</title>
+
+    <!-- these three lines allow chrome to set as desktop icon -->
+    <meta name="viewport" content="width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/cacc.png">
+
+    <link rel="stylesheet" media="all" type="text/css" href="css/v2i.css" />
+    <link href="opensource/jquery/css/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet"/>
+    <script src="opensource/sockjs-0.3.4.js"></script>
+    <script src="opensource/stomp.js"></script>
+    <script src="opensource/jquery/js/jquery-1.10.2.js"></script>
+    <script src="opensource/jquery/js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/audio-fix.js"></script>
+    <script src="js/v2iAjax.js"></script>
+    <script src="js/connect.js"></script>
+    <script src="js/v2i.js"></script>
+
+    <script type="text/javascript">
+
+        displayUiMessage(uiMessage);
+
+    </script>
+
+
+
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+
+<!--No longer displaying status messages.  Keep commented for if we transition to debug/non-debug mode-->
+<!--<div class="blueText centeredText" id="statusMessageId"></div>-->
+
+<div id="greyContainer">
+    <!--<audio id="audioId" src="sounds/warning.wav" preload="auto"></audio>-->
+
+    <audio class="audio-fix">
+        <source src="sounds/warning.wav"></source>
+    </audio>
+
+    <div class="whiteText centeredText" id="statusMessageId"></div>
+
+    <img class="padTop10 centeredImage" id="brakeIndicatorId" src="images/BrakeBackground.png" />
+
+    <h2 class="padTop10 whiteText centeredText">Request CACC state:</h2>
+    <img class="padBottom20 centeredImage" id="onOffButton" src="images/ButtonOff.png" title="Indicate desire to enter CACC state." onclick="V2IAjax.ajaxSetParameters();"/>
+    <img class="padTop20 centeredImage" id="caccState" src="images/ManualState.png"  onclick="V2IAjax.ajaxSetParameters();"/>
+
+
+</div>
+
+
+</body>
+</html>

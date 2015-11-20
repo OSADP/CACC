@@ -1,0 +1,459 @@
+
+
+html, body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+#blackContainer {
+    min-height:100%;
+    background: black;
+    position:relative;
+}
+#greyContainer {
+    min-height:100%;
+    background: #7f7f7f;
+    position:relative;
+}
+
+#darkGreyContainer {
+    min-height:100%;
+    background: #545454;
+    position:relative;
+}
+
+#lightGreyContainer {
+    min-height:100%;
+    background: #c2c2c2;
+    position:relative;
+}
+
+#header {
+    background: #E0E0E0;
+    padding:10px;
+}
+#body {
+    background: #E0E0E0;
+    padding:10px;
+    padding-bottom:240px;   /* Height of the footer */
+}
+#footer {
+    background: #E0E0E0;
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:240px;   /* Height of the footer */
+}
+
+div.centered
+{
+    text-align: center;
+}
+
+.centeredText
+{
+    text-align: center;
+}
+
+div.centered table
+{
+    margin: 0 auto;
+    text-align:center;
+    vertical-align:middle;
+    background-repeat: no-repeat;
+}
+
+div.signal table
+{
+    margin: 0 auto;
+    background-repeat: no-repeat;
+}
+
+.speedPREVIOUS
+{
+    font-size: 250%;
+    /*font-size: 100px;*/
+    color: black;
+}
+
+.timeNextPhaseGreen
+{
+    font-size: 350%;
+    color: white;
+    padding-left: 50px;
+    padding-top: 216px;
+}
+
+.timeNextPhaseGreenSingle
+{
+    font-size: 350%;
+    color: white;
+    padding-left: 66px;
+    padding-top: 216px;
+}
+
+.timeNextPhaseRed
+{
+    font-size: 350%;
+    color: white;
+    padding-left: 50px;
+    padding-bottom: 224px;
+}
+
+.timeNextPhaseRedSingle
+{
+    font-size: 350%;
+    color: white;
+    padding-left: 66px;
+    padding-bottom: 224px;
+}
+
+.timeNextPhaseYellow
+{
+    font-size: 350%;
+    color: black;
+    padding-left: 66px;
+}
+
+.leftColumn {
+    display: inline-block;
+    width: 33%;
+    float: left;
+}
+
+
+.centerColumn {
+    display: inline-block;
+    width: 33%;
+    float: left;
+}
+
+.rightColumn {
+    display: inline-block;
+    width: 33%;
+    float: left;
+}
+
+.lastColumn {
+    display: inline-block;
+    width: 25%;
+    float: left;
+}
+
+.rightImage {
+    display: inline-block;
+    float: right;
+    margin-right: 25px;
+}
+
+.centeredImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.font100 {
+    font-size: 100%;
+    font-family: Arial;
+}
+
+.font150 {
+    font-size: 150%;
+    font-family: Arial;
+}
+
+.font200 {
+    font-size: 200%;
+    font-family: Arial;
+}
+
+.font250 {
+    font-size: 250%;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.button {
+    /*background-color: #000000;*/
+    /*color: #FFFFFF;*/
+    float: right;
+    padding: 10px;
+    border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+}
+.small-btn {
+    width: 50px;
+    height: 20px;
+}
+
+.medium-btn {
+    width: 70px;
+    height: 30px;
+}
+
+.big-btn {
+    background-color: green;
+    color: black;
+    width: 90px;
+    height: 40px;
+}
+
+
+.dviLabel {
+    text-align: left;
+    margin: 1px;
+}
+
+.dviValue {
+    text-align: right;
+    margin: 1px;
+}
+
+.tdCenteredImage {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.padRight10  {
+    padding-right:10px;
+}
+
+.padRight150  {
+    padding-right:150px;
+}
+
+.padTop10 {
+    padding-top:10px;
+}
+
+.padTop12 {
+    padding-top:12px;
+}
+
+.padTop14 {
+    padding-top:14px;
+}
+
+.padTop16 {
+    padding-top:16px;
+}
+
+.padTop20 {
+    padding-top:20px;
+}
+
+.padTop25 {
+    padding-top:25px;
+}
+
+.padTop50 {
+    padding-top:50px;
+}
+
+.padTop75 {
+    padding-top:75px;
+}
+
+.padTop100 {
+    padding-top:100px;
+}
+
+
+.padLeft20 {
+    padding-left: 20px;
+}
+
+.padLeft40 {
+    padding-left: 40px;
+}
+
+
+.padLeft60 {
+    padding-left: 60px;
+}
+
+.padLeft80 {
+    padding-left: 80px;
+}
+
+.padLeft100 {
+    padding-left: 100px;
+}
+
+.padLeft120 {
+    padding-left: 120px;
+}
+
+
+.padLeft130 {
+    padding-left: 130px;
+}
+
+.padLeft150 {
+    padding-left: 150px;
+}
+
+.padLeft200 {
+    padding-left: 200px;
+}
+
+.padLeft250 {
+    padding-left: 250px;
+}
+
+
+
+.padSliderRight100  {
+    padding-right:100px;
+}
+
+.padSliderRight130  {
+    padding-right:130px;
+}
+
+.padSliderLeft130  {
+    padding-left:130px;
+}
+
+.padSliderLeft100  {
+    padding-left:100px;
+}
+
+.padAll   {
+    padding-top: 10px;
+    padding-right: 40px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+}
+
+.padBottom20   {
+    padding-bottom: 20px;
+}
+
+.padBottom50   {
+    padding-bottom: 50px;
+}
+
+.padBottom130   {
+    padding-bottom: 130px;
+}
+
+.width600 {
+    width: 600px;
+}
+
+.width700 {
+    width: 700px;
+}
+
+
+.paraWidthSmall {
+    text-align: center;
+    width: 800px;
+    padding-left: 160px;
+}
+
+.paraWidthMedium {
+    text-align: center;
+    width: 900px;
+    padding-left: 150px;
+}
+
+.paraWidthLarge {
+    text-align: center;
+    width: 1000px;
+    padding-left: 40px;
+}
+
+.whiteText {
+    color: white;
+}
+
+.blueText {
+    color: blue;
+}
+.blackBackground {
+    background-color: black;
+}
+
+.spinner {
+    width: 80px;
+    height: 44px;
+    padding: 1px;
+    text-align: center;
+    font-size: 250%;
+}
+
+
+.speed {
+    width: 160px;
+    height: 120px;
+    padding: 1px;
+    text-align: center;
+    font-size: 600%;
+    border: 10px solid black;
+}
+
+.operatingspeed {
+    width: 60px;
+    height: 34px;
+    padding: 1px;
+    text-align: center;
+    font-size: 200%;
+    border: 5px solid black;
+}
+
+
+/*table, th, td {*/
+.tdBorder {
+    border: 5px solid black;
+}
+
+.tdNoPadding {
+    padding: 0px;
+}
+
+.tableNoPadding {
+    border-spacing: 0px;
+    border-collapse: separate;
+}
+
+.blackPara {
+    font-size: 80px;
+    color: black;
+    text-align: center;
+}
+
+.gpInline {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.valignImageMiddle {
+    vertical-align: middle;
+}
+
+.ui-slider .ui-slider-handle {
+    background: url(../images/sliderHandle.png) no-repeat;
+    border: none;
+}
+
+.ui-slider-horizontal {
+    /*defaults to .8em*/
+    height: .1em;
+}
+
+.hidden{
+    visibility:hidden;
+}
+
+video {
+    background: black;
+    height: 0px;
+    max-width: 0%;
+    width: 0px;
+}

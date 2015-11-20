@@ -1,0 +1,105 @@
+FormatVersion=5.0 // Do not edit!
+Title="SRX High Speed"
+
+{ENUMS}
+enum ATC_ACCType(0="Adaptive Cruise Control", 1="Full Speed Range ACC", 
+  2="Full Speed Range ACC with Booster")
+enum ATC_DrvAstdGoSt(0="Not Stopped", 1="Apply Accel Pedal to Go", 
+  2="Apply Acc Pedal or Resume Sw To Go")
+enum ACCHdwyStg(0="Minimum Headway Setting", 1="Headway Setting 1", 
+  2="Headway Setting 2", 3="Headway Setting 3", 4="Headway Setting 4", 
+  5="Headway Setting 5", 6="Headway Setting 6", 7="Headway Setting 7")
+enum FOAI_AlrtChmIhb(0="Allow Chime", 1="Inhibit Chime")
+enum FOAI_IndRq(0="No Alert", 1="Alert Level 1", 2="Alert Level 2", 
+  3="Alert Level 3")
+enum WhlRotDirStat(0="Unknown", 1="Forward", 2="Reverse", 3="Not Supported", 
+  4="Failed", 5="Reserved 1", 6="Reserved 2", 7="Reserved 3")
+
+{SENDRECEIVE}
+
+[PPEI_Adaptive_Cruise_Axl_Trq_Req]
+ID=2CBh
+DLC=8
+Var=ACCCmndAlvRlgCnt unsigned 0,2 -m /ln:"Adaptive Cruise Control Command Alive Rolling Count"
+Var=ACCAct unsigned 7,1 -m /ln:"Adaptive Cruise Control Active"
+Var=ACCType unsigned 8,2 -m /e:ATC_ACCType /ln:"Adaptive Cruise Control Axle Torque Command : Adaptive Cruise Control Type"
+Var=ACCDrvAstdGoSt unsigned 10,2 -m /e:ATC_DrvAstdGoSt /ln:"Adaptive Cruise Control Axle Torque Command : Driver Assisted Go State"
+Var=ACCSplREngInpR unsigned 12,1 -m /ln:"Adaptive Cruise Control Axle Torque Command : Special Re-engagement Input Required"
+Var=ACCAxlTrqRq unsigned 13,19 -m /u:NM /f:0.125 /o:-22534 /ln:"Adaptive Cruise Control Axle Torque Command : Axle Torque Request"
+Var=ACCAxlTrqCmdProt unsigned 39,25 -m /ln:"Adaptive Cruise Control Axle torque Command Protection"
+
+[Adaptive_Cruise_Disp_Stat_HS]
+ID=370h
+DLC=6
+Var=ServAdpCrsCtrlIndOn unsigned 0,1 -m /ln:"Service Adaptive Cruise Control Indication On"
+Var=ACCSnsClnRqdIO unsigned 2,32 -m /ln:"Adaptive Cruise Control Sensor Cleaning Required Indication On"
+Var=ACCTmpUnavlbleIO unsigned 2,1 -m /ln:"Adaptive Cruise Control Temporarily Unavailable Indication On"
+Var=ACCHdwayStngIO unsigned 3,1 -m /ln:"Adaptive Cruise Control Headway Setting Indication On"
+Var=DrvThrtlOvrdIO unsigned 4,1 -m /ln:"Driver Throttle Override Indication On"
+Var=ACCUnavlbleDTWthrIO unsigned 5,1 -m /ln:"Adaptive Cruise Unavailable Due To Weather Indication On"
+Var=ACCDrvrSeltdSpdIO unsigned 6,1 -m /ln:"Adaptive Cruise Control Driver Selected Speed Indication On"
+Var=ACCAct370 unsigned 16,1 -m /ln:"Adaptive Cruise Control Active"
+Var=ACCHdwyStg unsigned 17,3 -m /e:ACCHdwyStg /ln:"Adaptive Cruise Control Headway Setting"
+Var=ACCDrvrSeltdSpd unsigned 20,12 -m /u:km/h /f:0.0625
+Var=FOAI_AlrtChmIhbRq unsigned 39,1 -m /e:FOAI_AlrtChmIhb /ln:"Forward Object Alert Indications : Alert Warning Chime Inhibit Request"
+Var=FOAI_VehAhdIndRq unsigned 40,4 -m /e:FOAI_IndRq /ln:"Forward Object Alert Indications : Vehicle Ahead Indication Request"
+Var=FOAI_AlrtWrnIndRq unsigned 44,4 -m /e:FOAI_IndRq /ln:"Forward Object Alert Indications : Alert Warning Indication Request"
+
+[Driven_Wheel_Grnd_Velocity_HS]
+ID=348h
+DLC=5
+Var=WhlGrndVlctyLftDrvnV unsigned 1,1 -m
+Var=WhlGrndVlctyLftDrvn unsigned 2,14 -m /u:km/h /f:0.03125
+Var=WhlGrndVlctyRtDrvnV unsigned 17,1 -m
+Var=WhlGrndVlctyRtDrvn unsigned 18,14 -m /u:km/h /f:0.03125
+Var=WhlRotDrctnlStLftDrvn WhlRotDirStat 34,3 -m
+Var=WhlRotDrctnlStRtDrvn WhlRotDirStat 37,3 -m
+
+[NonDriven_Wheel_Grnd_Velocity_HS]
+ID=34Ah
+DLC=5
+Var=WhlGrndVlctyLftNnDrvnV unsigned 1,1 -m
+Var=WhlGrndVlctyLftNnDrvn unsigned 2,14 -m /u:km/h /f:0.03125
+Var=WhlGrndVlctyRtNnDrvnV unsigned 17,1 -m
+Var=WhlGrndVlctyRtNnDrvn unsigned 18,14 -m /u:km/h /f:0.03125
+Var=WhlRotDrctnlStLftNDrvn WhlRotDirStat 34,3 -m
+Var=WhlRotDrctnlStRtNDrvn WhlRotDirStat 37,3 -m
+
+[Antilock_Brake_and_TC_Status_HC]
+ID=17Dh
+DLC=6
+Var=ActVehAccel signed 36,12 -m /u:m/s^2 /f:0.01
+
+[Exterior_Lighting_HS]
+ID=140h
+DLC=3
+Var=BrkLtsAtv unsigned 1,1 -m
+
+[PTEI_Brake_Apply_Status]
+ID=0BEh
+DLC=5
+Var=PTSnsdBrkPdlInfARC unsigned 4,2 -m /ln:"Powertrain Sensed Brake Pedal Information Alive Rolling Count"
+Var=TrnsAuxPmpAct unsigned 6,1 -m /ln:"Transmission Auxiliary Pump Active"
+Var=PSBPI_PTSnBrkPdlPsV unsigned 7,1 -m /ln:"Powertrain Sensed Brake Pedal Position Validity"
+Var=PSBPI_PTSnBrkPdlPs unsigned 8,8 -m /u:% /f:0.392157 /ln:"Powertrain Sensed Brake Pedal Position"
+Var=AccPos unsigned 16,8 -m /u:% /f:0.392157 /ln:"Accelerator Effective Position"
+
+[PPEI_Steering_Wheel_Angle]
+ID=1E5h
+DLC=8
+Var=StrWhAngV unsigned 0,1 -m /ln:"Steering Wheel Angle Validity"
+Var=StrWhlAngSenCalStat unsigned 1,2 -m /ln:"Steering Wheel Angle Sensor Calibration Status"
+Var=StrWhlAngSenTyp unsigned 3,2 -m /ln:"Steering Wheel Angle Sensor Type"
+Var=StrWhAngMask unsigned 5,1 -m
+Var=StrWhAng signed 8,16 -m /u:deg /f:0.0625 /ln:"Steering Wheel Angle"
+Var=StrWhAngGrdV unsigned 24,1 -m /ln:"Steering Wheel Angle Gradient Validity"
+Var=StWhlAngAliveRollCnt unsigned 25,2 -m /ln:"Steering Wheel Angle Alive Rolling Count"
+Var=StrWhAngGrdMsk unsigned 27,1 -m /ln:"Steering Wheel Angle Gradient Mask"
+Var=StrWhAngGrd signed 28,12 -m /ln:"Steering Wheel Angle Gradient"
+
+[ETEI_Engine_General_Status]
+ID=1A1h
+DLC=8
+Var=AccPdlPosPcntFullRngV unsigned 22,1 -m
+Var=AccPdlPosPcntFullRng unsigned 56,8 -m /f:0.392157
+

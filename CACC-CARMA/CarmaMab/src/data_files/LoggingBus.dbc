@@ -1,0 +1,63 @@
+VERSION "created by canmatrix"
+
+
+NS_ :
+
+BS_:
+
+BU_: 
+
+
+BO_ 18 PinPt_utc_time: 8 Vector__XXX
+ SG_ utc_time : 0|64@1+ (0,0) [0|0] "s" Dummy
+
+BO_ 19 PinPt_global_lat: 8 Vector__XXX
+ SG_ global_lat : 0|64@1+ (0,0) [0|0] "deg" Dummy
+
+BO_ 20 PinPt_global_long: 8 Vector__XXX
+ SG_ global_long : 0|64@1+ (0,0) [0|0] "deg" Dummy
+
+BO_ 21 PinPt_global_alt: 8 Vector__XXX
+ SG_ global_alt : 0|64@1+ (0,0) [0|0] "m" Dummy
+
+BO_ 22 PinPt_global_roll: 8 Vector__XXX
+ SG_ global_roll : 0|32@1+ (0,0) [0|0] "deg" Dummy
+
+BO_ 23 PinPt_global_pitch: 8 Vector__XXX
+ SG_ global_pitch : 0|32@1+ (0,0) [0|0] "deg" Dummy
+
+BO_ 24 PinPt_global_yaw: 8 Vector__XXX
+ SG_ global_yaw : 0|32@1+ (0,0) [0|0] "deg" Dummy
+
+BO_ 25 PinPt_local_north: 8 Vector__XXX
+ SG_ local_north : 0|64@1+ (0,0) [0|0] "m" Dummy
+
+BO_ 26 PinPt_local_east: 8 Vector__XXX
+ SG_ local_east : 0|64@1+ (0,0) [0|0] "m" Dummy
+
+BO_ 27 PinPt_local_down: 8 Vector__XXX
+ SG_ local_down : 0|64@1+ (0,0) [0|0] "m" Dummy
+
+BO_ 28 PinPt_local_roll: 8 Vector__XXX
+ SG_ local_roll : 0|32@1+ (0,0) [0|0] "deg" Dummy
+
+BO_ 29 PinPt_local_pitch: 8 Vector__XXX
+ SG_ local_pitch : 0|32@1+ (0,0) [0|0] "deg" Dummy
+
+BO_ 30 PinPt_local_yaw: 8 Vector__XXX
+ SG_ local_yaw : 0|32@1+ (0,0) [0|0] "deg" Dummy
+
+BO_ 64 num_vehicles_in_string: 1 Vector__XXX
+ SG_ num_vehicles_in_string : 0|8@1+ (0,0) [0|0] "" Dummy
+
+BO_ 65 position_in_string: 1 Vector__XXX
+ SG_ position_in_string : 0|8@1+ (0,0) [0|0] "" Dummy
+
+
+
+
+
+
+
+
+
