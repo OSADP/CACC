@@ -921,7 +921,8 @@
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(480, 22);
             this.textBox17.TabIndex = 44;
-            this.textBox17.Text = "C:\\Projects\\CACC\\NewCACC\\Scenario_NEW.csv";
+            this.textBox17.Text = "C:\\Users\\pengs1\\TFHRC_Leidos\\TO4_CACC Simulation\\CACC & VISSIM Network\\COM_Based_" +
+    "I66_WB_DedicatedCACCLane\\DedicatedCACCLane.csv";
             // 
             // label29
             // 
@@ -1064,8 +1065,9 @@
             this.textBox24.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox24.Size = new System.Drawing.Size(517, 41);
             this.textBox24.TabIndex = 53;
-            this.textBox24.Text = "1513,9:1526,1539|1555:1568,1557|1581:1590|1588:1596|1609:1618,1626|18:1667,1657|1" +
-    "661:1677|1636:1645|19:1604";
+            this.textBox24.Text = "1513:1526,1539|1555:1568,1557|1581:1590|1588:1596|1609:1618,1626|18:1667,1657|166" +
+    "1:1677|1636:1645|19:1604";
+            this.textBox24.TextChanged += new System.EventHandler(this.textBox24_TextChanged);
             // 
             // textBox22
             // 
@@ -1078,6 +1080,7 @@
             this.textBox22.TabIndex = 51;
             this.textBox22.Text = "1515, 1513, 1529, 1555, 2008, 1565,1578, 1594,1600, 87,1640,  1644, 1661,1676, 16" +
     "78,1679, 1687,20,10035,10036,19,1605,";
+            this.textBox22.TextChanged += new System.EventHandler(this.textBox22_TextChanged);
             // 
             // textBox23
             // 
@@ -1089,6 +1092,7 @@
             this.textBox23.Size = new System.Drawing.Size(517, 41);
             this.textBox23.TabIndex = 50;
             this.textBox23.Text = "9,1513,1555,1581,1588,1597,1609,1636,1644,1661,19";
+            this.textBox23.TextChanged += new System.EventHandler(this.textBox23_TextChanged);
             // 
             // label34
             // 
@@ -1149,7 +1153,7 @@
             this.textBox27.Name = "textBox27";
             this.textBox27.Size = new System.Drawing.Size(37, 22);
             this.textBox27.TabIndex = 32;
-            this.textBox27.Text = "5";
+            this.textBox27.Text = "1";
             this.textBox27.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox28
@@ -1159,8 +1163,9 @@
             this.textBox28.Name = "textBox28";
             this.textBox28.Size = new System.Drawing.Size(54, 22);
             this.textBox28.TabIndex = 32;
-            this.textBox28.Text = "3600";
+            this.textBox28.Text = "10800";
             this.textBox28.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.textBox28.TextChanged += new System.EventHandler(this.textBox28_TextChanged);
             // 
             // label37
             // 
@@ -1199,7 +1204,9 @@
             this.textBox29.Name = "textBox29";
             this.textBox29.Size = new System.Drawing.Size(480, 22);
             this.textBox29.TabIndex = 34;
-            this.textBox29.Text = "C:\\Projects\\CACC\\NewCACC\\I-66CACCTestNetwork.layx";
+            this.textBox29.Text = "C:\\Users\\pengs1\\TFHRC_Leidos\\TO4_CACC Simulation\\CACC & VISSIM Network\\COM_Based_" +
+    "I66_WB_DedicatedCACCLane\\I66\\i-66_wb_dedicatedcacclane_2.layx";
+            this.textBox29.TextChanged += new System.EventHandler(this.textBox29_TextChanged);
             // 
             // textBox30
             // 
@@ -1208,7 +1215,8 @@
             this.textBox30.Name = "textBox30";
             this.textBox30.Size = new System.Drawing.Size(480, 22);
             this.textBox30.TabIndex = 32;
-            this.textBox30.Text = "C:\\Projects\\CACC\\NewCACC\\I-66CACCTestNetwork.inpx";
+            this.textBox30.Text = "C:\\Users\\pengs1\\TFHRC_Leidos\\TO4_CACC Simulation\\CACC & VISSIM Network\\COM_Based_" +
+    "I66_WB_DedicatedCACCLane\\I66\\i-66_wb_dedicatedcacclane_2.inpx";
             this.textBox30.TextChanged += new System.EventHandler(this.textBox30_TextChanged);
             // 
             // label40

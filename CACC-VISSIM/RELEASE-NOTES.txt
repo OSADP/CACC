@@ -3,7 +3,7 @@ Whenever a new software version is released, a Release Note is generated to prov
 RELEASE-NOTES.txt should include some of the following sections:
 
 - Release note identifier (name, date, version #)
-CACC VISSIM Algorithm, Oct. 6 2015, Version 1.0
+CACC VISSIM Algorithm, March 21 2016, Version 2.0
 
 
 - What's New
@@ -11,7 +11,8 @@ First release
 
 
 - System Requirements (third-party platforms / modules / etc with version numbers / dates)
-The CACC VISSIM Algorithm 1.0 can run on most standard Window based computers with 
+
+The CACC VISSIM Algorithm 2.0 can run on most standard Window based computers with 
 Pentium core processers, with at least two gigabits of RAM and at least 100 MB of drive space.
 Performance of the software will be based on the computing power and available RAM in 
 the system.  Larger datasets can require much larger space requirements depending on the 
@@ -23,6 +24,8 @@ Third party platforms: 	PTV VISSIM 6.22 32 or 64 bit
 - Features and changes (new features, defects corrected, caveats etc)
 First release
 
+Got rid of the platoon self-organization logic, and replaced with a simpler platoon distapching
+logic (in the DriverModel 101)
 
 - Outstanding issues (unresolved defects, workarounds, installation issues etc)
 
@@ -35,8 +38,8 @@ More detailed info, please refer to the instruction.txt file.
 
 
 - Known Issues
-VISSIM's lane changing module cannot be easily modified without causing some bad visual effects. So you may see the
-left- or right-turning lights always on of the CACC vehicles, but that does not mean they initiated a lane-changing.
+VISSIM's lane changing module cannot be easily modified without causing some bad visual effects. You may see the
+CACC vehicles' turning lights on and they keep on wobbling from side to side in the managed lane.
 
 
 - Troubleshooting

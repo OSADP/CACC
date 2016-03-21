@@ -10,12 +10,6 @@ using System.Windows.Forms;
 using System.IO;
 using VISSIMLIB;
 
-/*   VISSIM COM program to control CACC vehicles   
-	updated 10-02-2015
-	This code has some hard-coded lines that apply only to the I-66 WB network.
-	The main task of this code is changing the vehicle type when needed, between 101, 102, 103, 104 and 105.
-	Future developers can change this code to fit their network gemoetries, mainly changing the incoming/outgoing link IDs
-*/
 namespace CACCManGUI
 {
     public partial class Form1 : Form
@@ -32,59 +26,7 @@ namespace CACCManGUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<int> MainVolInput = new List<int>();
-            List<int> OnRampVolInput = new List<int>();
-            List<int> OutGoingLinks = new List<int>();
-            List<int> InComingLinks = new List<int>();
-            List<int> MainVol = new List<int>();
-            List<int> OnRampVol = new List<int>();
-           
 
-            StreamWriter sw = new StreamWriter(Directory.GetParent(textBox13.Text) + "\\CACCConf.dat");
-
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox1.Text) / 3.0,1)); // ft/s -> m/s
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox2.Text) / 3.0, 1)); // ft/s -> m/s
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox3.Text) / 3.0, 1)); // ft/s -> m/s
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox4.Text) / 3.0, 1));
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox5.Text) * 1.604/3.6, 1)); // mi/h -> m/s
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox6.Text) * 1.604/3.6, 1)); // mi/h -> m/s
-            sw.WriteLine(textBox7.Text);
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox8.Text) / 3.0, 1));
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox9.Text) / 3.0, 1));
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox10.Text) / 1.0, 1));
-            sw.WriteLine(Math.Round(Convert.ToDouble(textBox11.Text) / 1.0, 1));
-            sw.WriteLine(textBox47.Text); // Staging Link
-
-
-            sw.Close();
-
-            string fn = textBox12.Text;
-            string fnini = textBox13.Text;
-            int sp = int.Parse(textBox14.Text);
-            int NumRep = int.Parse(textBox15.Text);
-            int rseed = int.Parse(textBox16.Text);
-            string maininput = textBox18.Text;
-            string onrampinput = textBox19.Text;
-            string outgoinglinks = textBox20.Text;
-            string incominglinks = textBox21.Text;
-            string Mainvol = textBox42.Text;
-            string OnRVol = textBox43.Text;
-            string MPCacc = textBox44.Text;
-            string MPAcc = textBox45.Text;
-            string MPHov = textBox46.Text;
-
-            MainVolInput = GetList(MainVolInput, maininput);
-            OnRampVolInput = GetList(OnRampVolInput, onrampinput);
-            OutGoingLinks = GetList(OutGoingLinks, outgoinglinks); // 9,1513,1555,1581,1588,1597,1609,1636,1644,1661,19
-            InComingLinks = GetList(InComingLinks, incominglinks); // 1515, 1513, 1529, 1555, 2008, 1565,1578, 1594,1600, 87,1640,  1644, 1661,1676, 1678,1679, 1687,20,10035,10036,19,1605,
-            MainVol = GetList(MainVol, Mainvol);
-            OnRampVol = GetList(OnRampVol, OnRVol);
-
-            for (int i = 1; i <= NumRep; i++)
-            {
-                RunCACCSimSingle(fn, fnini, sp, 10, rseed, MainVolInput, OnRampVolInput, OutGoingLinks, InComingLinks, MainVol, OnRampVol, MPCacc, MPAcc, MPHov);
-                rseed++;
-            }
         }
 
         private static Dictionary<int, List<int>> DestLinks = new Dictionary<int, List<int>>();
@@ -102,293 +44,6 @@ namespace CACCManGUI
 
         private void RunCACCSimSingle(string fn, string fnini, int SimTime, int simresol, int rseed, List<int> MainVolInput, List<int> OnRampVolInput, List<int> OutGoingLinks, List<int> InComingLinks, List<int> MainVol, List<int> OnRampVol, string MPCacc, string MPAcc, string MPHov)
         {
-            int outci = 0; //initialized the counter for traffic on on-ramp 
-            int inci = 0; //initialized the time coutner for traffic on off-ramp
-            int ininterval = 2 * simresol; // In the on-ramp (shorter length) collect data at twice of the simulation interval
-            int outinterval = 4 * simresol; // In the off-ramp (longer length) collect data at four times of the simulation interval
-            int vid = 0;
-            int type = 0;
-            object VTYPE = null;
-            object VIDs = null;
-            VissimTools.InitVissim(fn, fnini, SimTime, simresol, rseed);
-
-            AdjustVolume(Convert.ToDouble(MPCacc));
-
-            for (int i = 1; i <= simresol * SimTime; i++)
-            {
-                VissimTools.vissim.Simulation.RunSingleStep();
-
-                inci++;
-                outci++;
-
-                if (inci == ininterval)
-                {
-                    foreach (int val in InComingLinks)
-                    {
-
-                        VIDs = VissimTools.GetLinkVehiclesbyNumber(val);
-                        VTYPE = VissimTools.GetLinkVehiclesByType(val);
-
-                        for (int k = 0; k < ((object[,])(VIDs)).Length / 2; k++)
-                        {
-                            type = Convert.ToInt32(((object[,])(VTYPE))[k, 1]);
-
-                            if (type == 102)
-                            {
-                                vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-
-                                if (VissimTools.Get_Lane(vid) == VissimTools.GetNumLanes(val) )
-                                {
-                                    if (val == 1581)
-                                        Console.Write("!");
-                                    VissimTools.Set_VehType(vid, 101);
-                                }
-                            }
-                        }
-
-                        inci = 0;
-                    }
-                }
-
-                if (outci == outinterval)
-                {
-                    foreach (int val in OutGoingLinks)
-                    {
-                        VIDs = VissimTools.GetLinkVehiclesbyNumber(val);
-                        VTYPE = VissimTools.GetLinkVehiclesByType(val);
-
-                        for (int k = 0; k < ((object[,])(VIDs)).Length / 2; k++)
-                        {
-                            type = Convert.ToInt32(((object[,])(VTYPE))[k, 1]);
-
-                            if (type == 101)
-                            {
-                                vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-
-                                if (CheckRoute(vid))
-                                {
-                                    VissimTools.Set_VehType(vid, 100);
-                                }
-                            }
-                        }
-
-                        outci = 0;
-                    }
-
-
-                }
-
-            }
-        }
-
-        private void RunCACCSimMultiOLD(string fn, string fnini, int SimTime, int simresol, int rseed, List<int> OutGoingLinks, List<int> InComingLinks, double gpx,double hovx,double gpcaccx,double hovcaccx)
-        {
-            int outci = 0; //initialized the counter for traffic on on-ramp 
-            int inci = 0; //initialized the time coutner for traffic on off-ramp
-            int swci = 0;
-            int li = 0;            
-            int ininterval = 2 * simresol; // In the on-ramp (shorter length) collect data at twice of the simulation interval
-            int outinterval = 2 * simresol; // In the off-ramp (longer length) collect data at four times of the simulation interval
-            int switchinterval = -2 * simresol; // in case of the Links 1600 and 1636 which have the middle-lane HOV exit, CACC needs to be temporarly switched to HOV to properly take the routes 
-            int lowspdinterval = 2 * simresol;
-            int vid = 0;
-            int type = 0;
-            int lkid = 0;
-            object VTYPE = null;
-            object VIDs = null;
-            Dictionary<int, List<int>> VehCheckList = new Dictionary<int, List<int>>();
-            Dictionary<int, List<int>> SwLinks = new Dictionary<int, List<int>>();
-            List<int> SwitchVehs = new List<int>(); 
-
-            //invoking the initiallizatio of the Vssim network based on the pararmeter defined above
-            VissimTools.InitVissim(fn, fnini, SimTime, simresol, rseed);
-
-            AdjustVolumeMulti(gpx,hovx,gpcaccx,hovcaccx);
-
-            // Hard Coded for the TOPR 4 Project
-            SwLinks.Add(1600, new List<int>()); SwLinks[1600].Add(1604);
-            SwLinks.Add(1636, new List<int>()); SwLinks[1636].Add(1645); 
-
-
-            double lowspd = 50.0;
-            int lk = 0;
-            int tglane = 0;
-
-            for (int i = 1; i <= simresol * SimTime-1; i++)
-            {
-                VissimTools.vissim.Simulation.RunSingleStep();
-
-
-                inci++;
-                outci++;
-                swci++;
-                li++;
-
-                if (li == lowspdinterval)
-                {
-
-                    VIDs = VissimTools.GetAllVehicles();
-                    VTYPE = VissimTools.GetAllVehiclesByType();
-
-                    for (int k = 0; k < ((object[,])(VIDs)).Length / 2; k++)
-                    {
-                        type = Convert.ToInt32(((object[,])(VTYPE))[k, 1]);
-
-                        if (type == 101)
-                        {
-                            vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-                            lk = VissimTools.Get_VehLink(vid);
-
-                            if (VissimTools.Get_VehSpd(vid) <= lowspd && (VissimTools.Get_Lane(vid) == VissimTools.GetNumLanes(lk)))
-                            {
-                                VissimTools.Set_VehType(vid, 103);                            
-                            }
-                        }
-
-                        if (type == 103)
-                        {
-                            vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-                            lk = VissimTools.Get_VehLink(vid);
-
-                            if (VissimTools.Get_VehSpd(vid) > 1.2*lowspd && VissimTools.Get_Lane(vid) == VissimTools.GetNumLanes(lk))
-                            {
-                                VissimTools.Set_VehType(vid, 101);
-                            }
-                        }
-                    }
-
-                    li = 0;
- 
-                
-                }
-
-                if (inci == ininterval)
-                {
-                    foreach (int val in InComingLinks)
-                    {
-
-                        
-                        VIDs = VissimTools.GetLinkVehiclesbyNumber(val);
-                        VTYPE = VissimTools.GetLinkVehiclesByType(val);
-
-
-                        for (int k = 0; k < ((object[,])(VIDs)).Length / 2; k++)
-                        {
-                            type = Convert.ToInt32(((object[,])(VTYPE))[k, 1]);
-
-                            if (type == 102)
-                            {
-                                vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-
-                                tglane = VissimTools.GetNumLanes(val);
-
-                                if (VissimTools.Get_Lane(vid) == tglane)
-                                {
-                                    VissimTools.Set_VehType(vid, 101);
-                                }
-                                else
-                                    VissimTools.SetVehDesLane(vid, tglane);
-
-                            }
-                        }
-                        inci = 0;
-                    }
-                }
-
-
-
-                if (outci == outinterval)
-                {
-                    foreach (int val in OutGoingLinks)
-                    {
-                        VIDs = VissimTools.GetLinkVehiclesbyNumber(val);
-                        VTYPE = VissimTools.GetLinkVehiclesByType(val);
-
-                        for (int k = 0; k < ((object[,])(VIDs)).Length / 2; k++)
-                        {
-                            type = Convert.ToInt32(((object[,])(VTYPE))[k, 1]);
-
-                            if (type == 101)
-                            {
-                                if (!VehCheckList.ContainsKey(val))
-                                    VehCheckList.Add(val, new List<int>());
-
-                                vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-
-                                if (!VehCheckList[val].Contains(vid))
-                                {
-                                    if (CheckRouteMulti(val, vid))
-                                    {
-                                        if (val == 1636 || val == 19)
-                                        {
-                                            VissimTools.Set_VehType(vid, 102);
-                                            VissimTools.SetVehDesLane(vid, 5);
-                                        }
-                                        else
-                                        {
-                                            VissimTools.Set_VehType(vid, 100);
-                                            VissimTools.SetVehDesLane(vid, 1);
-                                        }
-                                    }
-
-                                    VehCheckList[val].Add(vid);
-                                }
-                            }
-                        }
-
-                        outci = 0;
-                    }
-                }
-
-                if (swci == switchinterval)
-                {
-                    foreach (int val in SwLinks.Keys)
-                    {
-                        VIDs = VissimTools.GetLinkVehiclesbyNumber(val);
-                        VTYPE = VissimTools.GetLinkVehiclesByType(val);
-
-                        for (int k = 0; k < ((object[,])(VIDs)).Length / 2; k++)
-                        {
-                            type = Convert.ToInt32(((object[,])(VTYPE))[k, 1]);
-                            vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-
-                            if (vid == 270)
-                                Console.Beep(); 
-
-                            if (!SwitchVehs.Contains(vid))
-                            {
-                                if (type == 101)
-                                {
-                                    if (VissimTools.Get_Lane(vid) == VissimTools.GetNumLanes(val))
-                                    {
-                                        if (!SwLinks[val].Contains(VissimTools.GetDestLink(vid)))
-                                        {
-                                            VissimTools.Set_VehType(vid, 700);
-                                            SwitchVehs.Add(vid);
-                                        }
-                                        else
-                                        {
-                                            VissimTools.Set_VehType(vid, 700);                                        
-                                        }
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                if (VissimTools.Get_Lane(vid) == (VissimTools.GetNumLanes(val) - 1))
-                                {
-                                    VissimTools.Set_VehType(vid, 101);
-                                    SwitchVehs.Remove(vid);
-                                }
-
-                            }
-                        }
-                    }
-                    swci = 0;
-
-                }
-
-            }
         }
 
         private void RunCACCSimMulti(string fn, string fnini, int SimTime, int simresol, int rseed, List<int> OutGoingLinks, List<int> InComingLinks, double gpx, double hovx, double gpcaccx, double hovcaccx)
@@ -401,16 +56,19 @@ namespace CACCManGUI
              * 104 : (Newly Added) pre-CACC vehicles looking for a chance to join CACC platoon. Controlled by API. Turn to 101 once joining to the platoon
              * 105 : (Newly Added) spin-off of 102. It is only for CACC vehicles depart the network at the beginning. Will turn to 101 once they getting into the left-most lane of mainline
              */
-
-
-
+                        
             int li = 0; 
-            int interval = 2 * simresol; // update interval. Global
+            int interval = 5 * simresol; // update interval. Global
             int vid = 0;
             int type = 0;
-            int lkid = 0;
+            int vlink = 0;
+            int vLinkTotalLane = 0;
+            int vlane = 0;
             object VTYPE = null;
             object VIDs = null;
+            object VLinksLanes=null;
+            object LinkIDs = null;
+            object LinkTotalLanes = null;
             Dictionary<int, List<int>> VehCheckList = new Dictionary<int, List<int>>();
             Dictionary<int, List<int>> SwLinks = new Dictionary<int, List<int>>();
             List<int> SwitchVehs = new List<int>();
@@ -418,12 +76,9 @@ namespace CACCManGUI
             //invoking the initiallizatio of the Vssim network based on the pararmeter defined above
             VissimTools.InitVissim(fn, fnini, SimTime, simresol, rseed);
 
-            AdjustVolumeMulti(gpx, hovx, gpcaccx, hovcaccx);
-           
-
-            double lowspd = 20.0; // kph
-            int lk = 0;
-            int tglane = 0;
+            AdjustVolumeMulti_OnRampMerge(gpx, hovx, gpcaccx, hovcaccx);
+            LinkIDs = VissimTools.GetLinkIDs();
+            LinkTotalLanes = VissimTools.GetLinksTotalLanes();
 
             for (int i = 1; i <= simresol * SimTime - 1; i++)
             {
@@ -433,220 +88,115 @@ namespace CACCManGUI
 
                 if (li == interval)
                 {
-
-                    VIDs = VissimTools.GetAllVehicles();
+                    VIDs = VissimTools.GetAllVehiclesByID();
                     VTYPE = VissimTools.GetAllVehiclesByType();
+                    VLinksLanes = VissimTools.GetAllVehiclesByLane();
+                    int totNumVehs=((object[,])(VIDs)).Length/2;
 
-                    for (int k = 0; k < ((object[,])(VIDs)).Length / 2; k++)
+                    object[,] updateVType=(object[,])(VTYPE);
+
+                    for (int k = 0; k < totNumVehs; k++)
                     {
                         type = Convert.ToInt32(((object[,])(VTYPE))[k, 1]);
+                        vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
+                        
+                        string tmp = null;
+                        tmp = Convert.ToString(((object[,])(VLinksLanes))[k, 1]);
 
-                        // incoming CACC Control
+                        vlink = int.Parse(tmp.Split("-".ToCharArray())[0]);
+                        vlane = int.Parse(tmp.Split("-".ToCharArray())[1]);
+                        //vLinkTotalLane = VissimTools.GetNumLanes(vlink);
+                        int targetVType = 0;
+
+                        int start=0;
+                        int end=514;
+                        int mid=(start+end)/2;
+                        int temp=Convert.ToInt32(((object[,])(LinkIDs))[mid, 1]);
+                        while(temp!=vlink)
+                        {
+                            if(temp>vlink)
+                            {
+                                end=mid-1;
+                            }
+                            else
+                                start=mid+1;
+                            mid=(start+end)/2;
+                            temp = Convert.ToInt32(((object[,])(LinkIDs))[mid, 1]);
+                        }
+                        vLinkTotalLane = Convert.ToInt32(((object[,])(LinkTotalLanes))[mid, 1]);
+                        
+                        // incoming CACC lane changing control through veh type changes                        
+
                         if (type == 102 || type == 105)
                         {
-                            vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-                            lk = VissimTools.Get_VehLink(vid);
-
-                            tglane = VissimTools.GetNumLanes(lk);
-
-
-                            // for those who are on the mainline
-                            if (tglane > 3)
+                            if (vLinkTotalLane > 3)
                             {
-
-                                if (VissimTools.Get_Lane(vid) == tglane)
+                                if (vlane == vLinkTotalLane)
                                 {
-                                    VissimTools.Set_VehType(vid, 101);
+                                    if(type!=101)
+                                        targetVType=101;
                                 }
-
-                                if (type == 102 && VissimTools.Get_Lane(vid) == tglane - 1)
+                                else if (vlane == vLinkTotalLane - 1)
                                 {
-                                    VissimTools.Set_VehType(vid, 104);
-
+                                    if(type!=104)
+                                        targetVType = 104;
                                 }
                                 else
                                 {
-                                    VissimTools.SetVehDesLane(vid, tglane - 1);
+                                    VissimTools.SetVehDesLane(vid, vLinkTotalLane - 1);
                                     continue;
                                 }
                             }
+                        }
+                        
+                        if (type == 104)
+                        {
+                            //lane changing control for vehicle type 104
 
-                            // To control potential CACC vehicles (102) outgoing from the previous ramp to the next ramp.  
-
-                            if (type == 102)
+                            if (vlink == 1636 || vlink == 19)
                             {
-                                if (!VehCheckList.ContainsKey(lk))
-                                    VehCheckList.Add(lk, new List<int>());
-
-                                if (!VehCheckList[lk].Contains(vid))
-                                {
-                                    if (CheckRouteMulti(lk, vid))
-                                    {
-                                        VissimTools.Set_VehType(vid, 100);
-                                        if (lk == 1636 || lk == 19)
-                                        {
-                                            
-                                            VissimTools.SetVehDesLane(vid, 5);
-                                        }
-                                        else
-                                        {
-                                            VissimTools.SetVehDesLane(vid, 1);
-                                        }
-                                    }
-
-                                    VehCheckList[lk].Add(vid);
-                                }
-                            
+                                vLinkTotalLane = vLinkTotalLane - 1;
                             }
 
+                            if (vlane == vLinkTotalLane)
+                            {
+                                targetVType = 101;
+                            }
                         }
 
-                        else if (type == 104)
+                        if (type == 102 || type == 105 || type==101 || type==104)
                         {
-                            vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-                            lk = VissimTools.Get_VehLink(vid);
-                            tglane = VissimTools.GetNumLanes(lk);
+                            //outgoing control for all the vehicle types
+                            // CACC vehicles taking the off-ramp, set desired lane as 5 or 1 depending on left-exit or right-exit
 
-                            if (lk == 1636 || lk == 19)
+                            if (!VehCheckList.ContainsKey(vlink))
+                                VehCheckList.Add(vlink, new List<int>());
+
+                            if (!VehCheckList[vlink].Contains(vid))
                             {
-                                tglane = tglane - 1;
-                            }
+                                if (CheckRouteMulti(vlink, vid))
+                                {                                    
+                                    targetVType = 100;
 
-                            if (VissimTools.Get_Lane(vid) == tglane)
-                            {
-                                VissimTools.Set_VehType(vid, 101);
-                            }
-
-
-                            // outgoing CACC control for vtype 104
-
-                            if (!VehCheckList.ContainsKey(lk))
-                                VehCheckList.Add(lk, new List<int>());
-
-                            if (!VehCheckList[lk].Contains(vid))
-                            {
-                                if (CheckRouteMulti(lk, vid))
-                                {
-                                    VissimTools.Set_VehType(vid, 100);
-
-                                    if (lk == 1636 || lk == 19)
+                                    if (vlink == 1636 || vlink == 19)
                                     {
-                                        //VissimTools.Set_VehType(vid, 102);
                                         VissimTools.SetVehDesLane(vid, 5);
                                     }
                                     else
                                     {
-                                        //VissimTools.Set_VehType(vid, 100);
                                         VissimTools.SetVehDesLane(vid, 1);
                                     }
                                 }
-
-                                VehCheckList[lk].Add(vid);
-                            }
+                                VehCheckList[vlink].Add(vid);
+                            }                            
                         }
-
-                        else if (type == 101)
-                        {
-
-                            vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-                            lk = VissimTools.Get_VehLink(vid);
-
-
-                            //low speed CACC control
-                            if (VissimTools.Get_VehSpd(vid) <= lowspd && (VissimTools.Get_Lane(vid) == VissimTools.GetNumLanes(lk)))
-                            {
-                                
-                                VissimTools.Set_VehType(vid, 103);
-                                continue;
-                            }
-
-
-                            // outgoing CACC control
-
-                            if (!VehCheckList.ContainsKey(lk))
-                                VehCheckList.Add(lk, new List<int>());
-
-                            if (!VehCheckList[lk].Contains(vid))
-                            {
-                                if (CheckRouteMulti(lk, vid))
-                                {
-                                    VissimTools.Set_VehType(vid, 100);
-
-                                    if (lk == 1636 || lk == 19)
-                                    {
-                                        //VissimTools.Set_VehType(vid, 102);
-                                        VissimTools.SetVehDesLane(vid, 5);
-                                    }
-                                    else
-                                    {
-                                        //VissimTools.Set_VehType(vid, 100);
-                                        VissimTools.SetVehDesLane(vid, 1);
-                                    }
-                                }
-
-                                VehCheckList[lk].Add(vid);
-                            }
-
-                        }
-
-                        //low speed CACC control
-                        else if (type == 103)
-                        {
-                            vid = Convert.ToInt32(((object[,])(VIDs))[k, 1]);
-                            lk = VissimTools.Get_VehLink(vid);
-
-                            if (VissimTools.Get_VehSpd(vid) > 1.2 * lowspd)
-                            {
-                                tglane = VissimTools.GetNumLanes(lk);
-
-                                if (VissimTools.Get_Lane(vid) == tglane)
-                                {
-                                    VissimTools.Set_VehType(vid, 101);
-                                }
-                                else
-                                {
-                                    // Modified to change vtype 103 to 104
-                                    if (lk == 1636 || lk == 19)
-                                    {
-                                        if (VissimTools.Get_Lane(vid) == tglane-2)
-                                            VissimTools.Set_VehType(vid, 104);
-                                        else
-                                            VissimTools.SetVehDesLane(vid, tglane - 2);                                            
-                                    }
-                                    else
-                                    {
-                                        if (VissimTools.Get_Lane(vid) == tglane - 1)
-                                            VissimTools.Set_VehType(vid, 104);
-                                        else
-                                            VissimTools.SetVehDesLane(vid, tglane - 1);    
-                                    }
-                                }
-                            }
-                        }
+                        if(targetVType!=0)
+                            updateVType[k, 1] = targetVType;
                     }
                     li = 0;
+                    VissimTools.SetVTypeBulk(updateVType);
                 }
                     
-            }
-        }
-
-        private void AdjustVolume(double p)
-        {
-            double vol1 = 0.0;
-            double vol2 = 0.0;
-
-            for (int i=9;i<=23;i++)
-            {
-                for (int j = 1; j <= 20; j++)
-                {
-                    vol1 = VissimTools.GetVol(i, "Volume(" + j + ")");
-                    vol2 = VissimTools.GetVol(i+15, "Volume(" + j + ")");
-                    VissimTools.SetVol(i, "Volume(" + j + ")", vol1 * (1.0 - p));
-                    VissimTools.SetVol(i+15, "Volume(" + j + ")", vol2 * (1.0 - p));
-                    vol1 = vol1 * p;
-                    vol2 = vol2 * p;
-                    VissimTools.SetVol(i + 30, "Volume(" + j + ")", vol1+vol2);
-                }
             }
         }
 
@@ -687,6 +237,32 @@ namespace CACCManGUI
             label36.Update();
         }
 
+        private void AdjustVolumeMulti_OnRampMerge(double gpx, double hovx, double gpcaccx, double hovcaccx)
+        {
+            double vol1 = 0.0;
+            double vol2 = 0.0;
+
+            label36.Text = "Progress: Update Demand.... 0 %";
+
+            for (int i = 9; i <= 23; i++) // 23
+            {
+                for (int j = 1; j <= 20; j++) //20
+                {
+                    vol1 = VissimTools.GetVol(i, "Volume(" + j + ")") * gpx;
+                    vol2 = VissimTools.GetVol(i + 15, "Volume(" + j + ")") * hovx;
+
+                    // update volume after CACC
+                    VissimTools.SetVol(i, "Volume(" + j + ")", vol1 * (1.0 - gpcaccx));
+                    VissimTools.SetVol(i + 15, "Volume(" + j + ")", vol2 * (1.0 - hovcaccx));
+                    VissimTools.SetVol(i + 30, "Volume(" + j + ")", vol1 * gpcaccx + vol2 * hovcaccx);
+                }
+
+                label36.Text = "Progress: Update Demand.... " + Math.Round(Convert.ToDouble(100.0 * (i / 23)), 1) + " %";
+                label36.Update();
+            }
+            label36.Text = "Progress: Simulation In Progress";
+            label36.Update();
+        }
 
         private bool CheckRoute(int vid)
         {
@@ -763,8 +339,12 @@ namespace CACCManGUI
 
         private void button6_Click(object sender, EventArgs e)
         {
+            //List<int> MainVolInput = new List<int>();
+            //List<int> OnRampVolInput = new List<int>();
             List<int> OutGoingLinks = new List<int>();
             List<int> InComingLinks = new List<int>();
+            //List<int> MainVol = new List<int>();
+            //List<int> OnRampVol = new List<int>();
             string line = null;
             string[] token = null;
 
@@ -788,9 +368,13 @@ namespace CACCManGUI
             double GPCAX = 0.0;
             double HOVCAX = 0.0; 
 
-            OutGoingLinks = GetList(OutGoingLinks, outgoinglinks); // 9,1513,1555,1581,1588,1597,1609,1636,1644,1661,19
-            InComingLinks = GetList(InComingLinks, incominglinks); //1515, 1513, 1529, 1555, 2008, 1565,1578, 1594,1600, 87,1640,  1644, 1661,1676, 1678,1679, 1687,20,10035,10036,19,1605,
+            //MainVolInput = GetList(MainVolInput, maininput);
+            //OnRampVolInput = GetList(OnRampVolInput, onrampinput);
+            OutGoingLinks = GetList(OutGoingLinks, outgoinglinks); //
+            InComingLinks = GetList(InComingLinks, incominglinks); //1513
             GetDestList(destlinks); // 1513,9:1526,1539|1555:1568,1557|1581:1590|1588:1596|1609:1618,1626|18:1667,1657|1661:1677|1636:1645|19:1604
+            //MainVol = GetList(MainVol, Mainvol);
+            //OnRampVol = GetList(OnRampVol, OnRVol);
 
 
             while ((line = sr.ReadLine()) != null)
@@ -813,15 +397,15 @@ namespace CACCManGUI
                 sw.WriteLine(int.Parse(token[5])); // toogle
                 sw.Close();
 
-                GPX = Math.Round(Convert.ToDouble(token[1])/100,2);
+                GPX = Math.Round(Convert.ToDouble(token[1]) / 100, 2);
                 HOVX = Math.Round(Convert.ToDouble(token[2]) / 100, 2);
                 GPCAX = Math.Round(Convert.ToDouble(token[3]) / 100, 2);
                 HOVCAX = Math.Round(Convert.ToDouble(token[4]) / 100, 2);
 
-
+                //double CACC_Main, double GP_Main, double CACC_Ramp, double GP_Ramp
                 for (int i = 1; i <= NumRep; i++)
                 {
-                    RunCACCSimMulti(fn, fnini, sp, 10, rseed, OutGoingLinks, InComingLinks, GPX,HOVX,GPCAX,HOVCAX);
+                    RunCACCSimMulti(fn, fnini, sp, 10, rseed, OutGoingLinks, InComingLinks, GPX, HOVX, GPCAX, HOVCAX);
                     rseed++;
                 }
             }
@@ -904,6 +488,31 @@ namespace CACCManGUI
         {
 
         }
+
+        private void textBox29_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox23_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox22_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox24_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox28_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
@@ -926,14 +535,18 @@ namespace CACCManGUI
             vissim.Exit();
         }
 
-
         //static public void Set_InputVol(int id, int vol) { vissim.Net.VehicleInputs.get_ItemByKey(id).set_AttValue("Volume", vol); } // not ok
-        public static object GetLinkVehiclesbyNumber(int lkn) { return vissim.Net.Links.get_ItemByKey(lkn).Vehs.get_GetMultiAttValues("No"); } // OK
+        public static object GetAllVehicles() { return vissim.Net.Vehicles; } //??? does it work??
+        public static object GetAllVehiclesByID() { return VissimTools.vissim.Net.Vehicles.get_GetMultiAttValues("No"); } //OK
         public static object GetAllVehiclesByType() { return vissim.Net.Vehicles.get_GetMultiAttValues("VehType"); } // OK
+        public static object GetAllVehiclesByLane() { return vissim.Net.Vehicles.get_GetMultiAttValues("Lane"); }
+        public static object GetAllVehiclesByLink() { return vissim.Net.Vehicles.get_GetMultiAttValues("Link"); }
+        public static object GetLinkIDs() { return vissim.Net.Links.get_GetMultiAttValues("No"); }
+        public static object GetLinksTotalLanes() { return vissim.Net.Links.get_GetMultiAttValues("NUMLANES"); }
+        public static object GetLinkVehiclesbyNumber(int lkn) { return vissim.Net.Links.get_ItemByKey(lkn).Vehs.get_GetMultiAttValues("No"); } // OK
         public static object GetLinkVehiclesByType(int lkn) { return vissim.Net.Links.get_ItemByKey(lkn).Vehs.get_GetMultiAttValues("VehType"); } // OK
+        public static void SetVTypeBulk(object[,] updateVType) { vissim.Net.Vehicles.SetMultiAttValues("VehType", updateVType); }     
 
-        
-        public static object GetAllVehicles() { return VissimTools.vissim.Net.Vehicles.get_GetMultiAttValues("No"); } //OK
         static public int Get_VehType(int vid) { return int.Parse(vissim.Net.Vehicles.get_ItemByKey(vid).get_AttValue("VehType")); } //OK
         static public double Get_VehSpd(int vid) {return Convert.ToDouble(vissim.Net.Vehicles.get_ItemByKey(vid).get_AttValue("Speed"));}
         static public int Get_VehLink(int vid)
@@ -955,6 +568,7 @@ namespace CACCManGUI
         } //OK
         static public void Set_VehType(int vid, int type) { vissim.Net.Vehicles.get_ItemByKey(vid).set_AttValue("VehType", type); }
         static public void SetVehDesLane(int vid, int lane) { vissim.Net.Vehicles.get_ItemByKey(vid).set_AttValue("DesLane", lane); }
+
         static public int GetRoute(int vid) { return (int)vissim.Net.Vehicles.get_ItemByKey(vid).get_AttValue("RouteNo"); }
         static public void SetVol(int id, string volbin, double vol) { vissim.Net.VehicleInputs.get_ItemByKey(id).set_AttValue(volbin, vol); }
         static public double GetVol(int id, string volbin) { return Convert.ToDouble(vissim.Net.VehicleInputs.get_ItemByKey(id).get_AttValue(volbin)); }
@@ -973,7 +587,5 @@ namespace CACCManGUI
         
         }
         static public int GetNumLanes(int lkid) { return (int)vissim.Net.Links.get_ItemByKey(lkid).get_AttValue("NumLanes"); }
-
-
     }
 }

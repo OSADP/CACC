@@ -2,10 +2,35 @@
 /*  DriverModel.cpp                                  DLL Module for VISSIM  */
 /*                                                                          */
 /*  Interface module for external driver models.                            */
-/*  Dummy version that simply sends back VISSIM's suggestions to VISSIM.    */
 /*                                                                          */
-/*  Version of 2015-10-02                                   Peng Patrick Su */
+/*  Version of 2016-03-21                                   Peng Su         */
 /*==========================================================================*/
+
+/* ---------------------------- Revision Note ------------------------------*/
+/* Nov. 2012																*/
+/*  CACC Application Enhancement											*/
+/*  Modified by Joyoung Lee, University of Virginia.						*/
+/*
+/* Jul. 2013
+/*  CACC Lane changing Model Enhancement
+/*  Modified by Joyoung Lee, University of Virginia
+/*
+/* May. 2014
+/*  Algorithm Minor revision
+/*  Modified by Joyoung Lee, New Jersey Institute of Technology
+/*
+/* Nov. 2014
+/*  Revised for VISSIM 6 environment, Joyoung Lee NJIT
+/* Dec. 2014
+/*  Revised for the CACC Simulation Manager program, Joyoung Lee NJIT
+/*
+/* Feb. 2015
+/* Code Block descriptions (input/output flow) were added.
+/* August 2015 : Vehicle for type 104 (potential CACC on the second lane)
+/* Mar 2016 : Second release
+/*==========================================================================*/
+
+
 
 #include "DriverModel.h"
 #include <stdio.h>
@@ -38,7 +63,7 @@ long current_lane = 0;
 long lanes_current_link = 0; // Dec. 15. 2014
 double timestep = 0.0;
 long current_veh = 0;
-long vissim_suggestion = 1; // 0 indicates no: not listen to VISSIM, 1 otherwise
+long vissim_suggestion = 0; // 0 indicates no: not listen to VISSIM, 1 otherwise
 long simple_lanechange = 0;
 long adj_veh;
 long adj_veh_class;
@@ -55,6 +80,7 @@ long AdjVehiclesTargetLane[5][5];
 
 ofstream fout;//("out_newdll.txt",std::ios_base::app);
 ofstream fout_ncacc;
+ofstream fout_LaneChangeTTC;
 ifstream fin;
 string str;
 char ch;
@@ -279,9 +305,9 @@ DRIVERMODEL_API  int  DriverModelGetValue(long   type,
 	case DRIVER_DATA_VEH_COLOR:
 		*long_value = vehicle_color;
 		return 1;
-	case DRIVER_DATA_WANTS_SUGGESTION:
+	case DRIVER_DATA_WANTS_SUGGESTION:  //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		//*long_value = 0;
-		*long_value = vissim_suggestion;
+		*long_value = 1;
 		return 1;
 	case DRIVER_DATA_DESIRED_ACCELERATION:
 		*double_value = desired_acceleration;
@@ -295,7 +321,7 @@ DRIVERMODEL_API  int  DriverModelGetValue(long   type,
 	case DRIVER_DATA_REL_TARGET_LANE:
 		*long_value = rel_target_lane;
 		return 1;
-	case DRIVER_DATA_SIMPLE_LANECHANGE:
+	case DRIVER_DATA_SIMPLE_LANECHANGE: //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		*long_value = 0;
 		return 1;
 	default:
@@ -317,7 +343,6 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 		now = time(0);
 		dt = ctime(&now);
 
-		//fout.open("out_newdll.dat", std::ios_base::out);
 
 		fin.open("caccconf104.dat", std::ios_base::in);
 		if (fin)
@@ -343,7 +368,6 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 			Toggle = 2; //// 0 by Critical Gap; 1 by Speed Differential and 2 by both
 		}
 		fin.close();
-
 		return 1;
 	case DRIVER_COMMAND_CREATE_DRIVER:
 		VehStatus[current_veh] = 0;
@@ -360,33 +384,16 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 		return 1;
 	case DRIVER_COMMAND_MOVE_DRIVER:
 
+		//--------- Global Setting --------------------------------------//
+		//fout_LaneChangeTTC.open("LaneChangeTTC.csv", std::ios_base::out);
+		//fout_LaneChangeTTC << "Time" << "," << "EgoID" << "," << "EgoSpd" << "," << "LeadingID" << "," << "LeadingSpd" << "," << "LeadingGap" << ","
+		//	<< "FollowingID" << "," << "FollowingSpd" << "," << "LaggingGap" << endl;
+
 		vissim_suggestion = VISSIMSUG[current_veh];
+		// Lane number adjustment to handle CACC vehicles on the merge/diverge areas. 
 		current_lane = lanes_current_link - current_lane + 1;
-
 		VehTargetLane[current_veh] = 1;
-
 		lateral_pos_ind = GetLateralPos(lateral_pos);
-
-		if (VehStatus[current_veh] == 0 && lateral_pos_ind != 0)
-		{
-
-			if (lateral_pos_ind>0) // To the right
-			{
-
-				rel_target_lane = -1;
-				active_lane_change = -1;
-				desired_lane_angle = active_lane_change * lane_angle;
-			}
-			else // To the left
-			{
-
-				rel_target_lane = 1;
-				active_lane_change = 1;
-				desired_lane_angle = active_lane_change * lane_angle;
-			}
-			return 1;
-		}
-
 		if (current_lane == 2)
 		{
 			int flag = 1; // false 
@@ -394,12 +401,31 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 			double gap2 = 0.0;
 			double diff1 = 0.0;
 			double diff2 = 0.0;
+			
+			if (VehStatus[current_veh] == 0 && lateral_pos_ind != 0)
+			{
 
+				if (lateral_pos_ind>0) // To the right
+				{
+
+					rel_target_lane = -1;
+					active_lane_change = -1;
+					desired_lane_angle = active_lane_change * lane_angle;
+				}
+				else // To the left
+				{
+
+					rel_target_lane = 1;
+					active_lane_change = 1;
+					desired_lane_angle = active_lane_change * lane_angle;
+				}
+				return 1;
+			}
+			
 			DistLeadingVeh = AdjVehiclesDist[3][3];
 			LeadingVeh_Acc = AdjVehiclesAcc[3][3];
 			LeadingVeh_Spd = AdjVehiclesSpeed[3][3] + 0.00001; // to make non-zero denominator
 			LeadingVeh_ID = AdjVehicles[3][3];
-
 
 			DistFollowingVeh = AdjVehiclesDist[3][1];
 			FollowingVeh_Acc = AdjVehiclesAcc[3][1];
@@ -408,10 +434,17 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 
 			Spd_vehicle = Spd_vehicle + 0.00001; // to make non-zero denominator
 
+			if (Spd_vehicle < 50 / 3.6)
+			{
+				active_lane_change = 0;
+				rel_target_lane = 0;
+				return 1; // not allow to change lane if the speed is too slow...
+			}
 			if (LeadingVeh_ID == -1 && FollowingVeh_ID == -1)//No CACC cars on the target lane. Just get in immediately. 
 			{
 
-				flag = 0;
+				flag = 0;				
+
 			}
 			else // Otherwise, check the condition
 			{
@@ -419,11 +452,11 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 				{
 					gap2 = (-1.0*DistFollowingVeh) / FollowingVeh_Spd;
 					diff2 = FollowingVeh_Spd - Spd_vehicle;
-					if (gap2 > 3)
+					if (gap2 > 4)
 						flag = 0;
 					else
-					if (gap2>laggingCriticalGap && diff2<laggingMaxSpdDiff)
-						flag = 0;
+						if (gap2>laggingCriticalGap && diff2<laggingMaxSpdDiff)
+							flag = 0;
 				}
 				else if (LeadingVeh_ID > 0 && FollowingVeh_ID == -1)
 				{
@@ -432,8 +465,8 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 					if (gap1 > 1)
 						flag = 0;
 					else
-					if (gap1 > leadingCriticalGap && diff1 < leadingMaxSpdDiff)
-						flag = 0;
+						if (gap1 > leadingCriticalGap && diff1 < leadingMaxSpdDiff)
+							flag = 0;
 				}
 				else if (LeadingVeh_ID > 0 && FollowingVeh_ID > 0)
 				{
@@ -441,28 +474,38 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 					gap2 = (-1.0*DistFollowingVeh) / FollowingVeh_Spd;
 					diff1 = Spd_vehicle - LeadingVeh_Spd;
 					diff2 = FollowingVeh_Spd - Spd_vehicle;
-					if (gap1 > 1 && gap2 > 3)
+					if (gap1 > 1 && gap2 > 4)
 						flag = 0;
 					else
-					if (gap1 > leadingCriticalGap && gap2 > laggingCriticalGap && diff1<leadingMaxSpdDiff && diff2<laggingMaxSpdDiff)
-						flag = 0;
+						if (gap1 > leadingCriticalGap && gap2 > laggingCriticalGap && diff1<leadingMaxSpdDiff && diff2<laggingMaxSpdDiff)
+							flag = 0;
 				}
 				else
 					flag = 1;
 			}
 
-			if (Spd_vehicle < 50 / 3.6)
-				flag = 1; // not allow to change lane if the speed is too slow...
-
 			if (flag == 0)
 			{
 				active_lane_change = 1;
 				rel_target_lane = 1;
-				desired_lane_angle = active_lane_change * lane_angle;
+				desired_lane_angle = active_lane_change * lane_angle;				
+
+				
+				//fout_LaneChangeTTC << timestep << "," << current_veh << "," << Spd_vehicle << "," << LeadingVeh_ID << "," << LeadingVeh_Spd << "," << DistLeadingVeh << ","
+				//	<< FollowingVeh_ID << "," << FollowingVeh_Spd << "," << DistFollowingVeh << endl;
+				
 				VehStatus[current_veh] = -1;
 				VISSIMSUG[current_veh] = 0;
 			}
 		}
+		else
+		{
+			rel_target_lane = 1;
+			active_lane_change = 1;
+			desired_lane_angle = active_lane_change * lane_angle;
+		}
+
+		desired_velocity = 29;
 		return 1;
 	default:
 		return 0;
@@ -497,6 +540,9 @@ double GetLateralPos(double latpos)
 	else
 		return 0.0;
 }
+
+
+
 
 
 /*==========================================================================*/

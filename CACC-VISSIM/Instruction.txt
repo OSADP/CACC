@@ -2,7 +2,7 @@ Steps to run the CACC VISSIM 2.0 Algorithm
 
 1) Compile the Type101DriverModel and Type104DriverModel into DLL files.
    either 32 or 64 bit, depending on the PTV VISSIM version. 
-2) Open the I-66CalibratedNetwork.inpx, change the driver models of vehicle
+2) Open the I-66_wb_dedicatedcacclane_2.inpx, change the driver models of vehicle
    type 101 and 104 to the compiled DLL files in step 1).
 3) Design your own simulation scenarios, and modify the scenarios_template.csv file.
 

@@ -3,8 +3,39 @@
 /*                                                                          */
 /*  Interface module for external driver models.                            */
 /*                                                                          */
-/*  Version of 2015-10-02                                   Peng Patrick Su */
+/*  Version of 2016-03-21                                   Lukas Kautzsch  */
 /*==========================================================================*/
+
+/* ---------------------------- Revision Note ------------------------------*/
+/* Nov. 2012																*/
+/*  CACC Application Enhancement											*/
+/*  Modified by Joyoung Lee, University of Virginia.						*/
+/*
+/* Jul. 2013
+/*  CACC Lane changing Model Enhancement
+/*  Modified by Joyoung Lee, University of Virginia
+/*
+/* May. 2014
+/*  Algorithm Minor revision
+/*  Modified by Joyoung Lee, New Jersey Institute of Technology
+/*
+/* Nov. 2014
+/*  Revised for VISSIM 6 environment, Joyoung Lee NJIT
+/*  Note : VISSIM 7 (up to -04) did not work; it kept crashing when the first CACC vehicle reaches at the position of about 80%  of link length.
+/*
+/* Dec. 2014
+/*  Revised for the CACC Simulation Manager program, Joyoung Lee NJIT
+/*
+/* Feb. 2015
+/* Code Block descriptions (input/output flow) were added.
+/* July 30. 2015 : Major revision by Peng Su to implement Bart van Arem's algorithm
+/* August 2015 : Enhanced from the revision of July 30.
+
+/* Dec. 11: Added HWLong to CACC cars, for mixed traffic simulations. If leading car is not CACC, use HWLong
+/* Mar. 21: Get rid of the platoon-size re-organization code, instead, use a loose average platoon size parameter.
+/* 		The old re-organization logic kept on creating problems. The new logic works pretty well. 
+/*==========================================================================*/
+
 
 #include "DriverModel.h"
 #include <stdio.h>
@@ -73,35 +104,17 @@ double lane_angle = 0.021;
 
 int MaxPlatoonSize = 5;
 double HWShort = 0.6;
-double HWLong = 2.0;
+double HWLong = 2.0;  //headway when the vehicle in front is not Connected. Ego vehicle is actually in ACC mode.
 int leaderID = 0;
 int followerID = 0;
 double front_dist = 0.0;
 double rear_dist = 0.0;
-double const head_speed = 26.8;  // in meters per second
-double const catchup_speed = 36;  // in meters per second
-double const head_catchup_speed = 35;  // in meters per second
-double const D_Thr = 100;
-/*  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
-//7.30.2015 platooning organization logic added 
-map<long, int[6]> platoonState;
-/* Terminology:
-The one in front of ego is called leader, and the one behind is called follower, no matter they are connected or not.
-The one in front of ego in a platoon is called predecessor, and the one behind in a platoon is called successor.
-A leader is called predecessor if it is connected to Ego. 
-A follower is called successorof if it is connected to the ego.
-*/
+double const head_speed = 26.3889;  // in meters per second
 
-/* platoonState dictionary
-0: Head ID. 0 if it is not in platoon. This is the single identifier telling if a vehicle is in a platoon or not
-1: Leader ID. 0 if it is leader (no predecessor) or not in platoon
-2: Follower ID. 1 if it is the last car (no follower) or not in platoon
-3: Connected to leader or not
-4: Connected to follower or not
-5: location. 1, 2, 3, 4, 5,...
-To tell if a car is leader or not, check if platoonState[ID][0]==current_veh
-To tell if a car is the tail or not, check if platoonState[ID][2]==0 and platoonState[ID][0]!=0
-*/
+map<long, int[7]> platoonState;
+
+
+
 /*  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
 
 
@@ -192,7 +205,8 @@ DRIVERMODEL_API  int  DriverModelSetValue(long   type,
 		return 1;
 	case DRIVER_DATA_VEH_CURRENT_LINK:
 		current_link = long_value;
-		return 0; 
+		return 0; /* (To avoid getting sent lots of DRIVER_DATA_VEH_NEXT_LINKS messages) */
+		/* Must return 1 if these messages are to be sent from VISSIM!         */
 	case DRIVER_DATA_VEH_NEXT_LINKS:
 	case DRIVER_DATA_VEH_ACTIVE_LANE_CHANGE:
 		veh_active_lane_change = long_value;
@@ -288,8 +302,8 @@ DRIVERMODEL_API  int  DriverModelGetValue(long   type,
 	case DRIVER_DATA_VEH_COLOR:
 		*long_value = vehicle_color;
 		return 1;
-	case DRIVER_DATA_WANTS_SUGGESTION:
-		*long_value = 1;
+	case DRIVER_DATA_WANTS_SUGGESTION:  //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		*long_value = 0;
 		return 1;
 	case DRIVER_DATA_DESIRED_ACCELERATION:
 		*double_value = desired_acceleration;
@@ -303,7 +317,7 @@ DRIVERMODEL_API  int  DriverModelGetValue(long   type,
 	case DRIVER_DATA_REL_TARGET_LANE:
 		*long_value = rel_target_lane;
 		return 1;
-	case DRIVER_DATA_SIMPLE_LANECHANGE:
+	case DRIVER_DATA_SIMPLE_LANECHANGE: //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		*long_value = 0;
 		return 1;
 	default:
@@ -321,9 +335,18 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 	case DRIVER_COMMAND_INIT:
 		now = time(0);
 		dt = ctime(&now);
-
+		// the commented-out section below is for debugging purposes.
+		//fout_ncacc.open("Debugging_101.csv", std::ios_base::out);
+		//fout_ncacc << "EgoID" << "," << "Time" << "," << "LeadingID" << "," << "LeadingSpd" << "," << "D01" << ","<<"Lateral_Pos"<<endl;
+		//fout_ncacc << "desired_lane_angle" << "," << "active_lane_change" << "," << "rel_target_lane" << ","<<"veh_rel_target_lane"<<","<< "veh_active_lane_change" << ","<<"lateral_pos"<<endl; //for lane changing test purpose
+		//fout_ncacc << "EgoID" << "," << "Time" << "," << "Location" << "," << "Lane" << "," << "Head" << "," << "leaderID" << "," << "followerID" << "," << "front_Connect" << "," << "rear_Connect" << "," << "seq" << "," << "front_dist" << "," << "rear_dist" << endl;
+		//fout_ncacc << "EgoID" << "," << "Time" << "," << "HeadID" << "," << "LeadingID" << "," << "LeadingSpd" << "," << "Front_Dist" << ","
+		//	<< "EgoID" << "," << "EgoSpd" << "," << "EgoDesiredSpd" << "," << "LocationInPlatoon" << ","
+		//	<< "FollowingID" << "," << "FollowingSpd" << "," << "Back_Dist" << "," << endl;
+		//fout<<" --------------------- "<<dt;
+		//fout.flush();
+		
 		fin.open("caccconf101.dat", std::ios_base::in);
-
 		if (fin) {
 			getline(fin, str);
 			MaxPlatoonSize = atoi(str.c_str()); // vehicles
@@ -343,6 +366,7 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 		return 1;
 	case DRIVER_COMMAND_CREATE_DRIVER:
 		VehTargetLane[current_veh] = 0;
+		platoonState[current_veh][0] = 0;
 		return 1;
 	case DRIVER_COMMAND_KILL_DRIVER:
 		VehTargetLane.erase(current_veh);
@@ -350,25 +374,20 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 		return 1;
 	case DRIVER_COMMAND_MOVE_DRIVER:
 		/*  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
-	
+		
+		//fout_ncacc.open("out_newdll_ncacc_" + to_string(current_veh) + ".log", std::ios_base::out);
+		//fout_ncacc << "VISSIM SUGGESTION: " << vissim_suggestion<<","; // to check the previous status
+
 		leaderID = AdjVehicles[2][3];
 		followerID = AdjVehicles[2][1];
-		platoonState[current_veh][1] = leaderID;
-		platoonState[current_veh][2] = followerID;
 		front_dist = AdjVehiclesDist[2][3];
 		rear_dist = -AdjVehiclesDist[2][1];
 
-
-		// Added by JL from here--------------------
-
 		VehTargetLane[current_veh] = 1;
-
-		if (current_link == 19 || current_link == 1636)
-			VehTargetLane[current_veh] = 2;
 
 		current_lane = lanes_current_link - current_lane + 1;
 		lateral_pos_ind = GetLateralPos(lateral_pos);
-
+		
 		// Check wether the vehicle is trying to change the lane as they are not allowed until their type is changed.
 		if (VehTargetLane[current_veh] == current_lane)
 		{
@@ -395,173 +414,13 @@ DRIVERMODEL_API  int  DriverModelExecuteCommand(long number)
 				rel_target_lane = 0;
 			}
 		}
-		// ------- to here. 
 
-
-		if (platoonState[current_veh][0] == 0) //ego vehicle is not in platoon yet
-		{
-			if (leaderID == -1 || platoonState[leaderID][0] == 0) //ego car has no leader or the leader is not in platoon, and it can be head itself
-			{
-				desired_velocity = head_speed;
-				platoonState[current_veh][0] = current_veh;
-				platoonState[current_veh][3] = 0;
-				platoonState[current_veh][4] = 0;
-				platoonState[current_veh][5] = 1;
-			}
-			else
-			{
-				if (platoonState[leaderID][5] < MaxPlatoonSize) // if the leader's platoon has not reached size limit
-				{
-					if (front_dist > D_Thr)
-					{
-						desired_velocity = head_speed;
-						platoonState[current_veh][0] = current_veh;
-						platoonState[current_veh][3] = 0;
-						platoonState[current_veh][5] = 1;
-					}
-					else
-					{
-						desired_velocity = catchup_speed;
-						platoonState[current_veh][0] = platoonState[leaderID][0];
-						platoonState[current_veh][3] = 1;
-						platoonState[current_veh][5] = platoonState[leaderID][5] + 1;
-						//if (platoonState[current_veh][5] > MaxPlatoonSize)
-							//fout_ncacc << "MAx size exceeded!" << "," << "not in platoon" << endl;
-					}
-				}
-				else //leader's platoon has reached size limit. Ego can be head itself
-				{
-					desired_velocity = head_speed;
-					platoonState[current_veh][0] = current_veh;
-					platoonState[current_veh][3] = 0;
-					platoonState[current_veh][5] = 1;
-				}
-			}
-		}
+		
 		/*  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
-		else
-		{
-			if (platoonState[current_veh][0] == current_veh) // it is head. Does not have a whole platoon to join a new head yet. 7.31.2015. This might change.
-			{
-				desired_velocity = head_speed;
-				if (rear_dist > D_Thr)
-				{
-					platoonState[current_veh][3] = 0;
-					platoonState[current_veh][4] = 0;
-					platoonState[current_veh][5] = 1;
-					platoonState[followerID][0] = followerID;
-					platoonState[followerID][3] = 0;
-					platoonState[followerID][5] = 1;
-				}
-				else
-				{
-					platoonState[current_veh][3] = 0;
-					platoonState[current_veh][4] = 1;
-					platoonState[current_veh][5] = 1;
-					platoonState[followerID][0] = current_veh;
-					platoonState[followerID][3] = 1;
-					platoonState[followerID][5] = 2;
-				}
-			}
-			else //current_veh is not head
-			{
-				if (platoonState[current_veh][5] > MaxPlatoonSize) // if MaxPlatoonSize has been exceeded, split the platoon. 
-				{
-					desired_velocity = head_speed;
-					platoonState[leaderID][4] = 0;
-					if (rear_dist > D_Thr)
-					{
-						platoonState[current_veh][0] = current_veh;
-						platoonState[current_veh][3] = 0;
-						platoonState[current_veh][4] = 0;
-						platoonState[current_veh][5] = 1;
-						platoonState[followerID][0] = followerID;
-						platoonState[followerID][3] = 0;
-						platoonState[followerID][5] = 1;
-					}
-					else
-					{
-						platoonState[current_veh][0] = current_veh;
-						platoonState[current_veh][3] = 0;
-						platoonState[current_veh][4] = 1;
-						platoonState[current_veh][5] = 1;
-						platoonState[followerID][0] = current_veh;
-						platoonState[followerID][3] = 1;
-						platoonState[followerID][5] = 2;
-					}
-				}
-				else
-				if (platoonState[current_veh][5] == MaxPlatoonSize) //if MaxPlatoonSize has been reached, set the following one as new head
-				{
-					if (front_dist > D_Thr)
-					{
-						platoonState[leaderID][4] = 0;
-						desired_velocity = head_speed;
-						platoonState[current_veh][0] = current_veh;
-						platoonState[current_veh][3] = 0;
-						platoonState[current_veh][5] = 1;
-						if (rear_dist > D_Thr)
-						{
-							platoonState[followerID][0] = followerID;
-							platoonState[followerID][3] = 0;
-							platoonState[followerID][5] = 1;
-						}
-						else
-						{
-							platoonState[current_veh][4] = 1;
-							platoonState[followerID][0] = current_veh;
-							platoonState[followerID][3] = 1;
-							platoonState[followerID][5] = 2;
-						}
-					}
-					else
-					{
-						desired_velocity = catchup_speed;
-						platoonState[current_veh][0] = platoonState[leaderID][0];
-						platoonState[current_veh][3] = 1;
-						//platoonState[current_veh][5] = platoonState[leaderID][5]+1;
-
-						platoonState[followerID][0] = followerID;
-						platoonState[followerID][3] = 0;
-						platoonState[followerID][5] = 1;
-					}
-				}
-				else // MaxPlatoonSize has not been reached, attached more vehicles to the platoon
-				{
-					desired_velocity = catchup_speed;
-					platoonState[leaderID][4] = 1;
-					platoonState[current_veh][0] = platoonState[leaderID][0];
-					platoonState[current_veh][3] = 1;
-					platoonState[current_veh][5] = platoonState[leaderID][5] + 1;
-					if (rear_dist > D_Thr)
-					{
-						platoonState[current_veh][4] = 0;
-						platoonState[followerID][0] = followerID;
-						platoonState[followerID][3] = 0;
-						platoonState[followerID][5] = 1;
-					}
-					else
-					{
-						if (platoonState[current_veh][5] < MaxPlatoonSize) //connect ego to follower
-						{
-							platoonState[current_veh][4] = 1;
-							platoonState[followerID][0] = platoonState[current_veh][0];
-							platoonState[followerID][3] = 1;
-							platoonState[followerID][5] = platoonState[current_veh][5] + 1;
-						}
-						else  //make follower a new Head
-						{
-							platoonState[current_veh][4] = 0;
-							platoonState[followerID][0] = followerID;
-							platoonState[followerID][3] = 0;
-							platoonState[followerID][5] = 1;
-						}
-					}
-				}
-			}
-		}
-		/*  &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&& */
+		
+		
 		ControlVehicle();
+		
 		return 1;
 	default:
 		return 0;
@@ -603,19 +462,33 @@ double GetLateralPos(double latpos)
 int ControlVehicle()
 {
 	double temp_hw = 0;
-	if (platoonState[current_veh][0] == current_veh)
-		temp_hw = HWLong; // 
-	else
-		temp_hw = HWShort; // headway for inter-CACC 
-	desired_acceleration = CACC_Car_Following(current_veh, Acc_vehicle, Spd_vehicle, Leng_vehicle,
+	if (platoonState[current_veh][0] == 0)
+	{
+		if (rand()%100<20)
+			desired_velocity = head_speed;
+		else
+			desired_velocity = head_speed + 5;
+		platoonState[current_veh][0] = 1;
+	}
+	//It needs to tell if the vehicle in front is Connected or not. Since the API does not provide vehicle type information, vehicle
+	//length is used an indicator, i.e. CACC vehicles are less than 3.8m long, while others are longer than 3.8m. The vehicle types in the 
+	//VISSIM network need to be set-up accordingly.
+	if (AdjVehiclesWidth[2][3]<3.8)
+		//When front vehicle is connected, use HWShort, and front vehicle's acceleration is available (AdjVehiclesAcc[2][3])
+		desired_acceleration = CACC_Car_Following(current_veh, Acc_vehicle, Spd_vehicle, Leng_vehicle,
 		AdjVehicles[2][3], AdjVehiclesAcc[2][3], AdjVehiclesSpeed[2][3], AdjVehiclesWidth[2][3], AdjVehiclesDist[2][3],
-		temp_hw);
-
+		HWShort);
+	else
+		//When front vehicle is not connected, use HWLong, and front vehicle's acceleration is not available (assuming ZERO)
+		desired_acceleration = CACC_Car_Following(current_veh, Acc_vehicle, Spd_vehicle, Leng_vehicle,
+		AdjVehicles[2][3], 0 , AdjVehiclesSpeed[2][3], AdjVehiclesWidth[2][3], AdjVehiclesDist[2][3],
+		HWLong);
 	return 1;
 }
 
 double CACC_Car_Following(long lvid0, double a0, double v0, double leng0, long lvid1, double a1, double v1, double leng1, double d01,
 	double t_system)
+	//Implemented Bart van Arem's MIXIC model
 {
 	double a_ref = 0;
 	double a_ref_v = 0;
@@ -640,14 +513,13 @@ double CACC_Car_Following(long lvid0, double a0, double v0, double leng0, long l
 
 	a_ref_v = k*(vint - v0);
 
-	r_safe = v0*v0 / 2 * (1 / dp - 1 / d); //currently not used, since dp and d are the same for now
+	r_safe = v0*v0 / 2 * (1 / dp - 1 / d);
 	r_system = t_system*v0;
 
-	//r_ref = max(r_safe, r_system, r_min); // Peng: Check the input variables whether they are correcr or not. 
 	r_ref1 = max(r_safe, r_system);
 	r_ref2 = max(r_safe, r_min);
 
-	r_ref = max(r_ref1,r_ref2); // Peng: Check the input variables whether they are correcr or not. 
+	r_ref = max(r_ref1,r_ref2);
 	a_ref_d = ka*ap + kv*(vp - v0) + kd*(r - r_ref);
 
 	a_ref = min(a_ref_v, a_ref_d);
@@ -656,5 +528,3 @@ double CACC_Car_Following(long lvid0, double a0, double v0, double leng0, long l
 	else
 		return a_ref;
 }
-
-
