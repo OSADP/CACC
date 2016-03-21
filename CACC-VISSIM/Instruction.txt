@@ -1,4 +1,4 @@
-Steps to run the CACC VISSIM 1.0 Algorithm
+Steps to run the CACC VISSIM 2.0 Algorithm
 
 1) Compile the Type101DriverModel and Type104DriverModel into DLL files.
    either 32 or 64 bit, depending on the PTV VISSIM version. 
