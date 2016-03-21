@@ -1,4 +1,4 @@
-Licensed under the PTV VISSIM 6.22, and Microsoft Visual Studio 2013. You may not use these codes except in compliance with the License.
+Licensed under the PTV VISSIM 6.22 or newer, and Microsoft Visual Studio 2013. You may not use these codes except in compliance with the License.
 You may obtain a copy of the License at http://vision-traffic.ptvgroup.com/en-us/products/ptv-vissim/   and 
 https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx
 Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, 

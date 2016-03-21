@@ -1,7 +1,8 @@
-Key contributors to the development of the CACC VISSIM Algorithm 1.0
+Key contributors to the development of the CACC VISSIM Algorithm 2.0
 
-Development of the 1.0 algorithm and the documentation include:
+Development of the 2.0 algorithm and the documentation include:
 
+Leidos Inc.                         : Peng "Patrick" Su
 NJIT Department of Civil Engineering: Joyoung Lee
 
 The developers also wish to acknowledge several contributors to this study:
